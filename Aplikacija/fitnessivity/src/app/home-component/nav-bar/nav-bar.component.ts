@@ -9,7 +9,8 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-
+  isLoggedIn = false;
+  isAdmin = false;
 }
 
 
