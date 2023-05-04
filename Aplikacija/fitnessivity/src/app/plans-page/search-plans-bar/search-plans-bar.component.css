@@ -1,0 +1,21 @@
+.search-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 8px;
+  }
+
+  .search-bar {
+    flex: 1;
+    margin-right: 16px;
+  }
+
+  .filter-chips {
+    margin-right: 16px;
+  }
+
+  .sort-by {
+    width: 200px;
+  }

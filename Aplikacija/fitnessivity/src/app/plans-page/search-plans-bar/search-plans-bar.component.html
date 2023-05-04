@@ -1,0 +1,20 @@
+<div class="search-container">
+    <mat-form-field appearance="outline" class="search-bar">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" placeholder="Search...">
+    </mat-form-field>
+    
+
+    <mat-form-field appearance="outline" class="sort-by">
+        <mat-label>Sort by</mat-label>
+        <mat-select>
+        <mat-option value="popularity">Popularity</mat-option>
+        <mat-option value="release-date">Release Date</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-chip-set class="filter-chips">
+        <mat-chip selected>Genre: All</mat-chip>
+        <mat-chip>Type: All</mat-chip>
+    </mat-chip-set>
+</div>
