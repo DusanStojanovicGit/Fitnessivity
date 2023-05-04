@@ -1,20 +1,39 @@
 <div class="search-container">
-    <mat-form-field appearance="outline" class="search-bar">
-        <mat-label>Search</mat-label>
-        <input matInput type="text" placeholder="Search...">
-    </mat-form-field>
-    
+    <div class = "search-sort-container">
+        <mat-form-field appearance="outline" class="search-bar">
+            <mat-label>Search</mat-label>
+            <input matInput type="text" placeholder="Search...">
+        </mat-form-field>
+        
 
-    <mat-form-field appearance="outline" class="sort-by">
-        <mat-label>Sort by</mat-label>
-        <mat-select>
-        <mat-option value="popularity">Popularity</mat-option>
-        <mat-option value="release-date">Release Date</mat-option>
-        </mat-select>
-    </mat-form-field>
+        <mat-form-field appearance="outline" class="sort-by">
+            <mat-label>Sort by</mat-label>
+            <mat-select>
+            <mat-option value="popularity">Popularity</mat-option>
+            <mat-option value="release-date">Release Date</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
 
-    <mat-chip-set class="filter-chips">
-        <mat-chip selected>Genre: All</mat-chip>
-        <mat-chip>Type: All</mat-chip>
-    </mat-chip-set>
+    <div class="filter-chips-container">
+        <span style="margin-right: 1rem">Genre</span>
+        <mat-chip-set class="filter-chips">
+            <mat-chip>Weightlifting</mat-chip>
+            <mat-chip>Calisthenics</mat-chip>
+            <mat-chip>Martial arts</mat-chip>
+            <mat-chip>Yoga</mat-chip>
+            <mat-chip>Crossfit</mat-chip>
+        </mat-chip-set>
+    </div>
+    <div class="filter-chips-container">
+        <span style="margin-right: 1.5rem">Type</span>
+        <mat-chip-set class="filter-chips">
+            <mat-chip>Cardio</mat-chip>
+            <mat-chip>HIIT</mat-chip>
+            <mat-chip>Strength</mat-chip>
+            <mat-chip>Endurance</mat-chip>
+            <mat-chip>Muscle building</mat-chip>
+            <mat-chip>Recreation</mat-chip>
+        </mat-chip-set>
+    </div>
 </div>

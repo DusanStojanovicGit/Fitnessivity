@@ -2,9 +2,16 @@
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     background-color: #f0f0f0;
     padding: 8px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+  .search-sort-container{
+    display: flex;
+    align-items: first baseline;
   }
 
   .search-bar {
@@ -17,5 +24,19 @@
   }
 
   .sort-by {
+    align-self: flex-end;
     width: 200px;
+  }
+
+  .filter-chips-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .mat-chip {
+    background-color: #7c2f2f;
+    color: #b43838;
+    border: 1px solid #ccc;
   }
