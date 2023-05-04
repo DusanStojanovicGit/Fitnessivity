@@ -43,7 +43,7 @@
 
     li:hover {
         color: black;
-        border-bottom: .3rem solid black;
+        border-bottom: .3rem solid #4DA7FF;
     }
 
     ul:hover li:not(:hover) {
