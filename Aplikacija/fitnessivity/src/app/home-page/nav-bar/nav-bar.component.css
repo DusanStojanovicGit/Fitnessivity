@@ -1,4 +1,11 @@
     header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: white;
+    }
+
+    nav {
         max-width: 1400px;
         height: 91px;
         margin: 0 auto;
@@ -10,11 +17,11 @@
     }
 
     img {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 210px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 210px;
     }
 
     ul {
@@ -51,18 +58,21 @@
         color: red;
     }
 
-    .search {
+    .search-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         right: 0;
-        padding: 10px;
+        padding: 13px;
         top: 50%;
         transform: translateY(-50%);
         color:black;
         transition: all 0.1s ease-in-out;
-        font-size: 1.5rem;
+        font-size: 1.9rem;
     }
 
-    .search:hover {
+    .search-icon:hover {
         background-color: #333;
         color: white;
         border-radius: 10000px;

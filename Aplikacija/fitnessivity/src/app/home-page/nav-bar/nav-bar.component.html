@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <header>
+  <nav>
         <a routerLink="/"><img src="assets/logo.png" alt="logo"></a>
         <ul>
             <a routerLink="/plans"><li>Workout Plans</li></a>
@@ -11,7 +12,7 @@
             <a routerLink="/profile"><li *ngIf="isLoggedIn">Register</li></a>
             <a routerLink="/reports"><li *ngIf="isAdmin" class="reports">Reports</li></a>
         </ul>
-        <!-- <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div> -->
-        <div><mat-icon class="search">search</mat-icon></div>
+        <div><mat-icon class="search-icon">search</mat-icon></div>
+  </nav>
 </header>
 <div class="nav-line"></div>

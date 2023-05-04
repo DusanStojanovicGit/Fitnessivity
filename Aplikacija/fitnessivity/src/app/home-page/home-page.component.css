@@ -1,0 +1,147 @@
+::ng-deep :root {
+  --clr-white: #ebebeb;
+  --clr-lblue: #4DA7FF;
+  --clr-blue: #2994ff;
+}
+
+.homepage-background {
+  max-width: 100vw;
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.homepage-background::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  opacity: 0.6;
+}
+
+.homepage-background > div {
+  width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.homepage-background p {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--clr-white);
+  position: absolute;
+  top: 15%;
+  padding-left: 50px;
+  border-left: 10px solid white;
+  font-family: 'Gendis Body';
+}
+
+.button {
+  width: max-content;
+  height: max-content;
+  padding: 2rem 4.5rem;
+  background-color: var(--clr-blue);
+  position: absolute;
+  color: white;
+  font-size: 1.9rem;
+  font-weight: bold;
+  position: absolute;
+  top: 60%;
+  border-radius: 50px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.button span {
+  position: relative;
+  z-index: 5;
+  font-family: 'Gendis Body';
+}
+
+.button:active {
+  background-color: var(--clr-lblue);
+}
+
+.button::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: inherit;
+  animation: ripple 1s 6s linear 2;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
+.button::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: inherit;
+  animation: ripple 1s 6.3s linear 2;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
+.button:hover::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: inherit;
+  animation: ripple2 1s linear 2;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
+.button:hover::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: inherit;
+  animation: ripple2 1s 0.3s linear 2;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple2 {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.lala {
+  height: 1000vh;
+  background-color: antiquewhite;
+}
+
+
+
