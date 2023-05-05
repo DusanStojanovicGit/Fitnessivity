@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlansPageComponent } from './plans-page/plans-page.component';
 import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-plans-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-pl
     NavBarComponent,
     PlansPageComponent,
     SearchPlansBarComponent,
+    FooterComponent,
 
 
   ],
