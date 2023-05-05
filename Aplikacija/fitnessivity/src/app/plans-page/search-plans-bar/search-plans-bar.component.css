@@ -35,8 +35,11 @@
     flex-wrap: wrap;
   }
 
-  .mat-chip {
-    background-color: #7c2f2f;
-    color: #b43838;
-    border: 1px solid #ccc;
+  ::ng-deep .mat-chip-list{
+    background-color: #3F8CE8 !important;
+    color: white !important;
+    border-color: #3F8CE8 !important;
   }
+
+  
+  
