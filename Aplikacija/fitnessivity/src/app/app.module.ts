@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlansPageComponent } from './plans-page/plans-page.component';
 import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-plans-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { FooterComponent } from './footer/footer.component';
     PlansPageComponent,
     SearchPlansBarComponent,
     FooterComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
 
 
   ],
