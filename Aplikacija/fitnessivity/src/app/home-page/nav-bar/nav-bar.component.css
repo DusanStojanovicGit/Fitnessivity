@@ -89,4 +89,5 @@
         width: 100%;
         height: 92px;
         background-color: #278BFF;
+        z-index: 999;
     }
