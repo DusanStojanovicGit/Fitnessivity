@@ -64,6 +64,7 @@
         color: red;
     }
 
+ 
     .search-icon {
         display: flex;
         justify-content: center;
@@ -75,13 +76,13 @@
         transform: translateY(-50%);
         color:black;
         transition: all 0.1s ease-in-out;
-        font-size: 1.9rem;
+        font-size: 1.6rem;
     }
 
     .search-icon:hover {
         background-color: #333;
         color: white;
-        border-radius: 10000px;
+        border-radius: 100000px;
     }
 
     .nav-line{

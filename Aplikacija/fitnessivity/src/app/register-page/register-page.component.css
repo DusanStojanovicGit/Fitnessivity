@@ -1,12 +1,44 @@
 body {
-  background: white;
+  display: flex;
+  background: #146fd0;
+  background: radial-gradient( farthest-corner at 80px 80px, #14273f 0%, #b8ddf6 100%);
+  height: 93vh;
+}
+ .natpis
+ {
+  font-size: xx-large;
+  font-family:'Gendis Body';
+ }
+.kartica-conteiner {
+  display: flex;
 }
 
+.kartica {
+  justify-self: center;
+  align-self: center;
+}
+
+.container {
+  height: 100%;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+.row
+{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .card-img-left {
   width: 45%;
   /* Link to your background image using in the property below! */
-  background: scroll center url('https://img.freepik.com/free-photo/handsome-shirtless-man-with-stylish-hair-muscular-ectomorph-body-doing-exercises-with-dumbbells-dark-textured-background_613910-18438.jpg?w=740&t=st=1683310514~exp=1683311114~hmac=fb65a83d6c2ff2aef7fda46247b8030556a448383afe5e601ab3108ee8b5558c');
+  background: scroll center url('https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80');
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .btn-login {
@@ -23,14 +55,4 @@ body {
 .btn-facebook {
   color: white !important;
   background-color: #3b5998;
-}
-
-.container
-{
-  align-self: center;
-}
-.row
-{
-  align-items: center;
-  justify-self: center;
 }
