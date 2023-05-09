@@ -21,7 +21,7 @@ import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-pl
 import { FooterComponent } from './footer/footer.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     MatInputModule,
     MatChipsModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

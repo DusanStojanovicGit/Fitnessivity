@@ -2,10 +2,8 @@
     <div class = "search-sort-container">
         <mat-form-field appearance="outline" class="search-bar">
             <mat-label>Search</mat-label>
-            <input matInput type="text" placeholder="Search...">
+            <input matInput type="text" placeholder="Search..."  [(ngModel)]="enteredSearcheValue" (input)="onSearchTextChange()">
         </mat-form-field>
-        
-
         <mat-form-field appearance="outline" class="sort-by">
             <mat-label>Sort by</mat-label>
             <mat-select>
