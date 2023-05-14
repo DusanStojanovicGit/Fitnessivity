@@ -1,0 +1,26 @@
+### list users
+
+GET http://localhost:3000/user
+
+### Create a new User
+POST http://localhost:3000/user/register
+content-type: application/json
+
+{
+    "name": "Milos",
+    "lastName": "Miljkovic",
+    "email": "maridius1@gmail.com",
+    "password": "secretPassword"
+}
+
+### Get particular user
+GET http://localhost:3000/user/1
+
+### SignIn
+POST http://localhost:3000/user/login
+content-type:  application/json
+
+{
+    "email": "maridius1@gmail.com",
+    "password": "secretPassword"
+}
