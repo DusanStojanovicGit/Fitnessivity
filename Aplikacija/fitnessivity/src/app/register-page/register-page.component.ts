@@ -12,8 +12,9 @@ export class RegisterPageComponent {
 
   }
 
-  onAccountCreate(account:{name:string,lastname:string,email:string,password:string,confirmpassword:string}){
-    this.http.post('http://localhost:3000/user/signup/accounts.json',account)
+  onAccountCreate(account: {name: string, lastName: string, email: string, password: string}){
+    console.log(account);
+    this.http.post('http://127.0.0.1:3000/user/register', account)
     .subscribe((res)=>{
       console.log(res);
     });

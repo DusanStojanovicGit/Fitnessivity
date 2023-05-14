@@ -21,7 +21,10 @@ export class AuthService {
             ...dto,
             password: hashedPassword,
         });
-        return user;
+        return {
+            ...user.toJSON(),
+            password: null
+        };
     }
 
     async login(email: string, password: string) {
