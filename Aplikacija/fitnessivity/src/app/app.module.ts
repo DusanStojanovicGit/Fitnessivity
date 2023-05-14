@@ -22,6 +22,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { FormsModule } from '@angular/forms';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     LoginPageComponent,
     RegisterPageComponent,
-
+    ProfilePageComponent,
 
   ],
   imports: [
@@ -50,7 +52,9 @@ import { FormsModule } from '@angular/forms';
     MatChipsModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

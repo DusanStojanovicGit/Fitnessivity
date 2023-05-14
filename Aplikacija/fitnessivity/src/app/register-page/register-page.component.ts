@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class RegisterPageComponent {
 
+  constructor(private http: HttpClient){
+
+  }
+
+  onAccountCreate(account:{name:string,lastname:string,email:string,password:string,confirmpassword:string}){
+    this.http.post('http://localhost:3000/user/signup/accounts.json',account)
+    .subscribe((res)=>{
+      console.log(res);
+    });
+  }
 }
