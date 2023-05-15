@@ -14,17 +14,14 @@ export class AuthService {
     async register(dto: CreateUserDto) {
         const checkEmail = await this.userService.findOne(dto.email);
         if (checkEmail){
-            return new BadRequestException('email in use');
+            throw new BadRequestException('email in use');
         }
         const hashedPassword = await this.hashNewPassword(dto.password);
         const user = await this.userService.create({
             ...dto,
             password: hashedPassword,
         });
-        return {
-            ...user.toJSON(),
-            password: null
-        };
+        return user;
     }
 
     async login(email: string, password: string) {
@@ -37,10 +34,7 @@ export class AuthService {
         const passwordHash = await this.hashPassword(password, salt);
         if (passwordHash !== user.password)
             throw new BadRequestException('Incorrect password');
-        return {
-            ...user.toJSON(),
-            password: null
-        };
+        return user;
     }
 
     private async hashPassword(password: string, salt: string){

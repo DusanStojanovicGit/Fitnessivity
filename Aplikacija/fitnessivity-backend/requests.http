@@ -9,7 +9,7 @@ content-type: application/json
 {
     "name": "Milos",
     "lastName": "Miljkovic",
-    "email": "maridius1@gmail.com",
+    "email": "maridiu@gmail.com",
     "password": "secretPassword"
 }
 
@@ -21,6 +21,6 @@ POST http://localhost:3000/user/login
 content-type:  application/json
 
 {
-    "email": "maridius1@gmail.com",
+    "email": "maridiu@gmail.com",
     "password": "secretPassword"
 }
