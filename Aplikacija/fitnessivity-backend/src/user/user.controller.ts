@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Session } from '@nestjs/common';
+import { Body, Controller, Get, Post, Session, Param } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UserService } from './user.service';
 import { AuthService } from './auth.service';
@@ -12,6 +12,11 @@ export class UserController {
     @Get('/whoami')
     whoAmI(@Session() session: any){
         return this.userService.findById(session.userId);
+    }
+
+    @Get(':id')
+    async getUserById(@Param('id') userId: string){
+        return this.userService.findUserProfile(userId);
     }
 
     @Get()

@@ -24,3 +24,9 @@ content-type:  application/json
     "email": "maridiu@gmail.com",
     "password": "secretPassword"
 }
+
+### Get currrenlty singed in user
+GET http://localhost:3000/user/whoami
+
+### Get user by ID
+GET http://localhost:3000/user/6461095d9563f01d797f6bca
