@@ -1,0 +1,68 @@
+.info {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #333;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.profile-picture {
+  /* background-image: url(profile-picture.webp); */
+  width: 150px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  grid-row: 1/3;
+  place-self: center;
+}
+
+.informations {
+  grid-row: 1/3;
+  display: grid;
+  align-items: center;
+  padding-block: 1rem;
+}
+
+.informations p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.bio {
+  grid-column: 1/-1;
+  grid-row: 3/4;
+  border: 1px solid #333;
+  border-radius: 10px;
+  margin-block: 1rem;
+  padding: 1rem;
+
+}
+
+.button {
+  grid-column: 3/4;
+  align-self: center;
+  justify-self: end;
+  background-color: var(--color-blue);
+  width: 100px;
+  padding-block: 0.8rem;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 1.3rem;
+  margin-right: 1rem;
+}
+
+.button:active {
+  background-color: #1482ff;
+}
+
+.button:nth-child(1) {
+  grid-row: 1/2;
+}
+
+.button:nth-child(2) {
+  grid-row: 2/3;
+}

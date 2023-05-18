@@ -21,9 +21,15 @@ import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-pl
 import { FooterComponent } from './footer/footer.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from './error/error.component';
+import { InfoPartComponent } from './profile-page/info-part/info-part.component';
+import { MainPartComponent } from './profile-page/main-part/main-part.component';
+import { FriendsComponentComponent } from './profile-page/main-part/friends-component/friends-component.component';
+import { ProgramsComponentComponent } from './profile-page/main-part/programs-component/programs-component.component';
+import { TrainingListComponent } from './profile-page/main-part/training-list/training-list.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,13 @@ import { HttpClientModule } from '@angular/common/http';
     LoginPageComponent,
     RegisterPageComponent,
     ProfilePageComponent,
+    ErrorComponent,
+    InfoPartComponent,
+    MainPartComponent,
+    FriendsComponentComponent,
+    ProgramsComponentComponent,
+    TrainingListComponent,
+
 
   ],
   imports: [
@@ -53,7 +66,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
