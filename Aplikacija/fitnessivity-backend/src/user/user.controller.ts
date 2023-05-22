@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Session, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Session, Param, Put } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UserService } from './user.service';
 import { AuthService } from './auth.service';
@@ -10,8 +10,11 @@ export class UserController {
     constructor(private readonly userService: UserService, private readonly authService: AuthService) {}
 
     @Get('/whoami')
-    whoAmI(@Session() session: any){
-        return this.userService.findById(session.userId);
+    async whoAmI(@Session() session: any){
+        const user = await this.userService.findById(session.userId)
+        console.log(session);
+        console.log(user);
+        return user;
     }
 
     @Get(':id')
@@ -19,9 +22,24 @@ export class UserController {
         return this.userService.findUserProfile(userId);
     }
 
+    @Get(':link')
+    getUserProfile(@Param('link') link: string){
+        return this.userService.findUserProfile(link);
+    }
+
+    @Put(':id')
+    async updateUser(){
+        
+    }
+
     @Get()
     showUsers(){
         return this.userService.findAll();
+    }
+
+    @Post('/logout')
+    async logout(@Session() session: any){
+        session.userId = null;
     }
 
     @Post('/login')

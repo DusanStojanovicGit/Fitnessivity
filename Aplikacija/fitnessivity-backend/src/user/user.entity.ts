@@ -6,6 +6,7 @@ export class User extends mongoose.Document{
   name: string;
   bio: string;
   type: string;
+  link: string;
   trainings: Number;
   lastName: string;
   birthDate: Date;
@@ -13,12 +14,13 @@ export class User extends mongoose.Document{
 };
 
 export const UserSchema = new mongoose.Schema({
-  email: String,
+  email: {type: String, select: false},
   password: {type: String, select: false},
   name: String,
-  bio: String,
-  type: String,
-  trainings: Number,
+  bio: {type: String, select: false},
+  type: {type: String, select: false},
+  link: String,
+  trainings: {type: Number, select: false},
   lastName: String,
   birthDate: Date,
   gender: String

@@ -17,10 +17,13 @@ export class AuthService {
             throw new BadRequestException('email in use');
         }
         const hashedPassword = await this.hashNewPassword(dto.password);
+        const userLink = await this.userService.createLink(dto.name, dto.lastName);
         const user = await this.userService.create({
             ...dto,
             password: hashedPassword,
+            link: userLink      
         });
+
         return user;
     }
 
