@@ -30,6 +30,7 @@ import { MainPartComponent } from './profile-page/main-part/main-part.component'
 import { FriendsComponentComponent } from './profile-page/main-part/friends-component/friends-component.component';
 import { ProgramsComponentComponent } from './profile-page/main-part/programs-component/programs-component.component';
 import { TrainingListComponent } from './profile-page/main-part/training-list/training-list.component';
+import { PlanComponent } from './plan/plan.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TrainingListComponent } from './profile-page/main-part/training-list/tr
     FriendsComponentComponent,
     ProgramsComponentComponent,
     TrainingListComponent,
+    PlanComponent,
 
 
   ],

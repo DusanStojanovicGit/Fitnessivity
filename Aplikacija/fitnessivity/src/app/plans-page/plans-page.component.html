@@ -1,11 +1,27 @@
-<app-search-plans-bar (searchTextChanged) = "onSearchTextEntered($event)"></app-search-plans-bar>
+<app-search-plans-bar
+  (searchTextChanged)="onSearchTextEntered($event)"
+></app-search-plans-bar>
 
-<div *ngFor="let p of plans">
-  <div *ngIf="searchText === '' || p.name.toLowerCase().includes(searchText.toLowerCase()); " >
-    <div class="plans-container">
-      <div class ="slika-plana"><img src="assets/gym.jpg" alt="slika"></div>
-      <div class="naslov"><h4>{{p.name}}</h4></div>
-      <div class="tip"><h6>{{p.tip}}</h6></div>
+<div class="container">
+  <div *ngFor="let p of plans">
+    <div
+      class="plan-container"
+      *ngIf="
+        searchText === '' ||
+        p.name.toLowerCase().includes(searchText.toLowerCase())
+      "
+    >
+      <div class="plan">
+        <div class="slika-plana"><img src="assets/gym.jpg" alt="slika" /></div>
+        <div class="naslov">
+          <h4>{{ p.name }}</h4>
+        </div>
+        <div class="tip">
+          <h6>{{ p.tip }}</h6>
+        </div>
+        <div class="button">Details</div>
+        <div class="button plus">+</div>
+      </div>
     </div>
- </div>
+  </div>
 </div>
