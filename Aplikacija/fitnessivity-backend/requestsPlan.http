@@ -1,0 +1,24 @@
+### Create plan
+POST http://localhost:3000/plans/submitplan
+content-type: application/json
+
+{
+    "name": "High Strength 10x6",
+    "type": "Strength",
+    "genre": "Weightlifting",
+    "workouts": [
+        {
+            "name": "Chest",
+            "exerciseList": ["Bench", "Incline bench", "Peck-deck"]
+        },
+        {
+            "name": "Triceps",
+            "exerciseList": ["Push-ups", "Dumbbell Rows", "Shoulder Press"]
+        }
+    ],
+    "picture": "workout2.jpg",
+    "description": "Get them huge chest!!"
+}
+
+###Get plans by user
+GET http://localhost:3000/plans/localhost:3000/plans/MaridiuS

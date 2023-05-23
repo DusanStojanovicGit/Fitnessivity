@@ -8,13 +8,7 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @MinLength(2)
-  lastName: string;
-
-  @IsOptional()
-  link: string;
-
-  @IsOptional()
-  ogLink: string;
+  username: string;
   
   @IsNotEmpty()
   @IsEmail()
