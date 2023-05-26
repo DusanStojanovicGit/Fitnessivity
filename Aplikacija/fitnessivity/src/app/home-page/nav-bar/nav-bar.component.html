@@ -5,11 +5,16 @@
         <a routerLink="/"><img src="assets/logo.png" alt="logo"></a>
         <ul>
             <a routerLink="/plans"><li>Workout Plans</li></a>
-            <a routerLink="/training"><li>Submit Training</li></a>
-            <a routerLink="/login"><li *ngIf="!isLoggedIn">Login</li></a>
-            <a routerLink="/register"><li *ngIf="!isLoggedIn">Register</li></a>
-            <a routerLink="/friends"><li *ngIf="isLoggedIn">Login</li></a>
-            <a routerLink="/profile"><li *ngIf="isLoggedIn">Register</li></a>
+            <a routerLink="/training"><li>Submit Training</li></a>           
+            <ng-container *ngIf="!(signedin$ | async)">
+              <a routerLink="/login"><li>Login</li></a>
+              <a routerLink="/register"><li>Register</li></a>
+            </ng-container>
+            <ng-container *ngIf="signedin$ | async">
+              <a routerLink="/friends"><li>Friends</li></a>
+              <a routerLink="/profile"><li>Profile</li></a>       
+              <a routerLink="/logout"><li>Logout</li></a>      
+            </ng-container>
             <a routerLink="/reports"><li *ngIf="isAdmin" class="reports">Reports</li></a>
         </ul>
         <div><mat-icon class=" ikonica search-icon">search</mat-icon></div>

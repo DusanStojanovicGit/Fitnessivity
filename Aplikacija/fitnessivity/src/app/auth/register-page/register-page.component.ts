@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -8,13 +9,12 @@ import { Component } from '@angular/core';
 })
 export class RegisterPageComponent {
 
-  constructor(private http: HttpClient){
+  constructor(private authService : AuthService){
 
   }
 
   onAccountCreate(account: {name: string, username: string, email: string, password: string}){
-    console.log(account);
-    this.http.post('http://127.0.0.1:3000/user/register', account)
+    this.authService.createAccount(account)
     .subscribe((res)=>{
       console.log(res);
     });

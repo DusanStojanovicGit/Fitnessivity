@@ -21,4 +21,7 @@ content-type: application/json
 }
 
 ###Get plans by user
-GET http://localhost:3000/plans/localhost:3000/plans/MaridiuS
+GET http://localhost:3000/plans/MaridiuS
+
+###Get plans by search criteria
+GET http://localhost:3000/plans/search?type=Strength,Muscle%20Building&genre=Weightlifting&sortBy=-submissionDate

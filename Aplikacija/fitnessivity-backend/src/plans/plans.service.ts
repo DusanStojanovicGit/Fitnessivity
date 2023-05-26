@@ -12,6 +12,21 @@ export class PlansService {
         private readonly userService : UserService
     ){};
 
+    async searchPrograms(criteria: any): Promise<Plan[]> {
+        const query = this.planModel.find();
+        if (criteria.type) {
+            const types = criteria.type.split(','); 
+            query.where('type').in(types);
+        }
+        if (criteria.genre) {
+          query.where('genre').equals(criteria.genre);
+        }
+        if (criteria.sortBy) {
+          query.sort(criteria.sortBy);
+        }
+        return query.exec();
+      }
+
     async createPlan(dto: SubmitPlanDto, userId : string) : Promise<Plan>{
         const user = await this.userService.findById(userId);
         const plan = {

@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { cookieOptions } from 'src/cookieOptions';
 const cookieSession = require('cookie-session');
 
 async function bootstrap() {
@@ -8,11 +9,9 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.use(
     cookieSession({
+      name: 'session',
       keys: ['secretkey'],
-      cookie: {
-        sameSite: 'none', // Set SameSite attribute to None
-        secure: true, // Set the secure flag to ensure the cookie is sent over HTTPS
-      },
+      cookie: cookieOptions,
     }),
   );
   app.enableCors({origin: 'http://localhost:4200', credentials: true});

@@ -1,8 +1,10 @@
-import { Body, Controller, Get, Post, Session, Param, Put } from '@nestjs/common';
+import { Body, Controller, Get, Post, Session, Param, Put, Res } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UserService } from './user.service';
 import { AuthService } from './auth.service';
 import { SigninUserDto } from './dtos/signin-user.dto';
+import { Response } from 'express';
+import { cookieOptions } from 'src/cookieOptions';
 
 @Controller('user')
 export class UserController {
@@ -38,8 +40,10 @@ export class UserController {
     }
 
     @Post('/logout')
-    async logout(@Session() session: any){
+    async logout(@Session() session: any, @Res() res: Response){
         session.userId = null;
+        res.clearCookie('session', cookieOptions);
+        res.status(200).json({ message: 'Logged out successfully' });
     }
 
     @Post('/login')
