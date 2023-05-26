@@ -1,3 +1,4 @@
+import { SubmitPageComponent } from './submit-page/submit-page.component';
 import { NgModule } from '@angular/core';
 import { PlansPageComponent } from './plans-page/plans-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -9,16 +10,16 @@ import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'plans', component: PlansPageComponent},
-  { path: 'profile', component: ProfilePageComponent},
-  { path: 'login', component: LoginPageComponent},
-  { path: 'register', component: RegisterPageComponent},
-  {path: '**', component: ErrorComponent} ,
-
+  { path: 'plans', component: PlansPageComponent },
+  { path: 'training', component: SubmitPageComponent },
+  { path: 'profile', component: ProfilePageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'register', component: RegisterPageComponent },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

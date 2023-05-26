@@ -12,7 +12,7 @@ export class RegisterPageComponent {
 
   }
 
-  onAccountCreate(account: {name: string, lastName: string, email: string, password: string}){
+  onAccountCreate(account: {name: string, username: string, email: string, password: string}){
     console.log(account);
     this.http.post('http://127.0.0.1:3000/user/register', account)
     .subscribe((res)=>{

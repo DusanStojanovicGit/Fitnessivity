@@ -31,6 +31,8 @@ import { FriendsComponentComponent } from './profile-page/main-part/friends-comp
 import { ProgramsComponentComponent } from './profile-page/main-part/programs-component/programs-component.component';
 import { TrainingListComponent } from './profile-page/main-part/training-list/training-list.component';
 import { PlanComponent } from './plan/plan.component';
+import { SubmitPageComponent } from './submit-page/submit-page.component';
+import { SubmitFormComponent } from './submit-page/submit-form/submit-form.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { PlanComponent } from './plan/plan.component';
     ProgramsComponentComponent,
     TrainingListComponent,
     PlanComponent,
+    SubmitPageComponent,
+    SubmitFormComponent,
 
 
   ],
