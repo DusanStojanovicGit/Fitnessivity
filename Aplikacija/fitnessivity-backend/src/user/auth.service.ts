@@ -12,16 +12,16 @@ export class AuthService {
     constructor(private userService: UserService){}
 
     async register(dto: CreateUserDto) {
-        const checkEmail = await this.userService.findOne(dto.email);
-        if (checkEmail){
+        if (await this.userService.findOne(dto.email)){
             throw new BadRequestException('email in use');
         }
+        if (await this.userService.findOneByUsername(dto.username)){
+            throw new BadRequestException('Username taken');
+        }
         const hashedPassword = await this.hashNewPassword(dto.password);
-        const userLink = await this.userService.createLink(dto.name, dto.lastName);
         const user = await this.userService.create({
             ...dto,
             password: hashedPassword,
-            link: userLink      
         });
 
         return user;

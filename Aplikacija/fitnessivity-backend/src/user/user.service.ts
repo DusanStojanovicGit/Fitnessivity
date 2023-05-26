@@ -29,26 +29,30 @@ export class UserService {
     return this.userModel.findOne({email});
   }
 
-  async createLink(name: string, lastName : string){
-    const link = (name + '_' + lastName).toLowerCase();
-    const final10Users = await this.userModel.find({link : { $regex: `^${link}`}}).sort({link : -1}).limit(10);
-    let maxIndex = 0;
-    if (!(final10Users.length == 0)){
-      final10Users.forEach((element) => {
-        const [a, b, index] = element.link.split('_');
-        const parsedIndex = parseInt(index);
-        if (parsedIndex > maxIndex){
-          maxIndex = parsedIndex;
-        };
-      }
-    )};
-
-    //const userCount = await this.userModel.countDocuments({link: '^${link}'});
-    return link + '_' + (maxIndex + 1);
+  findOneByUsername(username: string){
+    return this.userModel.findOne({username});
   }
 
-  async findUserProfile(link: string){
-    const user = await this.userModel.findOne({link}).select('+bio +type +trainings');
+  // async createLink(name: string, lastName : string){
+  //   const link = (name + '_' + lastName).toLowerCase();
+  //   const final10Users = await this.userModel.find({link : { $regex: `^${link}`}}).sort({link : -1}).limit(10);
+  //   let maxIndex = 0;
+  //   if (!(final10Users.length == 0)){
+  //     final10Users.forEach((element) => {
+  //       const [a, b, index] = element.link.split('_');
+  //       const parsedIndex = parseInt(index);
+  //       if (parsedIndex > maxIndex){
+  //         maxIndex = parsedIndex;
+  //       };
+  //     }
+  //   )};
+
+  //   //const userCount = await this.userModel.countDocuments({link: '^${link}'});
+  //   return link + '_' + (maxIndex + 1);
+  // }
+
+  async findUserProfile(username: string){
+    const user = await this.userModel.findOne({username}).select('+bio +type +trainings');
     if (!user)
       throw new NotFoundException("User profile not found");
     return user;

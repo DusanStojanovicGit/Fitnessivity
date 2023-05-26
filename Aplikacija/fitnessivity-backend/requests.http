@@ -7,10 +7,10 @@ POST http://localhost:3000/user/register
 content-type: application/json
 
 {
-    "name": "Milos",
-    "lastName": "Stefanic",
-    "email": "mo@gmail.com",
-    "password": "secretPassword"
+    "name": "Milos Miljkovic",
+    "username": "MaridiuS",
+    "email": "maridius98@gmail.com",
+    "password": "zelenasalata1"
 }
 
 ### Get particular user
