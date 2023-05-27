@@ -51,11 +51,13 @@ export class UserService {
   //   return link + '_' + (maxIndex + 1);
   // }
 
-  async findUserProfile(username: string){
-    const user = await this.userModel.findOne({username}).select('+bio +type +trainings');
+  async findUserProfile(username: string) {
+    const usernameRegex = new RegExp(`^${username}$`, 'i');
+    const user = await this.userModel.findOne({username: usernameRegex}).select('+bio +type +trainings');
     if (!user)
       throw new NotFoundException("User profile not found");
     return user;
   }
+  
 
 }

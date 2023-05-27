@@ -33,6 +33,7 @@ import { TrainingListComponent } from './profile-page/main-part/training-list/tr
 import { PlanComponent } from './plan/plan.component';
 import { SubmitPageComponent } from './submit-page/submit-page.component';
 import { SubmitFormComponent } from './submit-page/submit-form/submit-form.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SubmitFormComponent } from './submit-page/submit-form/submit-form.compo
     AppRoutingModule,
     LayoutModule,
     AuthModule,
+    UserModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

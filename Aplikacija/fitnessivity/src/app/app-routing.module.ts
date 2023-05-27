@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'plans', component: PlansPageComponent },
   { path: 'training', component: SubmitPageComponent },
-  { path: 'profile', component: ProfilePageComponent },
+  { path: 'users/:username', component: ProfilePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'logout', component: SignOutComponent},

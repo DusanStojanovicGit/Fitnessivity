@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-info-part',
@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./info-part.component.css'],
 })
 export class InfoPartComponent {
-  firstname: string = 'Dusan';
-  lastname: string = 'Stojanovic';
-  bio: string = 'bio sam nekad fit';
+  @Input() fullname: string = '';
+  @Input() bio: string = '';
 
 
   private fetchAccinfo ()

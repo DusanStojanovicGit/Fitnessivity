@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, catchError, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
+import { User } from '../user/user.entity';
 
 interface SignedinResponse {
   isLoggedIn: boolean;
@@ -21,6 +22,7 @@ export class AuthService {
   private root = 'http://localhost:3000/user/';
   signedin$ = new BehaviorSubject(false);
   isAdmin$ = new BehaviorSubject(false);
+  username$ = new BehaviorSubject<string>('');
   constructor(private http: HttpClient) { }
   
   
@@ -35,10 +37,11 @@ export class AuthService {
   }
 
   logIn(account: { email: string, password: string }) {
-    return this.http.post(this.root + 'login', account, { withCredentials: true })
+    return this.http.post<User>(this.root + 'login', account, { withCredentials: true })
       .pipe(
-      tap(() => {
+      tap((response) => {
         this.signedin$.next(true);
+        this.username$.next(response.username)
       })
     );
   }
@@ -52,10 +55,11 @@ export class AuthService {
           this.isAdmin$.next(false);
           return throwError(error);
         }),
-        map(({ isLoggedIn, isAdmin }) => {
+        tap(({ username, isAdmin }) => {
           this.signedin$.next(true);
           this.isAdmin$.next(isAdmin);
-          return { isLoggedIn, isAdmin };
+          this.username$.next(username);
+          return { username, isAdmin };
         })
       );
   }
@@ -63,8 +67,9 @@ export class AuthService {
   logOut(){
     return this.http.post("http://localhost:3000/user/logout", {}, {withCredentials: true})
       .pipe(
-        tap(() => {
+        tap((response) => {
           this.signedin$.next(false);
+          this.username$.next('');
           this.isAdmin$.next(false);
         })
       );

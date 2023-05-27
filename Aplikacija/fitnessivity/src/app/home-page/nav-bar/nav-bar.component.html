@@ -12,10 +12,10 @@
             </ng-container>
             <ng-container *ngIf="signedin$ | async">
               <a routerLink="/friends"><li>Friends</li></a>
-              <a routerLink="/profile"><li>Profile</li></a>       
+              <a [routerLink]="['/users', username$ | async]"><li>Profile</li></a>       
               <a routerLink="/logout"><li>Logout</li></a>      
             </ng-container>
-            <a routerLink="/reports"><li *ngIf="isAdmin" class="reports">Reports</li></a>
+            <a routerLink="/reports"><li *ngIf="(isAdmin$ | async)" class="reports">Reports</li></a>
         </ul>
         <div><mat-icon class=" ikonica search-icon">search</mat-icon></div>
   </nav>

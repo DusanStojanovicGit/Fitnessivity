@@ -29,7 +29,7 @@ content-type:  application/json
 GET http://localhost:3000/user/whoami
 
 ### Get user by link
-GET http://localhost:3000/user/milos_stefanic_1
+GET http://localhost:3000/user/maridius
 
 ### Logout current user
 POST http://localhost:3000/user/logout

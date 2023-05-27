@@ -11,19 +11,20 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class NavBarComponent {
   signedin$: BehaviorSubject<boolean>;
+  username$: BehaviorSubject<string>;
+  isAdmin$ : BehaviorSubject<boolean>;
   constructor(private authService: AuthService){
     this.signedin$ = this.authService.signedin$;
+    this.username$ = this.authService.username$;
+    this.isAdmin$ = this.authService.isAdmin$;
   }
 
   ngOnInit(){
     this.authService.checkAuth().subscribe(() => {});
   }
-
   logOut(){
     this.authService.logOut();
   }
-  isLoggedIn = false;
-  isAdmin = false;
 }
 
 

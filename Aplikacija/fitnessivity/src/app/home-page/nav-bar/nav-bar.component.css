@@ -17,14 +17,15 @@
         margin: 0 auto;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: first baseline;
         position: relative;
         font-family: 'Gendis Body';
     }
 
     img {
-      position: absolute;
+      position: relative;
       left: 0;
+      margin-top: 25px;
       top: 50%;
       transform: translateY(-50%);
       width: 210px;
@@ -33,9 +34,11 @@
     ul {
         display: flex;
         gap: 2rem;
+        margin-left: 2rem;
         justify-content: center;
         font-size: 1.3rem;
         margin-bottom: 0;
+        align-content: first baseline;
     }
 
     li {
