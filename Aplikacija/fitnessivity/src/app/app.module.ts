@@ -44,7 +44,6 @@ import { UserModule } from './user/user.module';
     SearchPlansBarComponent,
     FooterComponent,
     LoginPageComponent,
-    RegisterPageComponent,
     ProfilePageComponent,
     ErrorComponent,
     InfoPartComponent,
@@ -55,6 +54,7 @@ import { UserModule } from './user/user.module';
     PlanComponent,
     SubmitPageComponent,
     SubmitFormComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
