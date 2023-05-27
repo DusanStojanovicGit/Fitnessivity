@@ -10,28 +10,28 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegisterPageComponent implements OnInit {
   regForm = new FormGroup(
     {
-      username: new FormGroup('', [
+      username: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(20),
         Validators.pattern(/^[a-z0-9]+$/),
       ]),
 
-      fullName: new FormGroup('', [
+      fullName: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(20),
         Validators.pattern(/^[A-Za-z]+$/),
       ]),
 
-      email: new FormGroup('', [Validators.email, Validators.required]),
-      password: new FormGroup('', [
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(20),
       ]),
 
-      confirmPassword: new FormGroup('', [
+      confirmPassword: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(20),

@@ -53,6 +53,7 @@ import { SubmitFormComponent } from './submit-page/submit-form/submit-form.compo
     PlanComponent,
     SubmitPageComponent,
     SubmitFormComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
