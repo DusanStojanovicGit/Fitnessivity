@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -19,8 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlansPageComponent } from './plans-page/plans-page.component';
 import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-plans-bar.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { RegisterPageComponent } from './auth/register-page/register-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -54,13 +54,12 @@ import { SubmitFormComponent } from './submit-page/submit-form/submit-form.compo
     PlanComponent,
     SubmitPageComponent,
     SubmitFormComponent,
-
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
+    AuthModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

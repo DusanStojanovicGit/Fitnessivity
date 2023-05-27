@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Session, Param, Put } from '@nestjs/common';
+import { Body, Controller, Get, Post, Session, Param, Put, Query } from '@nestjs/common';
 import { PlansService } from './plans.service';
 import { SubmitPlanDto } from './dtos/submit-plan.dto';
 
@@ -12,6 +12,12 @@ export class PlansController {
         const plan = await this.planService.createPlan(dto, session.userId);
         console.log(plan);
         return plan;
+    }
+
+    @Get('search')
+    async searchPrograms(@Query() query: any): Promise<any> {
+      const programs = await this.planService.searchPrograms(query);
+      return programs;
     }
 
     @Get(':username')

@@ -27,6 +27,6 @@ export const PlanSchema = new mongoose.Schema({
     submissionDate: {type: Date, default: () => Date.now()},
     picture: String,
     planLink: String,
-    description: String,
+    description: {type: String, select: false},
 });
 
