@@ -2,8 +2,6 @@ import { MatchPassword } from '../validators/match-password';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
-
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -42,11 +40,7 @@ export class RegisterPageComponent implements OnInit {
     { validators: [this.matchPassword.validate] }
   );
 
-  constructor(
-    private http: HttpClient,
-    private matchPassword: MatchPassword,
-    private authService: AuthService
-  ) {}
+  constructor(private http: HttpClient, private matchPassword: MatchPassword) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -57,9 +51,9 @@ export class RegisterPageComponent implements OnInit {
     email: string;
     password: string;
   }) {
-    this.authService
-      .createAccount(account)
-
+    console.log(account);
+    this.http
+      .post('http://127.0.0.1:3000/user/register', account)
       .subscribe((res) => {
         console.log(res);
       });

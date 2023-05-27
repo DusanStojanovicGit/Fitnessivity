@@ -43,7 +43,6 @@ import { SubmitFormComponent } from './submit-page/submit-form/submit-form.compo
     SearchPlansBarComponent,
     FooterComponent,
     LoginPageComponent,
-    RegisterPageComponent,
     ProfilePageComponent,
     ErrorComponent,
     InfoPartComponent,
