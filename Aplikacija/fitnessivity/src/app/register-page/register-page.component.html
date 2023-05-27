@@ -15,8 +15,8 @@
               Register
             </h5>
             <form
-              #registerForm="ngForm"
-              (ngSubmit)="onAccountCreate(registerForm.value)"
+              [formGroup]="regForm"
+
             >
               <div class="form-floating mb-3">
                 <input
@@ -25,7 +25,7 @@
                   id="floatingInputUsername"
                   placeholder="FullName"
                   name="name"
-                  ngModel
+                  formControlName = "fullName"
                   required
                   autofocus
                 />
@@ -38,7 +38,7 @@
                   id="floatingInputUsername"
                   placeholder="Username"
                   name="username"
-                  ngModel
+                  formControlName = "username"
                   required
                   autofocus
                 />
@@ -52,7 +52,8 @@
                   id="floatingInputEmail"
                   placeholder="name@example.com"
                   name="email"
-                  ngModel
+                  formControlName = "email"
+
                 />
                 <label for="floatingInputEmail">Email address</label>
               </div>
@@ -66,7 +67,8 @@
                   id="floatingPassword"
                   placeholder="Password"
                   name="password"
-                  ngModel
+                  formControlName = "password"
+
                 />
                 <label for="floatingPassword">Password</label>
               </div>
@@ -78,6 +80,7 @@
                   id="floatingPasswordConfirm"
                   placeholder="Confirm Password"
                   name="confirmpassword"
+                  formControlName = "confirmPassword"
                 />
                 <label for="floatingPasswordConfirm">Confirm Password</label>
               </div>
