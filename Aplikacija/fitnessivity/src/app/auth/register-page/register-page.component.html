@@ -129,17 +129,10 @@
               <div
                 class="error"
                 *ngIf="
-                  regForm.get('confirmPassword')?.touched &&
-                  regForm.get('password')?.touched &&
-                  regForm.errors?.['passwordsDontMatch']                "
+             regForm.get('confirmPassword')?.touched &&  regForm.get('password')?.touched &&   regForm.errors?.['passwordsDontMatch']"
               >
-                <p *ngIf="regForm.get('confirmPassword')?.errors?.['required']">
-                  Password is required.
-                </p>
-                <p
-                  *ngIf="regForm.get('confirmPassword')?.errors?.['passwordsDontMatch']"
-                >
-                Passwords do not match.
+                <p *ngIf="regForm.errors?.['passwordsDontMatch']">
+                  Passwords do not match.
                 </p>
               </div>
 
