@@ -131,6 +131,8 @@
                 *ngIf="
              regForm.get('confirmPassword')?.touched &&  regForm.get('password')?.touched &&   regForm.errors?.['passwordsDontMatch']"
               >
+              <ng-container *ngIf="showErrors('confirmPassword')"></ng-container>
+
                 <p *ngIf="regForm.errors?.['passwordsDontMatch']">
                   Passwords do not match.
                 </p>
