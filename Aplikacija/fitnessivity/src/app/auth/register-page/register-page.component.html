@@ -12,9 +12,7 @@
             <h5 class="card-title text-center mb-5 fw-light fs-5 natpis">
               Register
             </h5>
-            <form
-            [formGroup]="regForm"
-            >
+            <form [formGroup]="regForm">
               <div class="form-floating mb-3">
                 <input
                   type="text"
@@ -22,11 +20,25 @@
                   id="floatingInputUsername"
                   placeholder="FullName"
                   name="name"
-                  formControlName = "fullName"
+                  formControlName="fullName"
                   required
                   autofocus
                 />
                 <label for="floatingInputUsername">Full Name</label>
+              </div>
+              <div class="error" *ngIf="showErrors('fullName')">
+                <p *ngIf="regForm.get('fullName')?.errors?.['required']">
+                  Full Name is required.
+                </p>
+                <p *ngIf="regForm.get('fullName')?.errors?.['minlength']">
+                  Full Name needs to have at least 4 characters.
+                </p>
+                <p *ngIf="regForm.get('fullName')?.errors?.['maxlength']">
+                  Full Name needs to have at most 20 characters.
+                </p>
+                <p *ngIf="regForm.get('fullName')?.errors?.['pattern']">
+                  Invalid format.
+                </p>
               </div>
               <div class="form-floating mb-3">
                 <input
@@ -35,11 +47,25 @@
                   id="floatingInputUsername"
                   placeholder="Username"
                   name="username"
-                  formControlName = "username"
+                  formControlName="username"
                   required
                   autofocus
                 />
                 <label for="floatingInputUsername">Username</label>
+              </div>
+              <div class="error" *ngIf="showErrors('username')">
+                <p *ngIf="regForm.get('username')?.errors?.['required']">
+                  Username is required.
+                </p>
+                <p *ngIf="regForm.get('username')?.errors?.['minlength']">
+                  Username needs to have at least 3 characters.
+                </p>
+                <p *ngIf="regForm.get('username')?.errors?.['maxlength']">
+                  Username needs to have at most 20 characters.
+                </p>
+                <p *ngIf="regForm.get('username')?.errors?.['pattern']">
+                  Invalid format.
+                </p>
               </div>
 
               <div class="form-floating mb-3">
@@ -49,10 +75,18 @@
                   id="floatingInputEmail"
                   placeholder="name@example.com"
                   name="email"
-                  formControlName = "email"
-
+                  formControlName="email"
                 />
                 <label for="floatingInputEmail">Email address</label>
+              </div>
+
+              <div class="error" *ngIf="showErrors('email')">
+                <p *ngIf="regForm.get('email')?.errors?.['required']">
+                  Email is required.
+                </p>
+                <p *ngIf="regForm.get('email')?.errors?.['pattern']">
+                  Invalid email adress.
+                </p>
               </div>
 
               <hr />
@@ -64,10 +98,21 @@
                   id="floatingPassword"
                   placeholder="Password"
                   name="password"
-                  formControlName = "password"
-
+                  formControlName="password"
                 />
                 <label for="floatingPassword">Password</label>
+              </div>
+
+              <div class="error" *ngIf="showErrors('password')">
+                <p *ngIf="regForm.get('password')?.errors?.['required']">
+                  Password is required.
+                </p>
+                <p *ngIf="regForm.get('password')?.errors?.['minlength']">
+                  Password needs to have at least 4 characters.
+                </p>
+                <p *ngIf="regForm.get('password')?.errors?.['maxlength']">
+                  Password needs to have at most 20 characters.
+                </p>
               </div>
 
               <div class="form-floating mb-3">
@@ -77,9 +122,25 @@
                   id="floatingPasswordConfirm"
                   placeholder="Confirm Password"
                   name="confirmpassword"
-                  formControlName = "confirmPassword"
+                  formControlName="confirmPassword"
                 />
                 <label for="floatingPasswordConfirm">Confirm Password</label>
+              </div>
+              <div
+                class="error"
+                *ngIf="
+                  regForm.get('confirmPassword')?.touched &&
+                  regForm.get('password')?.touched &&
+                  regForm.errors?.['passwordsDontMatch']                "
+              >
+                <p *ngIf="regForm.get('confirmPassword')?.errors?.['required']">
+                  Password is required.
+                </p>
+                <p
+                  *ngIf="regForm.get('confirmPassword')?.errors?.['passwordsDontMatch']"
+                >
+                Passwords do not match.
+                </p>
               </div>
 
               <div class="d-grid mb-2">

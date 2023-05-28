@@ -7,6 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
+
 export class MatchPassword implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
     const { password, confirmPassword } = control.value;

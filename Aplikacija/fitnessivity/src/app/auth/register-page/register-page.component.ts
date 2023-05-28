@@ -1,3 +1,4 @@
+import { UniqueUsername } from './../validators/unique-username';
 import { MatchPassword } from '../validators/match-password';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -22,10 +23,10 @@ export class RegisterPageComponent implements OnInit {
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(20),
-        Validators.pattern(/^[A-Za-z]+$/),
+        Validators.pattern(/^[a-zA-Z ]*$/)
       ]),
 
-      email: new FormControl('', [Validators.email, Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required, Validators.pattern( /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
@@ -41,10 +42,21 @@ export class RegisterPageComponent implements OnInit {
     { validators: [this.matchPassword.validate] }
   );
 
-  constructor(private authService: AuthService, private matchPassword: MatchPassword) {}
+  constructor(
+    private authService: AuthService,
+    private matchPassword: MatchPassword,
+    private uniqueUsername: UniqueUsername
+  ) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
+
+  showErrors(fieldName: string): boolean {
+    const field = this.regForm.get(fieldName);
+    return !!(field && field.dirty && field.touched && field.errors && Object.keys(field.errors).length > 0);
+  }
+
+
 
   onAccountCreate(account: {
     name: string;
@@ -52,8 +64,7 @@ export class RegisterPageComponent implements OnInit {
     email: string;
     password: string;
   }) {
-    this.authService.createAccount(account)
-    .subscribe((res)=>{
+    this.authService.createAccount(account).subscribe((res) => {
       console.log(res);
     });
   }

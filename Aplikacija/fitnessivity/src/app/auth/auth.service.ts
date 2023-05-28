@@ -24,8 +24,15 @@ export class AuthService {
   isAdmin$ = new BehaviorSubject(false);
   username$ = new BehaviorSubject<string>('');
   constructor(private http: HttpClient) { }
-  
-  
+
+
+  usernameAvailable(username:string){
+    return this.http
+      .post<{available:boolean}>('http://localhost:3000/username/', {
+        username: username
+      })
+  }
+
   createAccount(account: {name: string, username: string, email: string, password: string}){
     console.log(account);
     return this.http.post<SignupResponse>(this.root + 'register', account, {withCredentials: true})
@@ -45,6 +52,7 @@ export class AuthService {
       })
     );
   }
+
 
   checkAuth() {
     return this.http
