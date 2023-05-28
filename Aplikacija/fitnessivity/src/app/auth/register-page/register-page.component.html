@@ -131,7 +131,9 @@
                 *ngIf="
              regForm.get('confirmPassword')?.touched &&  regForm.get('password')?.touched &&   regForm.errors?.['passwordsDontMatch']"
               >
-              <ng-container *ngIf="showErrors('confirmPassword')"></ng-container>
+                <ng-container
+                  *ngIf="showErrors('confirmPassword')"
+                ></ng-container>
 
                 <p *ngIf="regForm.errors?.['passwordsDontMatch']">
                   Passwords do not match.
@@ -147,7 +149,7 @@
                 </button>
               </div>
 
-              <a class="d-block text-center mt-2 small" href="#"
+              <a routerLink="/login" class="d-block text-center mt-2 small"
                 >Have an account? Sign In</a
               >
 
