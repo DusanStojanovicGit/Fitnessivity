@@ -7,6 +7,12 @@ export class PlansController {
 
     constructor(private readonly planService: PlansService){};
 
+    @Post('addPlan/:planId')
+    async addPlan(@Session() session: any, @Param('planId') planId: string){
+        const plan = await this.planService.createPersonalPlan(planId, session.userId);
+        return plan;
+    }
+
     @Post('/submitplan')
     async submitPlan(@Body() dto: SubmitPlanDto, @Session() session: any){
         const plan = await this.planService.createPlan(dto, session.userId);

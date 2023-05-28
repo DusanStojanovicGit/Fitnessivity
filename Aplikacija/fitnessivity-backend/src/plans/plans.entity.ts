@@ -1,32 +1,42 @@
-import * as mongoose from 'mongoose';
-import { Workout } from 'src/workouts/workouts.interface';
-import { User } from 'src/user/user.entity';
+import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
+import { Document, Types } from 'mongoose';
+import { Exercise, Workout } from 'src/workouts/workouts.entity';
 
-export interface Plan extends mongoose.Document{
-    name: string,
-    creator: string,
-    type: string,
-    genre: string,
-    workouts: {name: string, exerciseList: string[]}[],
-    workoutsCompleted: number,
-    days: number,
-    submissionDate: Date,
-    picture: string,
-    planLink: string,
-    description: string,
-};
+@Schema()
+export class Plan extends Document {
+  @Prop()
+  name: string;
 
-export const PlanSchema = new mongoose.Schema({
-    name: String,
-    creator: String,
-    type: String,
-    genre: String,
-    workouts: [{name: String, exerciseList: [String]}],
-    workoutsCompleted: Number,
-    days: Number,
-    submissionDate: {type: Date, default: () => Date.now()},
-    picture: String,
-    planLink: String,
-    description: {type: String, select: false},
-});
+  @Prop()
+  creator: string;
+
+  @Prop()
+  type: string;
+
+  @Prop()
+  genre: string;
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Workout' }] })
+  workouts: Workout[];
+
+  @Prop()
+  workoutsCompleted: number;
+
+  @Prop()
+  days: number;
+
+  @Prop()
+  submissionDate: Date;
+
+  @Prop()
+  picture: string;
+
+  @Prop()
+  planLink: string;
+
+  @Prop()
+  description: string;
+}
+
+export const PlanSchema = SchemaFactory.createForClass(Plan);
 
