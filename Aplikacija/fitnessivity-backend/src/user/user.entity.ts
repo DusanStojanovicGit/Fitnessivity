@@ -27,7 +27,7 @@ export class User extends Document {
   type: string;
 
   @Prop({ select: false })
-  link: string;
+  pictureLink: string;
 
   @Prop()
   trainings: Number;
