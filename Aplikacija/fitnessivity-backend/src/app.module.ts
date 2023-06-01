@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { PlansModule } from './plans/plans.module';
 import { WorkoutModule } from './workouts/workout.module';
+import { PersonalPlanService } from './plans/personal-plan/personal-plan.service';
+import { SubmittedWorkoutService } from './workouts/submitted-workout/submitted-workout.service';
 
 @Module({
   imports: [

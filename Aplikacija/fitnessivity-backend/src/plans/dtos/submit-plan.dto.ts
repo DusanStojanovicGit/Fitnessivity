@@ -1,6 +1,6 @@
 import { Type } from "class-transformer";
 import { IsNotEmpty, IsOptional, MinLength, ValidateNested } from "class-validator";
-import { WorkoutDto } from "src/workouts/workouts.dto";
+import { WorkoutDto } from "src/workouts/dtos/workouts.dto";
 
 export class SubmitPlanDto{
     

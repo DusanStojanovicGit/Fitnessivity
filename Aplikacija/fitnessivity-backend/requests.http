@@ -7,10 +7,10 @@ POST http://localhost:3000/user/register
 content-type: application/json
 
 {
-    "name": "tres",
-    "username": "tre3",
-    "email": "tre@gmail.com",
-    "password": "tre3"
+    "name": "trev",
+    "username": "trev",
+    "email": "trev@gmail.com",
+    "password": "trev"
 }
 
 ### Get particular user

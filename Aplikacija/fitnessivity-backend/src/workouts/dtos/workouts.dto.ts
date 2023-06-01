@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { Exercise } from './workouts.entity';
+import { Exercise } from '../workouts.entity';
 
 export class WorkoutDto {
     id: string;
