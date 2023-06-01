@@ -5,8 +5,10 @@ import { Model } from 'mongoose';
 import { SubmitPlanDto } from './dtos/submit-plan.dto';
 import { UserService } from 'src/user/user.service';
 import { Mode } from 'fs';
-import { PersonalPlan } from './personal-plans/personal-plan.entity';
+import { PersonalPlan } from './plans.entity';
 import { WorkoutService } from 'src/workouts/workout.service';
+import { stringify } from 'querystring';
+import { UpdatePlanDto } from './dtos/update-plan.dto';
 
 @Injectable()
 export class PlansService {
@@ -38,41 +40,53 @@ export class PlansService {
 
     async createPlan(dto: SubmitPlanDto, userId : string) : Promise<Plan>{
         const user = await this.userService.findById(userId);
-        const workoutIds = await this.workoutService.createAndReturnIds(dto.workouts)
         const plan = {
             ...dto,
             creator: user.username,
             days: dto.workouts.length,
             submissionDate: Date.now(),
-            workouts: workoutIds
+            workoutsCompleted: 0,
         }
         return this.planModel.create(plan);
     }
 
-    async createPersonalPlan(parentPlanId: string, userId: string): Promise<PersonalPlan>{
-        const parentPlan = await this.planModel.findById(parentPlanId);
-        const personalPlan = {
-            name: parentPlan.name,
-            creator: parentPlan.creator,
-            type: parentPlan.type,
-            genre: parentPlan.genre,
-            workouts: parentPlan.workouts,
-            days: parentPlan.days,
-            picture: parentPlan.picture,
-            planLink: parentPlan.planLink,
-            user: (await this.userService.findById(userId)),
-            latestWorkout: Date.now(),
-            previousDay: 0,
-            parentPlan: parentPlan
-        }
-        console.log(personalPlan);
-        return this.personalPlanModel.create(personalPlan);
+    async incrementWorkoutsCompleted(id: string){
+        return this.planModel.findByIdAndUpdate(id, {$inc: {workoutsCompleted: 1}});
+    }
+
+    
+    findById(id: string): Promise<Plan>{
+        return this.planModel.findById(id);
     }
 
     async getPlansByUser(username: string){
         console.log(username);
         const plans = await this.planModel.find({creator : `${username}`});
         return plans;
+    }
+
+    async updatePlan(dto: UpdatePlanDto) : Promise<Plan>{
+        const existingPlan = await this.planModel.findById(dto.planLink);
+        const updatedPlan = {
+            ...existingPlan,
+            ...dto,
+        };
+        const updatedPlanInstance = await this.planModel.findByIdAndUpdate(
+            dto.planLink,
+            updatedPlan,
+            { new: true },
+         );
+        return updatedPlanInstance;
+    }
+    
+    async deletePlan(planId: string){
+        const deletedPlan = await this.planModel.deleteOne({ _id: planId });
+        return deletedPlan;
+    }
+
+    async deletePersonalPlan(planId: string){
+        const deletedPlan = await this.personalPlanModel.deleteOne({_id: planId});
+        return deletedPlan;
     }
 }
 
@@ -91,3 +105,21 @@ export class PlansService {
     >Datum objave postaje datum poslednjeg treninga za dan
     >Dan se inkrementira za 1.
 */
+
+/*
+Napraviti novog usera ->
+Modifikovati usera
+    napraviti plan sa slikom (samo create plan)
+    modifikovati plan (modify plan)
+    add taj isti plan (create personal plan)
+    submitaj 3 workouts (retrieveLastWorkout, submitWorkout)
+    ulogovati drugi nalog(login)
+    submitaj 1 workout (retrieveLastWorkout, submitWorkout)
+    obrisati personalni plan ()
+    obrisati plan 
+
+    ocekivani rezultati pre obrisa: 
+        >plan na dobrom danu
+        >submissionDate uspesan
+        >dodaju se parentplanu submitted workouts
+*/ // find latestWorkout 
