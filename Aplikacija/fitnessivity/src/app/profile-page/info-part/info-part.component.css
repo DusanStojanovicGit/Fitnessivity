@@ -28,15 +28,20 @@
   white-space: nowrap;
 }
 
-.profile-picture {
+.profile-picture-frame {
   /* background-image: url(profile-picture.webp); */
-  min-width: 150px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
+  min-width: 200px;
+  max-width: 200px;
+  
   grid-row: 1/3;
   place-self: center;
+}
+
+.profile-img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .informations {

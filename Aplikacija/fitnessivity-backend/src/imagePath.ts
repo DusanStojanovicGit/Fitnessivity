@@ -1,0 +1,1 @@
+export const imagePath = 'E:\\Fitnessivity\\si.23.67.fitnessivity\\Aplikacija\\fitnessivity-backend\\src\\images\\upload';

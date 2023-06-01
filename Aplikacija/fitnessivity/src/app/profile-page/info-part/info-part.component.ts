@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class InfoPartComponent {
   @Input() fullname: string = '';
   @Input() bio: string = '';
-
+  @Input() src: string = '';
 
   private fetchAccinfo ()
   {
