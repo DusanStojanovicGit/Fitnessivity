@@ -12,7 +12,7 @@
             <h5 class="card-title text-center mb-5 fw-light fs-5 natpis">
               Register
             </h5>
-            <form [formGroup]="regForm">
+            <form [formGroup]="regForm" (ngSubmit)="onAccountCreate()">
               <div class="form-floating mb-3">
                 <input
                   type="text"
@@ -144,6 +144,7 @@
                 <button
                   class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
                   type="submit"
+                  [disabled]="regForm.invalid"
                 >
                   Register
                 </button>

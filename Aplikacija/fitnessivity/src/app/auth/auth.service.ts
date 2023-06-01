@@ -34,11 +34,16 @@ export class AuthService {
   }
 
   createAccount(account: {name: string, username: string, email: string, password: string}){
-    console.log(account);
     return this.http.post<SignupResponse>(this.root + 'register', account, {withCredentials: true})
     .pipe(
-      tap(() => {
+      catchError(error => {
+        this.signedin$.next(false);
+        this.username$.next('');
+        return throwError(error);
+      }),
+      tap((response) => {
         this.signedin$.next(true);
+        this.username$.next(response.username);
       })
     )
   }

@@ -6,6 +6,6 @@ export class SigninUserDto {
   email: string;
 
   @IsNotEmpty()
-  @MinLength(6)
+  @MinLength(4)
   password: string;
 }

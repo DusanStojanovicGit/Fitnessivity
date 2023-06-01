@@ -56,16 +56,17 @@ export class RegisterPageComponent implements OnInit {
     return !!(field && field.dirty && field.touched && field.errors && Object.keys(field.errors).length > 0);
   }
 
-
-
-  onAccountCreate(account: {
-    name: string;
-    username: string;
-    email: string;
-    password: string;
-  }) {
-    this.authService.createAccount(account).subscribe((res) => {
-      console.log(res);
-    });
+  onAccountCreate() {
+    if (this.regForm.valid) {
+      const formValue = { 
+        name : String(this.regForm.value.fullName),
+        username : String(this.regForm.value.username),
+        email : String(this.regForm.value.email),
+        password : String(this.regForm.value.password),
+      }
+      this.authService.createAccount(formValue).subscribe((res) => {
+        console.log(res);
+      });
+    } 
   }
 }
