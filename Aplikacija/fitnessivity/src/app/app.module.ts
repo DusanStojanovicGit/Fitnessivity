@@ -34,6 +34,8 @@ import { PlanComponent } from './plan/plan.component';
 import { SubmitPageComponent } from './submit-page/submit-page.component';
 import { SubmitFormComponent } from './submit-page/submit-form/submit-form.component';
 import { UserModule } from './user/user.module';
+import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { UserModule } from './user/user.module';
     PlanComponent,
     SubmitPageComponent,
     SubmitFormComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    MiniNavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { UserModule } from './user/user.module';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
 
   ],
   providers: [],

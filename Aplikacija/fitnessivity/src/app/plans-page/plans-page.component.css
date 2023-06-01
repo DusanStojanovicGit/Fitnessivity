@@ -66,3 +66,14 @@
   display: grid;
   place-items: center;
 }
+
+ /* nav bar */
+mat-nav-list.list-horizontal {
+  padding: 0;
+  display: flex;
+}
+.mat-list-item {
+  display: flex;
+  height: auto;
+  width: auto;
+}
