@@ -1,16 +1,35 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject, forwardRef } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { Model } from 'mongoose';
 import { User } from './user.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { plainToClass } from 'class-transformer';
+import { AuthService } from './auth.service';
+import { UpdateUserDto } from './dtos/update-user.dto';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
+  constructor(@InjectModel('User') private readonly userModel: Model<User>,
+    @Inject(forwardRef(() => AuthService))
+    private readonly authService: AuthService) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     return this.userModel.create(createUserDto);
+  }
+
+  async updateUser(dto: UpdateUserDto, id: string): Promise<User>{
+    const update = {};
+    if (dto.password || dto.email || dto.username){
+      dto = await this.authService.validateUser(dto);
+    }
+    for (const key in dto) {
+      update[key] = dto[key];
+    }
+  
+    await this.userModel.updateOne({ _id: id }, { $set: update });
+  
+    const updatedUser = await this.findById(id);
+    return updatedUser;
   }
 
   async findById(_id: string){
@@ -32,24 +51,6 @@ export class UserService {
   findOneByUsername(username: string){
     return this.userModel.findOne({username});
   }
-
-  // async createLink(name: string, lastName : string){
-  //   const link = (name + '_' + lastName).toLowerCase();
-  //   const final10Users = await this.userModel.find({link : { $regex: `^${link}`}}).sort({link : -1}).limit(10);
-  //   let maxIndex = 0;
-  //   if (!(final10Users.length == 0)){
-  //     final10Users.forEach((element) => {
-  //       const [a, b, index] = element.link.split('_');
-  //       const parsedIndex = parseInt(index);
-  //       if (parsedIndex > maxIndex){
-  //         maxIndex = parsedIndex;
-  //       };
-  //     }
-  //   )};
-
-  //   //const userCount = await this.userModel.countDocuments({link: '^${link}'});
-  //   return link + '_' + (maxIndex + 1);
-  // }
 
   async findUserProfile(username: string) {
     const usernameRegex = new RegExp(`^${username}$`, 'i');

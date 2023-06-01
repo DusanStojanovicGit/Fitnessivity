@@ -1,29 +1,48 @@
-import * as mongoose from 'mongoose';
+import { Prop, Schema,SchemaFactory } from '@nestjs/mongoose';
+import { Document, Types } from 'mongoose';
+import { PersonalPlan } from 'src/plans/plans.entity';
+import { SubmittedWorkout } from 'src/workouts/workouts.entity';
 
-export class User extends mongoose.Document{
+@Schema()
+export class User extends Document {
+  @Prop({ select: false })
   email: string;
-  password: string;
-  username: string;
-  isAdmin: boolean;
-  name: string;
-  bio: string;
-  type: string;
-  link: string;
-  trainings: Number;
-  birthDate: Date;
-  gender: string;
-};
 
-export const UserSchema = new mongoose.Schema({
-  email: {type: String, select: false},
-  password: {type: String, select: false},
-  username: String,
-  isAdmin: Boolean,
-  name: String,
-  bio: {type: String, select: false},
-  type: {type: String, select: false},
-  link: String,
-  trainings: {type: Number, select: false},
-  birthDate: Date,
-  gender: String
-});
+  @Prop({ select: false })
+  password: string;
+
+  @Prop()
+  username: string;
+
+  @Prop()
+  isAdmin: boolean;
+
+  @Prop()
+  name: string;
+
+  @Prop({ select: false })
+  bio: string;
+
+  @Prop({ select: false })
+  type: string;
+
+  @Prop({ select: false })
+  link: string;
+
+  @Prop()
+  trainings: Number;
+
+  @Prop({ select: false })
+  birthDate: Date;
+
+  @Prop()
+  gender: string;
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'SubmittedWorkout' }] })
+  submittedWorkouts: SubmittedWorkout[];
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'PersonalPlan' }]})
+  personalPlan: PersonalPlan[];
+}
+
+export const UserSchema = SchemaFactory.createForClass(User);

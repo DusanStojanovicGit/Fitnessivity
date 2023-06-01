@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { SigninUserDto } from './dtos/signin-user.dto';
 import { Response } from 'express';
 import { cookieOptions } from 'src/cookieOptions';
+import { UpdateUserDto } from './dtos/update-user.dto';
 
 @Controller('user')
 export class UserController {
@@ -29,9 +30,9 @@ export class UserController {
         return this.userService.findUserProfile(link);
     }
 
-    @Put(':id')
-    async updateUser(){
-        
+    @Put('update')
+    async updateUser(@Session() session: any, @Body() dto: UpdateUserDto){
+        return this.userService.updateUser(dto, session.userId);
     }
 
     @Get()
