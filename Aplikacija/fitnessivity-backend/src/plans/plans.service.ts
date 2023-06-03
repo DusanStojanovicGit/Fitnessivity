@@ -35,6 +35,14 @@ export class PlansService {
         if (criteria.sortBy) {
           query.sort(criteria.sortBy);
         }
+        if (criteria.search) {
+            const searchTerms = criteria.search.split(' ');
+            const andConditions = searchTerms.map(term => {
+              const termRegex = new RegExp(term, 'i');
+              return { $or: [{ name: termRegex }, { creator: termRegex }] };
+            });
+            query.and(andConditions);
+          }
         return query.exec();
       }
 
