@@ -1,9 +1,15 @@
+.background{
+  background: #146fd0;
+  background: radial-gradient( farthest-corner at 80px 80px, #dfe9f7 0%, #f1f1f1 100%);
+  width:100%;
+  border-bottom: 1px solid #a8afb6;
+}
+
 .info {
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #333;
   gap: 1rem;
   padding: 1rem;
 }
@@ -26,6 +32,11 @@
   font-size: larger;
   font-weight: bold;
   white-space: nowrap;
+  gap:0;
+}
+
+.username{
+  gap: 0;
 }
 
 .profile-picture-frame {
@@ -53,7 +64,6 @@
 
 .informations p {
   margin: 0;
-  margin-bottom: 10px;
 }
 
 .bio {
@@ -100,10 +110,12 @@
 
   .informations{
     justify-items: center;
+    gap: .5rem;
   }
 
   .left-div{
     flex-direction: column;
+    gap: 0;
   }
 
   .info{

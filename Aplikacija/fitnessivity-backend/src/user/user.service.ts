@@ -6,6 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { plainToClass } from 'class-transformer';
 import { AuthService } from './auth.service';
 import { UpdateUserDto } from './dtos/update-user.dto';
+import { SubmittedWorkout } from 'src/workouts/workouts.entity';
 
 @Injectable()
 export class UserService {
@@ -32,12 +33,22 @@ export class UserService {
     return updatedUser;
   }
 
+  async addWorkout(userId: string, workout: SubmittedWorkout) {
+    const user = await this.userModel.findById(userId);
+    user.submittedWorkouts.push(workout);
+    await user.save();
+  }
+
   async findById(_id: string){
     const user = await this.userModel.findById(_id);
     if (!user){
       throw new NotFoundException("User not found")
     }
     return user;
+  }
+
+  async incrementTrainings(userId: string){
+      return this.userModel.findByIdAndUpdate(userId, {$inc: {trainings: 1}});
   }
 
   async findAll(): Promise<User[]> {
@@ -54,7 +65,11 @@ export class UserService {
 
   async findUserProfile(username: string) {
     const usernameRegex = new RegExp(`^${username}$`, 'i');
-    const user = await this.userModel.findOne({username: usernameRegex}).select('+bio +type +trainings');
+    const user = await this.userModel
+      .findOne({username: usernameRegex})
+      .select('+bio +type +trainings')
+      .populate('submittedWorkouts')
+      .populate('personalPlans');
     if (!user)
       throw new NotFoundException("User profile not found");
     return user;

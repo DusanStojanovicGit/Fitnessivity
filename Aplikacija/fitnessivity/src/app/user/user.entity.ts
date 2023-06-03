@@ -8,7 +8,7 @@ export interface User {
     bio: string;
     type: string;
     link: string;
-    trainings: Number;
+    trainings: number;
     birthDate: Date;
     gender: string;
 };

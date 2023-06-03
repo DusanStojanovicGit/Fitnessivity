@@ -30,7 +30,7 @@ export class User extends Document {
   pictureLink: string;
 
   @Prop()
-  trainings: Number;
+  trainings: number;
 
   @Prop({ select: false })
   birthDate: Date;
@@ -42,7 +42,7 @@ export class User extends Document {
   submittedWorkouts: SubmittedWorkout[];
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'PersonalPlan' }]})
-  personalPlan: PersonalPlan[];
+  personalPlans: PersonalPlan[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

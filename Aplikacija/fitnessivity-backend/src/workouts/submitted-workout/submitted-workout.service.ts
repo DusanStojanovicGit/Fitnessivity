@@ -5,16 +5,22 @@ import { SubmittedWorkout, Workout } from '../workouts.entity';
 import { PlansService } from 'src/plans/plans.service';
 import { WorkoutDto } from '../dtos/workouts.dto';
 import { PersonalPlanService } from 'src/plans/personal-plan/personal-plan.service';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class SubmittedWorkoutService {
     constructor(
         @InjectModel('SubmittedWorkout')
         private readonly submittedWorkoutModel: Model<SubmittedWorkout>,
+        
         @Inject(forwardRef(() => PlansService))
         private readonly planService : PlansService,
+
         @Inject(forwardRef(() => PersonalPlanService))
-        private readonly personalPlanService : PersonalPlanService
+        private readonly personalPlanService : PersonalPlanService,
+
+        @Inject(forwardRef(() => UserService))
+        private readonly userService : UserService,
     ){}
 
     // async updateLatestWorkoutDate(id: string): Promise<any> {
@@ -43,6 +49,10 @@ export class SubmittedWorkoutService {
         }
         const personalPlan = await this.personalPlanService.findById(planId);
         this.planService.incrementWorkoutsCompleted(personalPlan.parentPlan._id);
-        return this.submittedWorkoutModel.create(workout);
+        this.userService.incrementTrainings(userId);
+        const createdWorkout = await this.submittedWorkoutModel.create(workout);
+        this.userService.addWorkout(userId, createdWorkout);
+        return createdWorkout;
     }
+
 }

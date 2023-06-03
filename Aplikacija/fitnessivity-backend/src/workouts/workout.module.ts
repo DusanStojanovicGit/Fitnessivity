@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { WorkoutSchema, SubmittedWorkoutSchema } from './workouts.entity';
 import { PlansModule } from 'src/plans/plans.module';
 import { SubmittedWorkoutService } from './submitted-workout/submitted-workout.service';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
     imports: [
@@ -13,6 +14,7 @@ import { SubmittedWorkoutService } from './submitted-workout/submitted-workout.s
             {name: 'Workout', schema: WorkoutSchema}
     ]),
     forwardRef(() => PlansModule),
+    forwardRef(() => UserModule)
     ],
     providers: [WorkoutService, SubmittedWorkoutService],
     controllers: [WorkoutsController],
