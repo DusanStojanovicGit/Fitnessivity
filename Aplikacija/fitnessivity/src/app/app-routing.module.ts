@@ -12,6 +12,7 @@ import { SignOutComponent } from './auth/sign-out/sign-out.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'plans', component: PlansPageComponent },
+  { path: 'plans/create', component: PlansPageComponent },
   { path: 'training', component: SubmitPageComponent },
   { path: 'users/:username', component: ProfilePageComponent },
   { path: 'login', component: LoginPageComponent },

@@ -30,10 +30,10 @@ tip = "nesto"
 
 
 
-  onSearchTextEntered(searchValute:string){
-    this.searchText = searchValute;
-    console.log(this.searchText);
-  }
+  // onSearchTextEntered(searchValute:string){
+  //   this.searchText = searchValute;
+  //   console.log(this.searchText);
+  // }
 }
 
 
