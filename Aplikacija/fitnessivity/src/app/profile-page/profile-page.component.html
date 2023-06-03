@@ -1,5 +1,6 @@
 <ng-container *ngIf="user$ | async as user">
-<app-info-part [fullname]="user.name" [bio]="user.bio"></app-info-part>
+<app-info-part [user]="user"></app-info-part>
+<body class="background">
 <main>
   <div class="programs">Programs</div>
   <div class="friends">Friends</div>
@@ -55,6 +56,7 @@
     qui corporis accusamus.
   </div>
 </main>
+</body>
 </ng-container>
 <ng-container *ngIf="!(user$ | async)">
   <h1>User not found...</h1>

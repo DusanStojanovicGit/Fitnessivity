@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/user/user.entity';
 
 @Component({
   selector: 'app-info-part',
@@ -7,9 +9,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./info-part.component.css'],
 })
 export class InfoPartComponent {
-  @Input() fullname: string = '';
-  @Input() bio: string = '';
+  @Input() user!: User;
 
+  getSrc(){
+    return "http://localhost:3000/images/" + this.user._id;
+  }
 
   private fetchAccinfo ()
   {

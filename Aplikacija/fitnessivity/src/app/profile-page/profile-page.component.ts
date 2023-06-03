@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { User } from '../user/user.entity';
 import { InfoPartComponent } from './info-part/info-part.component';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UniqueUsername } from '../auth/validators/unique-username';
 
 @Component({
   selector: 'app-profile-page',
@@ -13,7 +14,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ProfilePageComponent {
   constructor(private userService: UserService,
     private activatedRoute: ActivatedRoute){};
-
   user$!: Observable<User>;
   userExists$ = new BehaviorSubject(false);
 

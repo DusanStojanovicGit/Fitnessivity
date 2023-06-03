@@ -1,0 +1,222 @@
+### Register
+POST http://localhost:3000/user/register
+content-type: application/json
+
+{
+    "name": "milos miljkovic",
+    "username": "miskeee",
+    "email": "miskeee@gmail.com",
+    "password": "miske123"
+}
+
+### Update
+PUT http://localhost:3000/user/update
+content-type: application/json
+
+{
+    "bio": "Trener vec 5 godina, obozavam bodybuilding",
+    "type": "WeightLifting"
+}
+
+### Create plan
+POST http://localhost:3000/plans/submitplan
+content-type: application/json
+
+{
+  "name": "All around hypertrophy",
+  "type": "Musclebuilding",
+  "genre": "Weightlifting",
+  "workouts": [
+    {
+      "name": "Chest",
+      "day": 1,
+      "exercises": [
+        {
+          "name": "Bench",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Incline bench",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Peck-deck",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        }
+      ]
+    },
+    {
+      "name": "Triceps",
+      "day": 2,
+      "exercises": [
+        {
+          "name": "Push-ups",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Dumbbell Rows",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Shoulder Press",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        }
+      ]
+    },
+    {
+      "name": "Noge",
+      "day": 3,
+      "exercises": [
+        {
+          "name": "Squats",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Hip-Thrusts",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Leg Extension",
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        }
+      ]
+    }
+  ],
+  "picture": "workout4.jpg",
+  "description": "All around workout"
+}
+
+### Add plan 
+POST http://localhost:3000/plans/addPlan/64754df57c4ecd889814b9f9
+
+### Retrieve Last Workout 64753c6dd5cd8f9e1b4c40c5
+GET http://localhost:3000/workouts/getlastworkout/64754e097c4ecd889814b9fc
+
+### Submit a workout:
+POST http://localhost:3000/workouts/submit/64754e097c4ecd889814b9fc
+content-type: application/json
+
+{
+  "name": "Chest",
+  "day": 1,
+  "exercises": [
+    {
+      "name": "Bench",
+      "weight": 60,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    },
+    {
+      "name": "Incline bench",
+      "weight": 50,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    },
+    {
+      "name": "Peck-deck",
+      "weight": 45,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    }
+  ]
+}
+
+### Submit a workout:
+POST http://localhost:3000/workouts/submit/64754e097c4ecd889814b9fc
+content-type: application/json
+
+{
+  "name": "Triceps",
+  "day": 2,
+  "exercises": [
+    {
+      "name": "Push-ups",
+      "weight": 25,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    },
+    {
+      "name": "Dumbbell Rows",
+      "weight": 160,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    },
+    {
+      "name": "Shoulder Press",
+      "weight": 250,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    }
+  ]
+}
+
+### Submit a workout:
+POST http://localhost:3000/workouts/submit/64754e097c4ecd889814b9fc
+content-type: application/json
+
+{
+  "name": "Noge",
+  "day": 3,
+  "exercises": [
+    {
+      "name": "Squats",
+      "weight": 1000,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    },
+    {
+      "name": "Hip-Thrusts",
+      "weight": 1250,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    },
+    {
+      "name": "Leg Extension",
+      "weight": 850,
+      "reps": 10,
+      "sets": 3,
+      "rest": 60
+    }
+  ]
+}
+
+### Remove personal plan
+DELETE http://localhost:3000/plans/personalplan/6476141828e16ff71d4918e4
+
+### Login miske
+POST http://localhost:3000/user/login
+content-type: application/json
+
+{
+  "email": "miskeee@gmail.com",
+  "password": "miske123"
+}
+
+### Remove plan
+DELETE http://localhost:3000/plans/64754df57c4ecd889814b9f9

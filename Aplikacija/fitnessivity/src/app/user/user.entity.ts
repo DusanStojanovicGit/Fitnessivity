@@ -1,4 +1,5 @@
 export interface User {
+    _id: string;
     email: string;
     password: string;
     username: string;
@@ -7,7 +8,7 @@ export interface User {
     bio: string;
     type: string;
     link: string;
-    trainings: Number;
+    trainings: number;
     birthDate: Date;
     gender: string;
 };

@@ -1,13 +1,24 @@
-<div class="info">
-  <div class="profile-picture"></div>
-  <div class="informations">
-      <p class="name">{{fullname}}</p>
-      <p class="trainings">Trainings</p>
-      <p class="type">Type</p>
+<div class="background">
+  <div class="info">
+    <div class="left-div">
+      <div class="profile-picture-frame">
+        <img class="profile-img" [src]="getSrc()" alt="">
+      </div>
+      <div class="informations">
+        <span>
+          <p class="name">{{user.name}}</p>
+          <p class ="username">@{{user.username}}</p>
+        </span>
+          <p class="trainings">Trainings: {{user.trainings}}</p>
+          <p class="type">Type: {{user.type}}</p>
+      </div>
+    <div class="bio">
+        {{user.bio}}
+    </div>
   </div>
-  <div class="bio">
-      {{bio}}
+    <div class="buttons">
+      <div class="button prvi">Message</div>
+      <div class="button drugi">Add/Edit</div>
+    </div>
   </div>
-  <div class="button prvi">Message</div>
-  <div class="button drugi">Add/Edit</div>
 </div>

@@ -3,25 +3,78 @@ POST http://localhost:3000/plans/submitplan
 content-type: application/json
 
 {
-    "name": "High Strength 10x6",
-    "type": "Strength",
-    "genre": "Weightlifting",
-    "workouts": [
+  "name": "High Strength 10x6 no length",
+  "type": "Strength",
+  "genre": "Weightlifting",
+  "workouts": [
+    {
+      "name": "Chest",
+      "day": 1,
+      "exercises": [
         {
-            "name": "Chest",
-            "exerciseList": ["Bench", "Incline bench", "Peck-deck"]
+          "name": "Bench",
+          "weight": 80,
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
         },
         {
-            "name": "Triceps",
-            "exerciseList": ["Push-ups", "Dumbbell Rows", "Shoulder Press"]
+          "name": "Incline bench",
+          "weight": 60,
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Peck-deck",
+          "weight": 40,
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
         }
-    ],
-    "picture": "workout2.jpg",
-    "description": "Get them huge chest!!"
+      ]
+    },
+    {
+      "name": "Triceps",
+      "day": 2,
+      "exercises": [
+        {
+          "name": "Push-ups",
+          "weight": 0,
+          "length": 30,
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Dumbbell Rows",
+          "weight": 40,
+          "length": 30,
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        },
+        {
+          "name": "Shoulder Press",
+          "weight": 60,
+          "length": 30,
+          "reps": 10,
+          "sets": 3,
+          "rest": 60
+        }
+      ]
+    }
+  ],
+  "picture": "workout2.jpg",
+  "description": "Get them huge chest!!"
 }
 
 ###Get plans by user
 GET http://localhost:3000/plans/MaridiuS
 
 ###Get plans by search criteria
-GET http://localhost:3000/plans/search?type=Strength,Muscle%20Building&genre=Weightlifting&sortBy=-submissionDate
+GET http://localhost:3000/plans/search?type=Strength,Muscle%20Building&genre=Weightlifting&sortBy=-submissionDate&search=miske
+
+###Add created plan to user
+POST http://localhost:3000/plans/addPlan/64736ca81a934571d5459a14
+
