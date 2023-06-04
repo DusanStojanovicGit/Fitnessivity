@@ -36,6 +36,7 @@ import { SubmitFormComponent } from './submit-page/submit-form/submit-form.compo
 import { UserModule } from './user/user.module';
 import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.component';
 import { CreatePlanComponent } from './plans-page/create-plan/create-plan.component';
+import { PlanCardComponent } from './plan/plan-card/plan-card.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { CreatePlanComponent } from './plans-page/create-plan/create-plan.compon
     SubmitFormComponent,
     RegisterPageComponent,
     MiniNavBarComponent,
+    PlanCardComponent,
     CreatePlanComponent
   ],
   imports: [

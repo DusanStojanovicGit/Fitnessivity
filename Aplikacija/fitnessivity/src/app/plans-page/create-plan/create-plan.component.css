@@ -14,18 +14,15 @@
 
 .container-top {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10rem;
+  grid-template-columns: 40% 50%;
+  gap: 12%;
   height: 100%;
   text-align: center;
 }
 .input-div {
-  grid-template-columns: 1fr 1fr;
+  display: flex;
 }
-.info-input
-{
-  height: 50px;
-}
+
 #type{
   background-color: cadetblue;
 }
@@ -51,11 +48,12 @@ select.form-select {
 
 .information :is(#type, #genre) {
   width: 48%;
-  border-radius: 5px;
-  background-color: transparent;
+  border-radius: 10px;
+  background-color: white;
   border: 1px solid black;
   padding-left: 10px;
-  height: 34px;
+  height: 45px;
+  flex: 1;
 }
 
 .plan-image {

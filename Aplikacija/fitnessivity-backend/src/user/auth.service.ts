@@ -19,7 +19,7 @@ export class AuthService {
         const validatedUser = await this.validateUser(dto);
         let user;
         if (!(validatedUser instanceof UpdateUserDto)){
-        user = await this.userService.create(validatedUser);
+            user = await this.userService.create(validatedUser);
         }
         user.trainings = 0;
         return user;

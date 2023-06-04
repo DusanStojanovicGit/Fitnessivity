@@ -105,7 +105,7 @@ content-type: application/json
 }
 
 ### Add plan 
-POST http://localhost:3000/plans/addPlan/64754df57c4ecd889814b9f9
+POST http://localhost:3000/plans/addPlan/647b55158d745f6a7e5c4d9a
 
 ### Retrieve Last Workout 64753c6dd5cd8f9e1b4c40c5
 GET http://localhost:3000/workouts/getlastworkout/64754e097c4ecd889814b9fc

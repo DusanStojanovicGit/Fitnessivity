@@ -1,0 +1,87 @@
+.container {
+    position: relative;
+    width: 435px;
+    height: 150px;
+    padding: 0px;
+    border: 2px solid #000000;
+    border-radius: 12px;
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .image-left {
+    width: 35%;
+    height: 100%;
+    background: url('/assets/gym.jpg') no-repeat center;
+    background-size: cover;
+    opacity: 0.8;
+    border-radius: 10px 0px 0px 10px;
+  }
+  
+  .image-right {
+    position: absolute;
+    width: 65.5%;
+    height: 100%;
+    left:35%;
+    top: 0;
+    background: url('/assets/gym.jpg') no-repeat center;
+    background-size: cover;
+    opacity: 0.2;
+    border-radius: 0px 10px 10px 0px;
+  }
+  
+  .data {
+    position: absolute;
+    width: 65%;
+    height: 100%;
+    left: 35%;
+    padding: 2%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .data-top {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .plan-name {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #3E3E3E;
+  }
+  
+  .author {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+  }
+  
+  .data-bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .type, .genre {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  
+  .type {
+    color: #6D6D6D;
+  }
+  
+  .genre {
+    color: #6D6D6D;
+  }
