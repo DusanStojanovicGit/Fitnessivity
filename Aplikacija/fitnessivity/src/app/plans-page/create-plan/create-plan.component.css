@@ -1,29 +1,52 @@
-body {
-  max-width: 1300px;
+.all{
+  margin-bottom: 100px;
+}
+.container {
+  max-width: 1400px;
   margin: 0 auto;
+  background-color: rgb(208, 211, 212);
+  padding: 20px;
+  border-radius: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: small;
 }
 
 .container-top {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 10rem;
   height: 100%;
   text-align: center;
+}
+.input-div {
+  grid-template-columns: 1fr 1fr;
+}
+.info-input
+{
+  height: 50px;
+}
+#type{
+  background-color: cadetblue;
+}
+select.form-select {
+  background-color: white;
 }
 
 .information > div {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .information input {
   width: 100%;
-  height: 30px;
-  border-radius: 5px;
+  height: 60px;
+  border-radius: 10px;
   border: 1px solid black;
   padding-left: 10px;
+  font-size: 20px;
 }
 
 .information :is(#type, #genre) {
@@ -37,10 +60,10 @@ body {
 
 .plan-image {
   position: relative;
+  align-items: center;
 }
 
 .plan-image div {
-  background-color: blue;
   border-radius: 10px;
   width: 100%;
   aspect-ratio: 3;
@@ -55,7 +78,6 @@ body {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  background-color: red;
   border-radius: 10px;
   padding: 0.5rem;
 }
@@ -65,40 +87,55 @@ body {
   aspect-ratio: 10;
   border-radius: 10px;
   border: none;
-  background-color: rgba(0, 0, 255, 0.205);
   padding: 1rem;
   outline: none;
   resize: vertical;
+  background-color: aliceblue;
+  min-height: 70;
+  max-height: 70;
+  resize: none;
 }
 
+
 .workouts > div {
-  border-radius: 10px;
+  background-color: rgb(208, 211, 212);
+  padding: 20px;
+  border-radius: 15px;
   width: calc(100% - 2rem);
-  background-color: blue;
   padding: 1rem;
+
 }
 
 .workout > div {
   width: calc(100% - 2rem);
-  background-color: red;
-  padding: 1rem;
 }
 
-.workout input {
-  padding: 0.5rem;
-  border: 1px solid black;
-  border-radius: 10px;
+.input-container {
+  display: flex;
+  justify-content: space-between;
 }
 
-.workout input[type="text"] {
-  margin-right: 25rem;
-  width: 16rem;
+.text-input {
+  flex: 1;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
-.workout input[type="number"] {
-  margin-right: 2rem;
-  width: 8rem;
+.number-inputs {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  max-height: 38;
 }
+.number-inputs .form-control {
+  margin-bottom: 10px;
+}
+
+.text-input .text-input {
+  padding: 0;
+}
+
 
 .workout #name {
   margin-bottom: 1rem;
@@ -122,14 +159,15 @@ body {
 }
 
 .new-plans .button {
-  background-color: rgb(255, 230, 0);
   padding: 0.5rem 1rem;
   border-radius: 10px;
 }
 
+
+/* izmedju dugmeta za crtanj */
 .new-plans p {
   position: relative;
-  color: white;
+  color: black;
   margin: 0;
 }
 
@@ -137,7 +175,7 @@ body {
   content: "";
   height: 2px;
   width: 50px;
-  background-color: white;
+  background-color: black;
   position: absolute;
   top: 50%;
   transform: translate(calc(-100% - 10px), -50%);
@@ -147,8 +185,23 @@ body {
   content: "";
   height: 2px;
   width: 50px;
-  background-color: white;
+  background-color: black;
   position: absolute;
   top: 50%;
   transform: translate(10px, -50%);
+}
+
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

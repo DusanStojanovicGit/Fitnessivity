@@ -1,9 +1,12 @@
+<div class="all">
+
+  <div class="container">
     <div class="container-top">
       <div class="information">
-        <h2>Basic Information</h2>
-        <div>
-          <input type="text" placeholder="Plan Name" />
-          <select name="type" id="type">
+        <h3>Basic Information</h3>
+        <input type="text" class="form-control plan-name" placeholder="Plan Name" />
+        <div class="input-div">
+          <select name="type" id="type" class="form-select mt-2 info-input">
             <option value="selected" disabled selected>Type</option>
             <option value="lala">lala</option>
             <option value="lala">lalall</option>
@@ -12,7 +15,7 @@
             <option value="lasldasl">ldsaldlasd</option>
             <option value="dsa">dassa</option>
           </select>
-          <select name="genre" id="genre">
+          <select name="genre" id="genre" class="form-select mt-2 info-input">
             <option value="selected" disabled selected>genre</option>
             <option value="lala">lala</option>
             <option value="lala">lalall</option>
@@ -23,59 +26,66 @@
           </select>
         </div>
       </div>
+
       <div class="description">
-        <h2>Description</h2>
-        <textarea name="descri" id="descri" placeholder="Write your description here..."></textarea>
+        <h3>Description</h3>
+
+        <textarea
+          name="descri"
+          id="descri"
+          class="form-control"
+          placeholder="Write your description here..."
+          maxlength="1000"
+          autofocus
+          style="height: 100px;"
+        ></textarea>
       </div>
     </div>
+  </div>
 
-
-    <div class="plan-image">
-      <h2>Plan image</h2>
-      <div></div>
-      <input type="file" />
+  <div class="row mt-4">
+    <div class="col-12">
+      <h3>Plan image</h3>
+      <div class="plan-image"></div>
+      <img *ngIf="imageURL" [src]="imageURL" class="plan-image" />
+      <input
+        type="file"
+        (change)="showPreview($event)"
+        class="form-control slika"
+      />
     </div>
+  </div>
 
-    <div class="workouts">
-      <h2>Workouts</h2>
-      <div>
-        <div class="workout">
-          <input type="text" name="name" id="name" />
-          <div>
-            <div>
-              <input type="text" placeholder="name" />
-              <input type="number" placeholder="name" />
-              <input type="number" placeholder="name" />
-              <input type="number" placeholder="name" />
+  <div class="row mt-4">
+    <div class="col-12">
+      <h3>Workouts</h3>
+      <div class="workouts">
+        <div class="workout-name">
+          <input type="text" name="name" id="name" class="form-control " />
+          <div class="mt-2 ">
+            <!-- ime vezbe -->
+            <div *ngFor="let inputSet of inputSets; let i = index" class="input-container mt-2 workout">
+              <div class="text-input">
+                <input [(ngModel)]="inputSets[i].name" type="text" class="form-control" placeholder="exercise name" />
+              </div>
+              <div class="number-inputs">
+                <input [(ngModel)]="inputSets[i].rep" type="number" class="form-control mt-2" placeholder="rep" />
+                <input [(ngModel)]="inputSets[i].set" type="number" class="form-control mt-2" placeholder="set" />
+                <input [(ngModel)]="inputSets[i].milos" type="number" class="form-control mt-2" placeholder="milos" />
+              </div>
             </div>
-            <div class="button">Add Exercice...</div>
+            </div>
+            <div class="button btn btn-primary mt-2" (click)="addInputs()">Add Exercice...</div>
+            <div class="button btn btn-primary mt-2" (click)="removeInputs()">Remove last exercice...</div>
+
           </div>
         </div>
-        <div class="new-plans">
-          <div class="button">Create new workout</div>
+        <div class="new-plans mt-4">
+          <div class="button btn btn-primary">Create new workout</div>
           <p>or</p>
-          <div class="button">Add from existing</div>
+          <div class="button btn btn-secondary">Add from existing</div>
         </div>
       </div>
     </div>
+  </div>
 
-///TOO DOOO
-kre
-irati modlu z aplan page
-
-u njemu komponentu pretraga
-i nav branding_watermark
-kao i
-polje u kome ce se iscrtavati podacmatListIcon
-
-
-mozda bi mini nav bar trebao da bude shred compoennet kao i
-pretraga ali za sad nisam signal_cellular_no_sim
-
-onda tu treba kreirati jedan modu
-l z akreiranje plana i ubaciti u njega template
-
-izmeniti template sa stilom i trebalo bi da da radi
-nalepiti mu onda funkciju za dodaj
-niz elemenat a
-i nadji nacin da submitas to.
