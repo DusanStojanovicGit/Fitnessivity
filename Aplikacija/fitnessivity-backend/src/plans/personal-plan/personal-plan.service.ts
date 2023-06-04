@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { PersonalPlan } from '../plans.entity';
 import { Model } from 'mongoose';
 import { PlansService } from '../plans.service';
 import { InjectModel } from '@nestjs/mongoose';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class PersonalPlanService {
@@ -11,6 +12,8 @@ export class PersonalPlanService {
 
         @InjectModel('PersonalPlan')
         private readonly personalPlanModel: Model<PersonalPlan>,
+
+        private readonly userService: UserService
         ){}
 
     async createPersonalPlan(parentPlanId: string, userId: string): Promise<PersonalPlan>{
@@ -29,7 +32,9 @@ export class PersonalPlanService {
             parentPlan: parentPlanId
         }
         console.log(personalPlan);
-        return this.personalPlanModel.create(personalPlan);
+        const createdPlan = await this.personalPlanModel.create(personalPlan);
+        this.userService.addPersonalPlan(createdPlan, userId);
+        return createdPlan;
     }
 
     async findById(id: string, populateParentPlan: boolean = false): Promise<PersonalPlan>{

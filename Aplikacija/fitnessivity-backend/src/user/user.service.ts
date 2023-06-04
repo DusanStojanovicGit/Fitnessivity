@@ -7,6 +7,7 @@ import { plainToClass } from 'class-transformer';
 import { AuthService } from './auth.service';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { SubmittedWorkout } from 'src/workouts/workouts.entity';
+import { PersonalPlan } from 'src/plans/plans.entity';
 
 @Injectable()
 export class UserService {
@@ -61,6 +62,12 @@ export class UserService {
 
   findOneByUsername(username: string){
     return this.userModel.findOne({username});
+  }
+
+  async addPersonalPlan(personalPlan : PersonalPlan, userId: string){
+    const user = await this.userModel.findById(userId);
+    user.personalPlans.push(personalPlan);
+    await user.save();
   }
 
   async findUserProfile(username: string) {

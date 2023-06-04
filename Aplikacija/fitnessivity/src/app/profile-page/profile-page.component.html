@@ -2,7 +2,12 @@
 <app-info-part [user]="user"></app-info-part>
 <body class="background">
 <main>
-  <div class="programs">Programs</div>
+  <div class="programs">
+    <ng-container *ngFor="let p of user.personalPlans">
+        <app-plan-card [plan]="p"></app-plan-card>
+        <app-plan-card [plan]="p"></app-plan-card>
+    </ng-container>
+  </div>
   <div class="friends">Friends</div>
   <div class="training-timeline">
     Training Timelin <br />Lorem ipsum dolor sit, amet consectetur adipisicing

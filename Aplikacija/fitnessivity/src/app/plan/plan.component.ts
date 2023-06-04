@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Plan } from './plan.entity';
 
 @Component({
   selector: 'app-plan',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanComponent implements OnInit {
   constructor() {}
+
+  plan!: Plan;
 
   ngOnInit(): void {
   }

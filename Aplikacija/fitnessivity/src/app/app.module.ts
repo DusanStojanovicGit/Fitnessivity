@@ -35,6 +35,7 @@ import { SubmitPageComponent } from './submit-page/submit-page.component';
 import { SubmitFormComponent } from './submit-page/submit-form/submit-form.component';
 import { UserModule } from './user/user.module';
 import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.component';
+import { PlanCardComponent } from './plan/plan-card/plan-card.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.comp
     SubmitPageComponent,
     SubmitFormComponent,
     RegisterPageComponent,
-    MiniNavBarComponent
+    MiniNavBarComponent,
+    PlanCardComponent
   ],
   imports: [
     BrowserModule,

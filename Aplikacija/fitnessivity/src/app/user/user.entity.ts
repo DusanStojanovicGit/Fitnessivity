@@ -1,3 +1,5 @@
+import { Plan } from "../plan/plan.entity";
+
 export interface User {
     _id: string;
     email: string;
@@ -11,4 +13,5 @@ export interface User {
     trainings: number;
     birthDate: Date;
     gender: string;
+    personalPlans: Plan[];
 };

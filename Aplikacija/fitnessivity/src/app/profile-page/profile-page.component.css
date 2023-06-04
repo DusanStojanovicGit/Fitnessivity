@@ -91,7 +91,8 @@ main div:active {
       align-items: start;
       padding: 1rem 2rem;
       height: auto;
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden;
       min-height: 300px;
   }
 
@@ -103,7 +104,7 @@ main div:active {
 
 @media (min-width: 1200px) {
   main {
-      grid-template-columns: 30% 70%;
+      grid-template-columns: 40% 60%;
       grid-template-rows: 300px 300px 300px;
   }
 
