@@ -105,7 +105,7 @@ main div:active {
 @media (min-width: 1200px) {
   main {
       grid-template-columns: 40% 60%;
-      grid-template-rows: 300px 300px 300px;
+      grid-template-rows: 400px 300px 300px;
   }
 
   main div {
