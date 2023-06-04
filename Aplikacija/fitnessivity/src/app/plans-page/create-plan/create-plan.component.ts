@@ -10,7 +10,7 @@ export class CreatePlanComponent {
   imageURL!: string;
   maxFileSizeKB = 2200; // Maximum allowed file size in KB
   maxWidth = 1400; // Maximum allowed image width
-  maxHeight = 600; // Maximum allowed image height
+  maxHeight =  1000; // Maximum allowed image height
 
   inputSets: any[] = [{}]; // Initialize with one empty object for the first set of inputs
 
@@ -52,7 +52,7 @@ export class CreatePlanComponent {
     reader.readAsDataURL(file);
     reader.onload = async () => {
       const originalImage = reader.result as string;
-      const quality = 60; // Compression quality (0-100), lower value means higher compression
+      const quality = 100; // Compression quality (0-100), lower value means higher compression
       const compressedImage = await this.imageCompress.compressFile(
         originalImage,
         -1,

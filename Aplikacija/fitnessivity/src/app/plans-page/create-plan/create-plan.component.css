@@ -1,5 +1,8 @@
-.all{
+
+.all {
   margin-bottom: 100px;
+  max-width: 1100px;
+  margin-inline: auto;
 }
 .container {
   max-width: 1400px;
@@ -14,27 +17,19 @@
 
 .container-top {
   display: grid;
-  grid-template-columns: 40% 50%;
+  grid-template-columns: 1fr 1fr;
   gap: 12%;
   height: 100%;
   text-align: center;
 }
 .input-div {
-  display: flex;
-}
-
-#type{
-  background-color: cadetblue;
-}
-select.form-select {
-  background-color: white;
+  grid-template-columns: 1fr 1fr;
 }
 
 .information > div {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .information input {
@@ -48,36 +43,41 @@ select.form-select {
 
 .information :is(#type, #genre) {
   width: 48%;
-  border-radius: 10px;
-  background-color: white;
+  border-radius: 5px;
+  background-color: transparent;
   border: 1px solid black;
   padding-left: 10px;
-  height: 45px;
-  flex: 1;
+  height: 34px;
 }
 
 .plan-image {
-  position: relative;
-  align-items: center;
-}
-
-.plan-image div {
   border-radius: 10px;
   width: 100%;
-  aspect-ratio: 3;
+  aspect-ratio: 2;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-.plan-image div img {
+.plan-image img {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-.plan-image input {
+.plan-image > img:last-of-type {
+  position: absolute;
+  inset: 0;
+}
+
+.plan-image > .slika {
+  width: max-content;
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  border-radius: 10px;
-  padding: 0.5rem;
 }
 
 .description textarea {
@@ -94,14 +94,12 @@ select.form-select {
   resize: none;
 }
 
-
 .workouts > div {
   background-color: rgb(208, 211, 212);
   padding: 20px;
   border-radius: 15px;
   width: calc(100% - 2rem);
   padding: 1rem;
-
 }
 
 .workout > div {
@@ -134,7 +132,6 @@ select.form-select {
   padding: 0;
 }
 
-
 .workout #name {
   margin-bottom: 1rem;
 }
@@ -154,13 +151,13 @@ select.form-select {
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .new-plans .button {
   padding: 0.5rem 1rem;
   border-radius: 10px;
 }
-
 
 /* izmedju dugmeta za crtanj */
 .new-plans p {
@@ -189,9 +186,6 @@ select.form-select {
   transform: translate(10px, -50%);
 }
 
-
-
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -200,6 +194,16 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.workout-name > input:first-child {
+  width: 40%;
+  margin-inline: auto;
+}
+
+.buttoni {
+  display: flex;
+  justify-content: center;
 }
