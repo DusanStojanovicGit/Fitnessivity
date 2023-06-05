@@ -80,8 +80,19 @@ export class SearchPlansBarComponent implements OnInit {
     if (this.searchControl.value && this.searchControl.value !== '') {
       searchCriteria.search = this.searchControl.value;
     }
-    this.plans$ = this.planService.findPlans(searchCriteria);
-    this.plansSubscription = this.plans$.subscribe();
+
+    if (this.plansSubscription) {
+      this.plansSubscription.unsubscribe();
+    }
+    this.plansSubscription = (this.planService.findPlans(searchCriteria).subscribe(plans => {
+      this.planService.syncPlans(plans);
+    }));
+  }
+
+  ngOnDestroy() {
+    if (this.plansSubscription) {
+      this.plansSubscription.unsubscribe();
+    }
   }
 
   

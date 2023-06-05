@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserService } from '../user/user.service';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Plan } from './plan.entity';
 
 @Injectable({
@@ -9,8 +9,15 @@ import { Plan } from './plan.entity';
 })
 export class PlanService {
 
+  private _plansSource: BehaviorSubject<Plan[]> = new BehaviorSubject<Plan[]>([]);
+  plans$: Observable<Plan[]> = this._plansSource.asObservable();
+
   constructor(private http: HttpClient) { }
-  private rootUrl = 'http://localhost:3000/plans/';
+  private rootUrl = 'http://10.241.185.86:3000/plans/';
+
+  syncPlans(plans: Plan[]) {
+    this._plansSource.next(plans);
+  }
 
   findPlans(searchCriteria: {
     type?: string[],
@@ -36,7 +43,7 @@ export class PlanService {
     const finalUrl = `${url}?${params.toString()}`;
     console.log('Final URL:', finalUrl);
   
-    return this.http.get<Plan[]>('http://localhost:3000/plans/search?').pipe(
+    return this.http.get<Plan[]>(finalUrl).pipe(
       tap(plans => {
         console.log('Received plans:', plans);
         plans.forEach((plan, index) => {

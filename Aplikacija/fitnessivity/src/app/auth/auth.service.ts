@@ -19,7 +19,7 @@ interface SignupResponse{
   providedIn: 'root'
 })
 export class AuthService {
-  private root = 'http://localhost:3000/user/';
+  private root = 'http://10.241.185.86:3000/user/';
   signedin$ = new BehaviorSubject(false);
   isAdmin$ = new BehaviorSubject(false);
   username$ = new BehaviorSubject<string>('');
@@ -28,7 +28,7 @@ export class AuthService {
 
   usernameAvailable(username:string){
     return this.http
-      .post<{available:boolean}>('http://localhost:3000/username/', {
+      .post<{available:boolean}>('http://10.241.185.86:3000/username/', {
         username: username
       })
   }
@@ -78,7 +78,7 @@ export class AuthService {
   }
 
   logOut(){
-    return this.http.post("http://localhost:3000/user/logout", {}, {withCredentials: true})
+    return this.http.post(this.root + "logout", {}, {withCredentials: true})
       .pipe(
         tap((response) => {
           this.signedin$.next(false);

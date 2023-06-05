@@ -37,6 +37,7 @@ export class SubmittedWorkoutService {
         const workouts = await this.submittedWorkoutModel.find({ personalPlan: planId }).sort({ date: -1 }).limit(plan.days);
         if (workouts.length < plan.days)
             return plan.workouts[workouts.length];
+        console.log(workouts[0]);
         return workouts[workouts.length-1];
     }
 

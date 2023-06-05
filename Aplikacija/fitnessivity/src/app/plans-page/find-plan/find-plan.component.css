@@ -1,0 +1,17 @@
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5%;
+    row-gap: 3rem;
+    margin-bottom: 5rem;
+    padding-inline: 0;
+  }
+  
+  .container > * {
+    width: 30%;
+    border: 2px solid #333333bb;
+    border-radius: 1rem;
+  }

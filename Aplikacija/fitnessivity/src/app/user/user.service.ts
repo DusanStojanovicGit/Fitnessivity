@@ -7,7 +7,7 @@ import { BehaviorSubject, catchError, map, tap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private root = 'http://localhost:3000/user/';
+  private root = 'http://10.241.185.86:3000/user/';
   constructor(private http: HttpClient) { }
 
   getUserByUsername(username: string | null){
