@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlansPageComponent } from './plans-page/plans-page.component';
 import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-plans-bar.component';
+import { MaterialModule } from './mat.module';
 import { FooterComponent } from './footer/footer.component';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/register-page/register-page.component';
@@ -45,7 +46,6 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     HomePageComponent,
     NavBarComponent,
     PlansPageComponent,
-    SearchPlansBarComponent,
     FooterComponent,
     LoginPageComponent,
     ProfilePageComponent,
@@ -69,21 +69,11 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     LayoutModule,
     AuthModule,
     UserModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatChipsModule,
-    MatSelectModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

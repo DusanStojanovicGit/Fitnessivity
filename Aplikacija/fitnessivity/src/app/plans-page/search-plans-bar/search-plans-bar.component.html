@@ -2,38 +2,30 @@
     <div class = "search-sort-container">
         <mat-form-field appearance="outline" class="search-bar">
             <mat-label>Search</mat-label>
-            <input matInput type="text" placeholder="Search..."  [(ngModel)]="enteredSearcheValue" (input)="onSearchTextChange()">
+            <input matInput type="text" placeholder="Search..." [formControl]="searchControl">
         </mat-form-field>
         <mat-form-field appearance="outline" class="sort-by">
             <mat-label>Sort by</mat-label>
-            <mat-select>
-                <mat-option value="most-popular">Most popular</mat-option>
-                <mat-option value="lesat-popular">Least popular</mat-option>
-                <mat-option value="release-date">Newest</mat-option>
-                <mat-option value="release-date">Oldest</mat-option>
+            <mat-select [(ngModel)]="selectedFilter" (selectionChange)="fetchPlans()">
+                <mat-option *ngFor="let filter of filters" [value]="filter.value">{{filter.name}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
 
     <div class="filter-chips-container">
         <span style="margin-right: 1rem">Genre</span>
-        <mat-chip-set class="filter-chips">
-            <mat-chip-option>Weightlifting</mat-chip-option>
-            <mat-chip-option>Calisthenics</mat-chip-option>
-            <mat-chip-option>Martial arts</mat-chip-option>
-            <mat-chip-option>Yoga</mat-chip-option>
-            <mat-chip-option>Crossfit</mat-chip-option>
-        </mat-chip-set>
+        <mat-chip-listbox class="filter-chips">
+            <ng-container *ngFor="let genre of genres">
+                <mat-chip-option (selectionChange)="toggleGenreSelection(genre)">{{genre}}</mat-chip-option>
+            </ng-container>
+        </mat-chip-listbox>
     </div>
     <div class="filter-chips-container">
         <span style="margin-right: 1.5rem">Type</span>
         <mat-chip-set class="filter-chips">
-            <mat-chip-option>Cardio</mat-chip-option>
-            <mat-chip-option>HIIT</mat-chip-option>
-            <mat-chip-option>Strength</mat-chip-option>
-            <mat-chip-option>Endurance</mat-chip-option>
-            <mat-chip-option>Muscle building</mat-chip-option>
-            <mat-chip-option>Recreation</mat-chip-option>
+            <ng-container *ngFor="let type of types">
+                <mat-chip-option (selectionChange)="toggleTypeSelection(type)">{{type}}</mat-chip-option>
+            </ng-container>
         </mat-chip-set>
     </div>
 </div>
