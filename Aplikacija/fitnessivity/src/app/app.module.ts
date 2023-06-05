@@ -35,9 +35,8 @@ import { SubmitPageComponent } from './submit-page/submit-page.component';
 import { SubmitFormComponent } from './submit-page/submit-form/submit-form.component';
 import { UserModule } from './user/user.module';
 import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.component';
-import { CreatePlanComponent } from './plans-page/create-plan/create-plan.component';
 import { PlanCardComponent } from './plan/plan-card/plan-card.component';
-
+import { PlansPageModule } from './plans-page/plans-page.module';
 
 @NgModule({
   declarations: [
@@ -61,7 +60,6 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     RegisterPageComponent,
     MiniNavBarComponent,
     PlanCardComponent,
-    CreatePlanComponent
   ],
   imports: [
     BrowserModule,
@@ -82,10 +80,8 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
