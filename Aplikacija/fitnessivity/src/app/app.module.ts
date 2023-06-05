@@ -6,18 +6,8 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavBarComponent } from './home-page/nav-bar/nav-bar.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlansPageComponent } from './plans-page/plans-page.component';
-import { SearchPlansBarComponent } from './plans-page/search-plans-bar/search-plans-bar.component';
 import { MaterialModule } from './mat.module';
 import { FooterComponent } from './footer/footer.component';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
@@ -36,9 +26,7 @@ import { SubmitPageComponent } from './submit-page/submit-page.component';
 import { SubmitFormComponent } from './submit-page/submit-form/submit-form.component';
 import { UserModule } from './user/user.module';
 import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.component';
-import { CreatePlanComponent } from './plans-page/create-plan/create-plan.component';
 import { PlanCardComponent } from './plan/plan-card/plan-card.component';
-
 
 @NgModule({
   declarations: [
@@ -61,7 +49,6 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     RegisterPageComponent,
     MiniNavBarComponent,
     PlanCardComponent,
-    CreatePlanComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +63,6 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

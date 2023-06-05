@@ -1,4 +1,3 @@
-import { UniqueUsername } from './../validators/unique-username';
 import { MatchPassword } from '../validators/match-password';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -44,9 +43,7 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private matchPassword: MatchPassword,
-    private uniqueUsername: UniqueUsername
-  ) {}
+    private matchPassword: MatchPassword  ) {}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -58,7 +55,7 @@ export class RegisterPageComponent implements OnInit {
 
   onAccountCreate() {
     if (this.regForm.valid) {
-      const formValue = { 
+      const formValue = {
         name : String(this.regForm.value.fullName),
         username : String(this.regForm.value.username),
         email : String(this.regForm.value.email),
@@ -67,6 +64,6 @@ export class RegisterPageComponent implements OnInit {
       this.authService.createAccount(formValue).subscribe((res) => {
         console.log(res);
       });
-    } 
+    }
   }
 }

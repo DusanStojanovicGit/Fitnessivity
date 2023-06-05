@@ -1,0 +1,66 @@
+<form [formGroup]="workoutData" (ngSubmit)="submitForm()">
+  <div class="workouts">
+    <div class="workout-name">
+      <input
+        type="text"
+        formControlName="TrainingName"
+        class="form-control"
+        placeholder="Training Name"
+      />
+      <div class="mt-2">
+        <div
+          *ngFor="let inputSet of inputSets.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="input-container mt-2 workout">
+            <div class="text-input">
+              <input
+                formControlName="name"
+                type="text"
+                class="form-control"
+                placeholder="Exercise name"
+              />
+            </div>
+            <div class="number-inputs">
+              <input
+                formControlName="rep"
+                type="number"
+                class="form-control mt-2"
+                placeholder="rep"
+              />
+              <input
+                formControlName="set"
+                type="number"
+                class="form-control mt-2"
+                placeholder="set"
+              />
+              <input
+                formControlName="rest"
+                type="number"
+                class="form-control mt-2"
+                placeholder="rest"
+              />
+              <input
+                formControlName="duration"
+                type="number"
+                class="form-control mt-2"
+                placeholder="duration"
+              />
+            </div>
+            <div
+
+              class="button btn btn-close  mt-2 ms-3"
+              (click)="removeInputs(i)"
+            >
+          </div>
+          </div>
+        </div>
+        <div class="buttoni">
+          <div class="button btn btn-primary mt-2 me-3" (click)="addInputs()">
+            Add Exercise...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
