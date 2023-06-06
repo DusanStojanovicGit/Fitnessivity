@@ -1,39 +1,85 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { FormBuilder, FormControl, FormGroup,AbstractControl } from '@angular/forms';
+import { WorkoutComponent } from './workout/workout.component';
+import { HttpClient } from '@angular/common/http';
+import { genres, types } from 'src/app/plan/plan-constants';
+import { Plan } from 'src/app/plan/plan.entity';
+import { PlanService } from 'src/app/plan/plan.service';
+import { ImagesService } from 'src/app/images/images.service';
 
 @Component({
   selector: 'app-create-plan',
   templateUrl: './create-plan.component.html',
   styleUrls: ['./create-plan.component.css'],
 })
-export class CreatePlanComponent {
+export class CreatePlanComponent  {
+
+
+  @ViewChild(WorkoutComponent) workoutComponent!: WorkoutComponent;
+  types : string[];
+  genres: string[];
+
+  formData = new FormGroup({
+    name: new FormControl(''),
+    type: new FormControl(''),
+    genre: new FormControl(''),
+    description: new FormControl(''),
+    picture: new FormControl(null)
+  });
+
   imageURL!: string;
-  maxFileSizeKB = 2200; // Maximum allowed file size in KB
-  maxWidth = 1400; // Maximum allowed image width
-  maxHeight =  1000; // Maximum allowed image height
+  maxFileSizeKB = 2200; 
 
-  inputSets: any[] = [{}]; // Initialize with one empty object for the first set of inputs
+  inputSets: any[] = [{}];
 
-
-  constructor(private imageCompress: NgxImageCompressService) {}
-
-
-  addInputs() {
-    this.inputSets.push({}); // Add a new empty object for each new set of inputs
+  constructor(
+    private imageCompress: NgxImageCompressService,
+    private formBuilder: FormBuilder,
+    private imageService: ImagesService,
+    private planService: PlanService
+  ) {
+    this.types = types;
+    this.genres = genres;
   }
 
-  removeInputs() {
-    this.inputSets.pop(); // Add a new empty object for each new set of inputs
-  }
+  submitForm() {
+    const submitForm = {
+      name: String(this.formData.value.name),
+      type: String(this.formData.value.type),
+      genre: String(this.formData.value.genre),
+      description: String(this.formData.value.description)
+    }
 
-  // collectData() {
-  //   console.log(this.inputSets);
-  //   // Process the data as needed
-  // }
+    const formData = new FormData();
+    const imageFileValue = this.formData.controls['picture'].value;
+    
+
+    const plan : Plan = {
+      ...submitForm,
+      workouts: this.workoutComponent.workoutData.value,
+    }
+
+    console.log(plan);
+
+    this.planService.createPlan(plan).subscribe(planResponse => {
+      const planId = planResponse._id;
+      if (imageFileValue) { 
+        const imageFile = imageFileValue as File;
+        formData.append('file', imageFile, planId);
+      }
+      this.imageService.uploadImage(formData);
+    }, error => {
+
+    });
+    console.log('Workout data:', JSON.stringify(this.workoutComponent.workoutData.value));
+   }
+
 
   showPreview(event: any) {
     const file = event.target.files[0];
     if (file) {
+      this.formData.controls['picture'].setValue(file);
       this.compressAndShowImage(file);
     }
   }
@@ -67,18 +113,21 @@ export class CreatePlanComponent {
         const width = img.width;
         const height = img.height;
 
-        if (width > this.maxWidth || height > this.maxHeight) {
-          alert(
-            'Image resolution exceeds the maximum allowed dimensions of ' +
-              this.maxWidth +
-              'x' +
-              this.maxHeight
-          );
-          return;
-        }
+        // if (width > this.maxWidth || height > this.maxHeight) {
+        //   alert(
+        //     'Image resolution exceeds the maximum allowed dimensions of ' +
+        //       this.maxWidth +
+        //       'x' +
+        //       this.maxHeight
+        //   );
+        //   return;
+        // }
 
         this.imageURL = compressedImage;
       };
     };
   }
+
+
+
 }
