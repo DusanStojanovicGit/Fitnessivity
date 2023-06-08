@@ -7,8 +7,6 @@
     width: 100%;
     aspect-ratio: 2;
     object-fit: cover;
-    border-top-left-radius: calc(1rem - 2px);
-    border-top-right-radius: calc(1rem - 2px);
   }
   
   

@@ -12,6 +12,6 @@
   
   .container > * {
     width: 30%;
-    border: 2px solid #333333bb;
-    border-radius: 1rem;
+    border: 1px solid #6e6e6ebb;
+    border-radius: 5px;
   }
