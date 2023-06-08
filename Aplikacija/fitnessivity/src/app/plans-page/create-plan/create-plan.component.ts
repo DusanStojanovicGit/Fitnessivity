@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import { FormBuilder, FormControl, FormGroup,AbstractControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { WorkoutComponent } from './workout/workout.component';
-import { HttpClient } from '@angular/common/http';
 import { genres, types } from 'src/app/plan/plan-constants';
 import { Plan } from 'src/app/plan/plan.entity';
 import { PlanService } from 'src/app/plan/plan.service';
@@ -15,10 +14,11 @@ import { ImagesService } from 'src/app/images/images.service';
 })
 export class CreatePlanComponent  {
 
-
   @ViewChild(WorkoutComponent) workoutComponent!: WorkoutComponent;
   types : string[];
   genres: string[];
+
+  workouts: WorkoutComponent[] = [];
 
   formData = new FormGroup({
     name: new FormControl(''),
@@ -34,6 +34,7 @@ export class CreatePlanComponent  {
   inputSets: any[] = [{}];
 
   constructor(
+    private viewContainerRef: ViewContainerRef,
     private imageCompress: NgxImageCompressService,
     private formBuilder: FormBuilder,
     private imageService: ImagesService,
@@ -41,6 +42,10 @@ export class CreatePlanComponent  {
   ) {
     this.types = types;
     this.genres = genres;
+  }
+
+  ngOnInit(){
+    this.createNewWorkout();
   }
 
   submitForm() {
@@ -53,12 +58,19 @@ export class CreatePlanComponent  {
 
     const formData = new FormData();
     const imageFileValue = this.formData.controls['picture'].value;
-    
 
     const plan : Plan = {
       ...submitForm,
-      workouts: this.workoutComponent.workoutData.value,
+      workouts: []
     }
+
+    this.workouts.forEach((p, index) => {
+      const workoutDataWithIndex = {
+        ...p.workoutData.value,
+        day: index + 1,
+      };
+      plan.workouts.push(workoutDataWithIndex);
+    });
 
     console.log(plan);
 
@@ -72,7 +84,6 @@ export class CreatePlanComponent  {
     }, error => {
 
     });
-    console.log('Workout data:', JSON.stringify(this.workoutComponent.workoutData.value));
    }
 
 
@@ -128,6 +139,21 @@ export class CreatePlanComponent  {
     };
   }
 
+  createNewWorkout() {
+    const newWorkout = new WorkoutComponent(this.formBuilder, this.viewContainerRef);
+    newWorkout.ngOnInit();
+    console.log('New WorkoutComponent created:', newWorkout);
+    newWorkout.workoutRemoved.subscribe(() => {
+      this.onWorkoutRemoved(newWorkout);
+    });
+    this.workouts.push(newWorkout);
+  }
 
+  onWorkoutRemoved(workout: WorkoutComponent) {
+    const index = this.workouts.indexOf(workout);
+    if (index > -1) {
+      this.workouts.splice(index, 1);
+    }
+  }
 
 }

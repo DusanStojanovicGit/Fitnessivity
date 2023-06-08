@@ -70,13 +70,14 @@
         </div>
       </div>
     </div>
-    <!-- workout deo -->
     <div class="row mt-4">
       <div class="col-12">
         <h3>Workouts</h3>
-        <app-workout></app-workout>
+        <ng-container *ngFor="let workout of workouts">
+          <app-workout [workoutData]="workout.workoutData" (workoutRemoved)="onWorkoutRemoved(workout)"></app-workout>
+        </ng-container>
         <div class="new-plans mt-4">
-          <div class="button btn btn-primary">Create new workout</div>
+          <div class="button btn btn-primary" (click)="createNewWorkout()">Create new workout</div>
           <p>or</p>
           <div class="button btn btn-secondary">Add from existing</div>
         </div>

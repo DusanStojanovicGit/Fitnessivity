@@ -9,6 +9,8 @@ import { SearchPlansBarComponent } from './search-plans-bar/search-plans-bar.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlanBaseDisplayComponent } from './plan-base-display/plan-base-display.component';
 import { WorkoutComponent } from './create-plan/workout/workout.component';
+import { PlanViewPageComponent } from './plan-view-page/plan-view-page.component';
+import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { WorkoutComponent } from './create-plan/workout/workout.component';
     SearchPlansBarComponent,
     PlanBaseDisplayComponent,
     WorkoutComponent,
-    CreatePlanComponent
+    CreatePlanComponent,
+    PlanViewPageComponent,
+    WorkoutViewComponent
   ],
   imports: [
     CommonModule,

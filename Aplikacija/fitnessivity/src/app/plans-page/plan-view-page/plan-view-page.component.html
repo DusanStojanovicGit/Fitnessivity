@@ -1,0 +1,36 @@
+<div class="all" *ngIf="plan">
+    <div class="container">
+      <div class="container-top">
+        <div class="information">
+            <div class="btn" *ngIf="permissions"></div>
+          <h3>Basic Information</h3>
+          <p class="form-control plan-name">{{ plan.name }}</p>
+          <div class="input-div">
+            <p class="form-select mt-2 info-input">{{ plan.type }}</p>
+            <p class="form-select mt-2 info-input">{{ plan.genre }}</p>
+          </div>
+        </div>
+        <div class="description">
+          <h3>Description</h3>
+          <p class="form-control" style="height: 100px">{{ plan.description }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row mt-4">
+      <div class="col-12">
+        <h3>Plan image</h3>
+        <div class="plan-image">
+          <img [src]="imgSrc" alt=""/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <h3>Workouts</h3>
+        <ng-container *ngFor="let workout of plan.workouts">
+          <app-workout-view [workout]="workout"></app-workout-view>
+        </ng-container>
+      </div>
+    </div>
+  </div>

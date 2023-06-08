@@ -13,7 +13,7 @@ export class PlanService {
   plans$: Observable<Plan[]> = this._plansSource.asObservable();
 
   constructor(private http: HttpClient) { }
-  private rootUrl = 'http://10.241.185.86:3000/plans/';
+  rootUrl = 'http://10.241.185.86:3000/plans/';
 
   syncPlans(plans: Plan[]) {
     this._plansSource.next(plans);
@@ -68,5 +68,9 @@ export class PlanService {
 
   deletePlan(){
 
+  }
+
+  getPlan(id: string | null){
+    return this.http.get<Plan>(this.rootUrl + "get/" + id);
   }
 }

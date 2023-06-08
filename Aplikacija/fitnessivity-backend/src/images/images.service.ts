@@ -9,7 +9,7 @@ export class ImagesService {
     getImage(id: string, res: any){
         const files = fs.readdirSync(imagePath).filter(fn =>{
             const ext = path.extname(fn).toLowerCase();
-            return (fn.startsWith(id) && (ext == '.jpg' || ext == '.png' || ext == 'jpeg'));
+            return (fn.startsWith(id) && (ext == '.jpg' || ext == '.png' || ext == '.jpeg'));
         });
         if (files.length > 0){
             const foundFile = files[0];
@@ -21,7 +21,7 @@ export class ImagesService {
     async uploadImage(file: Express.Multer.File) {
         const files = fs.readdirSync(imagePath).filter(fn => {
             const ext = path.extname(fn).toLowerCase();
-            return (fn.startsWith(file.originalname) && (ext === '.jpg' || ext === '.png' || ext === 'jpeg'));
+            return (fn.startsWith(file.originalname) && (ext === '.jpg' || ext === '.png' || ext === '.jpeg'));
         });
 
         for (const existingFile of files) {
