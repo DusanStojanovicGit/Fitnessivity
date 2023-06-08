@@ -1,0 +1,21 @@
+<div class="workouts">
+    <div class="workout-name">
+      <div class="head">
+        <p class="form-control">{{ workout.name }}</p>
+      </div>
+      <div class="mt-2" *ngFor="let exercise of workout.exercises; let i = index">
+        <div class="input-container mt-2 workout">
+          <div class="text-input">
+            <p class="form-control">{{ exercise.name }}</p>
+          </div>
+          <div class="number-inputs">
+            <p class="form-control mt-2">{{ exercise.reps }}</p>
+            <p class="form-control mt-2">{{ exercise.sets }}</p>
+            <p class="form-control mt-2">{{ exercise.rest }}</p>
+            <p class="form-control mt-2">{{ exercise.length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

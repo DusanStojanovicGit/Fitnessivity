@@ -5,9 +5,6 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { PlansModule } from './plans/plans.module';
 import { WorkoutModule } from './workouts/workout.module';
-import { PersonalPlanService } from './plans/personal-plan/personal-plan.service';
-import { SubmittedWorkoutService } from './workouts/submitted-workout/submitted-workout.service';
-import { ImageController } from './images/images.controller';
 import { ImagesModule } from './images/images.module';
 import { MulterModule } from '@nestjs/platform-express';
 
@@ -21,7 +18,7 @@ import { MulterModule } from '@nestjs/platform-express';
     PlansModule,
     WorkoutModule,
     ImagesModule],
-  controllers: [AppController, ImageController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

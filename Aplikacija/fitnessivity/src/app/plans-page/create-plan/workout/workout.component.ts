@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,40 +7,49 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./workout.component.css'],
 })
 export class WorkoutComponent implements OnInit {
-  workoutData!: FormGroup;
+  @Output() workoutRemoved = new EventEmitter<void>();
+  @Input() workoutData!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit() {
-    this.workoutData = this.formBuilder.group({
-      TrainingName: ['', Validators.required],
-      inputSets: this.formBuilder.array([]),
-
-    });
-    this.addInputs();
+    console.log('WorkoutComponent ngOnInit called.');
+    if (!this.workoutData) {
+      this.workoutData = this.formBuilder.group({
+        name: ['', Validators.required],
+        exercises: this.formBuilder.array([]),
+      });
+      this.addInputs();
+    }
+    console.log('workoutData after ngOnInit:', this.workoutData);
   }
 
-  get inputSets() {
-    return this.workoutData.get('inputSets') as FormArray;
+  get exercises() {
+    return this.workoutData.get('exercises') as FormArray;
   }
 
   addInputs() {
-    this.inputSets.push(this.createInputSet());
+    this.exercises.push(this.createInputSet());
   }
 
   createInputSet() {
     return this.formBuilder.group({
-      TrainingName:[''],
       name: [''],
-      rep: [''],
-      set: [''],
+      reps: [''],
+      sets: [''],
       rest: [''],
-      duration: [''],
+      length: [''],
     });
   }
 
   removeInputs(index: number) {
-    this.inputSets.removeAt(index);
+    this.exercises.removeAt(index);
+  }
+
+  destroyComponent() {
+    this.workoutRemoved.emit();
   }
 
   submitForm() {

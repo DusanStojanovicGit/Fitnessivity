@@ -5,6 +5,10 @@
   margin-inline: auto;
 }
 
+.workouts {
+  padding-bottom: 1rem;
+}
+
 .workouts > div {
   background-color: rgb(208, 211, 212);
   padding: 20px;
@@ -117,9 +121,22 @@ input[type="number"] {
 
 }
 
-.workout-name > input:first-child {
-  width: 40%;
+.head {
+  padding-bottom: 2rem;
+}
+
+.head .form-control{
+  width: 10rem;
+  border-color: black;
   margin-inline: auto;
+  margin-left: 0;
+  left: 0;
+}
+
+.workout-name .head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttoni {

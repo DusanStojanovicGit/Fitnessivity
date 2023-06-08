@@ -1,15 +1,18 @@
-<form [formGroup]="workoutData" (ngSubmit)="submitForm()">
+<form [formGroup]="workoutData">
   <div class="workouts">
     <div class="workout-name">
+      <div class="head">
       <input
         type="text"
-        formControlName="TrainingName"
+        formControlName="name"
         class="form-control"
-        placeholder="Training Name"
+        placeholder="Workout Name"
       />
-      <div class="mt-2">
+      <button class="btn btn-danger" (click)="destroyComponent()">Remove Workout</button>
+    </div>
+      <div class="mt-2" formArrayName="exercises">
         <div
-          *ngFor="let inputSet of inputSets.controls; let i = index"
+          *ngFor="let inputSet of exercises.controls; let i = index"
           [formGroupName]="i"
         >
           <div class="input-container mt-2 workout">
@@ -23,13 +26,13 @@
             </div>
             <div class="number-inputs">
               <input
-                formControlName="rep"
+                formControlName="reps"
                 type="number"
                 class="form-control mt-2"
                 placeholder="rep"
               />
               <input
-                formControlName="set"
+                formControlName="sets"
                 type="number"
                 class="form-control mt-2"
                 placeholder="set"
@@ -41,7 +44,7 @@
                 placeholder="rest"
               />
               <input
-                formControlName="duration"
+                formControlName="length"
                 type="number"
                 class="form-control mt-2"
                 placeholder="duration"

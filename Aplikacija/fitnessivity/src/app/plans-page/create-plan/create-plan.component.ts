@@ -1,18 +1,12 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import { FormBuilder, FormControl, FormGroup,AbstractControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { WorkoutComponent } from './workout/workout.component';
-import { HttpClient } from '@angular/common/http';
+import { genres, types } from 'src/app/plan/plan-constants';
+import { Plan } from 'src/app/plan/plan.entity';
+import { PlanService } from 'src/app/plan/plan.service';
+import { ImagesService } from 'src/app/images/images.service';
 
-
-
-interface FormControls {
-  planName: FormControl;
-  type: FormControl;
-  genre: FormControl;
-  description: FormControl;
-  picture: FormControl;
-}
 @Component({
   selector: 'app-create-plan',
   templateUrl: './create-plan.component.html',
@@ -20,51 +14,77 @@ interface FormControls {
 })
 export class CreatePlanComponent  {
 
-
   @ViewChild(WorkoutComponent) workoutComponent!: WorkoutComponent;
+  types : string[];
+  genres: string[];
 
+  workouts: WorkoutComponent[] = [];
 
-
-
-  formData = new FormGroup<FormControls>({
-    planName: new FormControl(''),
+  formData = new FormGroup({
+    name: new FormControl(''),
     type: new FormControl(''),
     genre: new FormControl(''),
     description: new FormControl(''),
     picture: new FormControl(null)
   });
 
-
-  submitForm() {
-    const formData = new FormData();
-
-    Object.entries(this.formData.controls).forEach(([key, controlValue]) => {
-      formData.append(key, controlValue.value);
-    });
-
-    console.log('Form data:', formData);
-
-
-    console.log('Workout data:', JSON.stringify(this.workoutComponent.workoutData.value));
-   }
-
-
-
-
-
-          //DEO ZA PROVERU DA LI JE SLIKA ODGOVARAJUCE VELICINE
-
   imageURL!: string;
-  maxFileSizeKB = 2200; // Maximum allowed file size in KB
-  maxWidth = 1400; // Maximum allowed image width
-  maxHeight = 1000; // Maximum allowed image height
+  maxFileSizeKB = 2200; 
 
-  inputSets: any[] = [{}]; // Initialize with one empty object for the first set of inputs
+  inputSets: any[] = [{}];
 
   constructor(
+    private viewContainerRef: ViewContainerRef,
     private imageCompress: NgxImageCompressService,
-    private formBuilder: FormBuilder,private http: HttpClient
-  ) {}
+    private formBuilder: FormBuilder,
+    private imageService: ImagesService,
+    private planService: PlanService
+  ) {
+    this.types = types;
+    this.genres = genres;
+  }
+
+  ngOnInit(){
+    this.createNewWorkout();
+  }
+
+  submitForm() {
+    const submitForm = {
+      name: String(this.formData.value.name),
+      type: String(this.formData.value.type),
+      genre: String(this.formData.value.genre),
+      description: String(this.formData.value.description)
+    }
+
+    const formData = new FormData();
+    const imageFileValue = this.formData.controls['picture'].value;
+
+    const plan : Plan = {
+      ...submitForm,
+      workouts: []
+    }
+
+    this.workouts.forEach((p, index) => {
+      const workoutDataWithIndex = {
+        ...p.workoutData.value,
+        day: index + 1,
+      };
+      plan.workouts.push(workoutDataWithIndex);
+    });
+
+    console.log(plan);
+
+    this.planService.createPlan(plan).subscribe(planResponse => {
+      const planId = planResponse._id;
+      if (imageFileValue) { 
+        const imageFile = imageFileValue as File;
+        formData.append('file', imageFile, planId);
+      }
+      this.imageService.uploadImage(formData);
+    }, error => {
+
+    });
+   }
 
 
   showPreview(event: any) {
@@ -104,21 +124,36 @@ export class CreatePlanComponent  {
         const width = img.width;
         const height = img.height;
 
-        if (width > this.maxWidth || height > this.maxHeight) {
-          alert(
-            'Image resolution exceeds the maximum allowed dimensions of ' +
-              this.maxWidth +
-              'x' +
-              this.maxHeight
-          );
-          return;
-        }
+        // if (width > this.maxWidth || height > this.maxHeight) {
+        //   alert(
+        //     'Image resolution exceeds the maximum allowed dimensions of ' +
+        //       this.maxWidth +
+        //       'x' +
+        //       this.maxHeight
+        //   );
+        //   return;
+        // }
 
         this.imageURL = compressedImage;
       };
     };
   }
 
+  createNewWorkout() {
+    const newWorkout = new WorkoutComponent(this.formBuilder, this.viewContainerRef);
+    newWorkout.ngOnInit();
+    console.log('New WorkoutComponent created:', newWorkout);
+    newWorkout.workoutRemoved.subscribe(() => {
+      this.onWorkoutRemoved(newWorkout);
+    });
+    this.workouts.push(newWorkout);
+  }
 
+  onWorkoutRemoved(workout: WorkoutComponent) {
+    const index = this.workouts.indexOf(workout);
+    if (index > -1) {
+      this.workouts.splice(index, 1);
+    }
+  }
 
 }

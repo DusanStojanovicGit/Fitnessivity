@@ -9,7 +9,7 @@
             type="text"
             class="form-control plan-name"
             placeholder="Plan Name"
-            formControlName = "planName"
+            formControlName = "name"
           />
           <div class="input-div">
             <select
@@ -19,13 +19,8 @@
               style="background-color: white; height: 40px"
               formControlName = "type"
             >
-              <option value="selected" disabled selected>Type</option>
-              <option value="lala">lala</option>
-              <option value="lala">lalall</option>
-              <option value="lala">lallall</option>
-              <option value="lalalal">lalsdla</option>
-              <option value="lasldasl">ldsaldlasd</option>
-              <option value="dsa">dassa</option>
+              <option value="" disabled selected>Type</option>
+              <option *ngFor="let type of types" [value]="type">{{type}}</option>
             </select>
             <select
               name="genre"
@@ -34,13 +29,8 @@
               style="background-color: white; height: 40px"
               formControlName = "genre"
             >
-              <option value="selected" disabled selected>Genre</option>
-              <option value="lala">lala</option>
-              <option value="lala">lalall</option>
-              <option value="lala">lallall</option>
-              <option value="lalalal">lalsdla</option>
-              <option value="lasldasl">ldsaldlasd</option>
-              <option value="dsa">dassa</option>
+              <option value="" disabled selected>Genre</option>
+              <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
             </select>
           </div>
         </div>
@@ -74,19 +64,20 @@
           <input
             type="file"
             (change)="showPreview($event)"
-            class="form-control slika"
+            class="form-control picture"
             accept="image/png, image/jpeg"
           />
         </div>
       </div>
     </div>
-    <!-- workout deo -->
     <div class="row mt-4">
       <div class="col-12">
         <h3>Workouts</h3>
-        <app-workout></app-workout>
+        <ng-container *ngFor="let workout of workouts">
+          <app-workout [workoutData]="workout.workoutData" (workoutRemoved)="onWorkoutRemoved(workout)"></app-workout>
+        </ng-container>
         <div class="new-plans mt-4">
-          <div class="button btn btn-primary">Create new workout</div>
+          <div class="button btn btn-primary" (click)="createNewWorkout()">Create new workout</div>
           <p>or</p>
           <div class="button btn btn-secondary">Add from existing</div>
         </div>

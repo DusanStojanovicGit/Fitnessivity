@@ -49,4 +49,10 @@ export class PlansController {
         const plans = await this.planService.getPlansByUser(username);
         return plans;
     }
+
+    @Get('get/:id')
+    async getPlan(@Param('id') id: string){
+        const plan = await this.planService.findById(id);
+        return plan;
+    }
 }

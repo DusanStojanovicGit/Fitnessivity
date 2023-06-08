@@ -66,10 +66,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "fitnessivity:build:production"
+              "browserTarget": "fitnessivity:build:production",
+              "host": "10.241.185.86"
             },
             "development": {
-              "browserTarget": "fitnessivity:build:development"
+              "browserTarget": "fitnessivity:build:development",
+              "host": "10.241.185.86"
             }
           },
           "defaultConfiguration": "development"

@@ -1,52 +1,33 @@
   .slika-plana {
-    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
   }
-  
+
   .slika-plana img {
     width: 100%;
     aspect-ratio: 2;
     object-fit: cover;
-    border-top-left-radius: calc(1rem - 2px);
-    border-top-right-radius: calc(1rem - 2px);
   }
   
-  .naslov, .tip {
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-  }
   
-  .plan {
+  .plan > div{
     display: flex;
     flex-direction: column;
     position: relative;
-    padding-bottom: 1rem;
   }
-  
-  .button {
-    align-self: center;
-    width: max-content;
-    padding: 0.6rem  1.6rem;
-    border-radius: 1.5rem;
-    background-color: #43a1ff;
-    font-size: 1.2rem;
-    font-weight: bold;
+
+  .stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
-  
-  .button:active {
-    background-color: #2994FF;
-  }
-  
-  .plus {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    font-size: 2rem;
-    padding: 0;
-    width: 50px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
+
+  .genre-type {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
   }
   
    /* nav bar */

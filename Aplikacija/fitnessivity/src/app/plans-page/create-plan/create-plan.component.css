@@ -73,7 +73,7 @@
   inset: 0;
 }
 
-.plan-image > .slika {
+.plan-image > .picture {
   width: max-content;
   position: absolute;
   bottom: 1rem;

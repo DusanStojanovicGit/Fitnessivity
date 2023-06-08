@@ -23,5 +23,4 @@ export class ProfilePageComponent {
       this.user$ = this.userService.getUserByUsername(username);
       });
   }
-  
 }

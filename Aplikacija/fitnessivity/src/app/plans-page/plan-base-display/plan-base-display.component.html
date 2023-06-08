@@ -1,14 +1,36 @@
 
-<div>
+<div *ngIf="plan">
     <div class="plan">
-    <div class="slika-plana"><img src="assets/gym.jpg" alt="slika" /></div>
-    <div class="naslov">
-    <h4>{{ plan.name }}</h4>
-    </div>
-    <div class="tip">
-    <h6>{{ plan.type }}</h6>
-    </div>
-    <div class="button">Details</div>
-    <div class="button plus">+</div>
+        <div class="slika-plana">
+            <img [src]="imgSrc" alt="" (error)="imgSrc = 'assets/gym.jpg'"/>
+        </div>
+        <div class="info">
+            <div class="naslov">
+                <h4>{{ plan.name }}</h4>
+            </div>
+            <div class="tip">
+                <h6>by {{ plan.creator }}</h6>
+            </div>        
+            <div class="stats">
+                <div class="count">
+                    {{plan.workoutsCompleted}}
+                </div>
+                <div class="days">
+                    {{plan.days}}
+                </div>
+                <div class="submission-days">
+                    {{submissionDays}}
+                </div>
+            </div>
+            <div class="genre-type">
+                <div class="genre">
+                    {{plan.genre}}
+                </div>
+                <div class="type">
+                    {{plan.type}}
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>

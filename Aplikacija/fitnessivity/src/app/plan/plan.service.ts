@@ -13,7 +13,7 @@ export class PlanService {
   plans$: Observable<Plan[]> = this._plansSource.asObservable();
 
   constructor(private http: HttpClient) { }
-  private rootUrl = 'http://10.241.185.86:3000/plans/';
+  rootUrl = 'http://10.241.185.86:3000/plans/';
 
   syncPlans(plans: Plan[]) {
     this._plansSource.next(plans);
@@ -43,24 +43,19 @@ export class PlanService {
     const finalUrl = `${url}?${params.toString()}`;
     console.log('Final URL:', finalUrl);
   
-    return this.http.get<Plan[]>(finalUrl).pipe(
-      tap(plans => {
-        console.log('Received plans:', plans);
-        plans.forEach((plan, index) => {
-          console.log(`Plan ${index} name:`, plan.name);
-          console.log(`Plan ${index} genre:`, plan.genre);
-          // Add more properties to log as needed
-        });
-      })
-    );
+    return this.http.get<Plan[]>(finalUrl).pipe()
   }
+    
+  
 
   showUserPlans(){
     
   }
 
-  createPlan(){
-    
+  createPlan(plan: Plan){
+    return this.http.post<Plan>(this.rootUrl + "submitplan", plan, {withCredentials: true}).pipe(
+      tap(p => p._id)
+    );
   }
 
   addPersonalPlan(){
@@ -73,5 +68,9 @@ export class PlanService {
 
   deletePlan(){
 
+  }
+
+  getPlan(id: string | null){
+    return this.http.get<Plan>(this.rootUrl + "get/" + id);
   }
 }

@@ -105,13 +105,13 @@ content-type: application/json
 }
 
 ### Add plan 
-POST http://localhost:3000/plans/addPlan/647b55158d745f6a7e5c4d9a
+POST http://localhost:3000/plans/addPlan/647b9082feea74c75bc43ee2
 
 ### Retrieve Last Workout 64753c6dd5cd8f9e1b4c40c5
-GET http://localhost:3000/workouts/getlastworkout/64754e097c4ecd889814b9fc
+GET http://localhost:3000/workouts/getlastworkout/647b908ffeea74c75bc43ee5
 
 ### Submit a workout:
-POST http://localhost:3000/workouts/submit/64754e097c4ecd889814b9fc
+POST http://localhost:3000/workouts/submit/647b908ffeea74c75bc43ee5
 content-type: application/json
 
 {
@@ -143,7 +143,7 @@ content-type: application/json
 }
 
 ### Submit a workout:
-POST http://localhost:3000/workouts/submit/64754e097c4ecd889814b9fc
+POST http://localhost:3000/workouts/submit/647b908ffeea74c75bc43ee5
 content-type: application/json
 
 {
@@ -175,7 +175,7 @@ content-type: application/json
 }
 
 ### Submit a workout:
-POST http://localhost:3000/workouts/submit/64754e097c4ecd889814b9fc
+POST http://localhost:3000/workouts/submit/647b908ffeea74c75bc43ee5
 content-type: application/json
 
 {

@@ -11,10 +11,13 @@ async function bootstrap() {
     cookieSession({
       name: 'session',
       keys: ['secretkey'],
-      cookie: cookieOptions,
+      cookie: {
+        sameSite: 'none' as const, 
+        secure: true
+      }
     }),
   );
-  app.enableCors({origin: 'http://localhost:4200', credentials: true});
+  app.enableCors({origin: 'http://10.241.185.86:4200', credentials: true});
   app.listen(3000, '0.0.0.0');
 }
 bootstrap();
