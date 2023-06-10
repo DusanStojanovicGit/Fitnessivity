@@ -1,21 +1,36 @@
 import { MatchPassword } from '../validators/match-password';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { RedirectService } from 'src/app/redirect.service';
+import { types } from 'src/app/plan/plan-constants';
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { UserService } from 'src/app/user/user.service';
+import { User } from 'src/app/user/user.entity';
+import { ImagesService } from 'src/app/images/images.service';
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css'],
 })
 export class RegisterPageComponent implements OnInit {
+  errorMessage: string = '';
+  types = types;
+  user!: User;
+  imageSrc: string = 'assets/profile-picture.webp'; 
+  gender = ["other", "male", "female"];
+  showSecondForm: boolean = false;
+  secondForm: FormGroup;
+  maxFileSizeKB = 2200;
+  myfilename = 'Select File';
   regForm = new FormGroup(
     {
       username: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(20),
-        Validators.pattern(/^[a-z0-9]+$/),
+        Validators.pattern(/^[a-zA-Z0-9_]+$/),
       ]),
 
       fullName: new FormControl('', [
@@ -43,9 +58,20 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private matchPassword: MatchPassword  ) {}
+    private matchPassword: MatchPassword,
+    private redirectService: RedirectService,
+    private imageCompress: NgxImageCompressService,
+    private userService: UserService,
+    private imagesService: ImagesService) {
+      this.secondForm = new FormGroup({
+        bio: new FormControl(''),
+        fitnessType: new FormControl(''),
+        gender: new FormControl(''),
+        picture: new FormControl(null)
+      });
+    }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   showErrors(fieldName: string): boolean {
@@ -61,9 +87,81 @@ export class RegisterPageComponent implements OnInit {
         email : String(this.regForm.value.email),
         password : String(this.regForm.value.password),
       }
-      this.authService.createAccount(formValue).subscribe((res) => {
-        console.log(res);
-      });
+      this.authService.createAccount(formValue).subscribe(
+        (res) => {
+        this.showSecondForm = true;
+        this.user = res;
+        },
+        (error) => {
+          this.errorMessage = error.error.message;
+        });
     }
+  }
+
+  onSecondFormSubmit() {
+    if (this.secondForm.valid) {
+      const formValue = {
+        bio: String(this.secondForm.value.bio),
+        type: String(this.secondForm.value.fitnessType),
+        gender: String(this.secondForm.value.gender),
+      }
+      const imageFileValue = this.secondForm.controls['picture'].value;
+      
+      this.userService.updateUser(formValue).subscribe(
+        (res) => {
+          this.user = res;
+          this.redirectService.loginRegisterRedirect(res);
+          if (imageFileValue) {
+            const formData = new FormData();
+            const imageFile = imageFileValue as File;
+            formData.append('file', imageFile, this.user._id);
+            this.imagesService.uploadImage(formData);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+    }
+  }
+
+  clearErrorMessage(){
+    this.errorMessage = '';
+  }
+
+  fileChangeEvent(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.secondForm.controls['picture'].setValue(file);
+      this.compressAndShowImage(file);
+    }
+  }
+
+  async compressAndShowImage(file: File) {
+    if (file.size > this.maxFileSizeKB * 1024) {
+      alert(
+        'File size exceeds the maximum allowed size of ' + this.maxFileSizeKB + 'KB'
+      );
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      const originalImage = reader.result as string;
+      const quality = 70;
+      const compressedImage = await this.imageCompress.compressFile(
+        originalImage,
+        -1,
+        quality,
+        quality
+      );
+
+      const img = new Image();
+      img.src = compressedImage;
+      img.onload = () => {
+        this.imageSrc = compressedImage;
+      };
+    };
   }
 }

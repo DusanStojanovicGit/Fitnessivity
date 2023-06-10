@@ -9,19 +9,13 @@ interface SignedinResponse {
   isAdmin: boolean;
 }
 
-interface SignupResponse{
-  username: string;
-  isAdmin: boolean;
-}
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private root = 'http://10.241.185.86:3000/user/';
-  signedin$ = new BehaviorSubject(false);
-  isAdmin$ = new BehaviorSubject(false);
+  signedin$ = new BehaviorSubject<boolean | null>(null);
+  isAdmin$ = new BehaviorSubject<boolean | null>(null);
   username$ = new BehaviorSubject<string>('');
   constructor(private http: HttpClient) { }
 
@@ -34,7 +28,7 @@ export class AuthService {
   }
 
   createAccount(account: {name: string, username: string, email: string, password: string}){
-    return this.http.post<SignupResponse>(this.root + 'register', account, {withCredentials: true})
+    return this.http.post<User>(this.root + 'register', account, {withCredentials: true})
     .pipe(
       catchError(error => {
         this.signedin$.next(false);

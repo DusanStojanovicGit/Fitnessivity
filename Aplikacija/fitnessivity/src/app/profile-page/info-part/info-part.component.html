@@ -2,7 +2,7 @@
   <div class="info">
     <div class="left-div">
       <div class="profile-picture-frame">
-        <img class="profile-img" [src]="getSrc()" alt="">
+        <img class="profile-img" [src]="imgSrc" alt="" (error)="imgSrc = 'assets/profile-picture.webp'">
       </div>
       <div class="informations">
         <span>
@@ -13,6 +13,7 @@
           <p class="type">Type: {{user.type}}</p>
       </div>
     <div class="bio">
+        <p *ngIf="!user.bio" class="bio-placeholder">Bio...</p>
         {{user.bio}}
     </div>
   </div>

@@ -15,3 +15,13 @@ export interface User {
     gender: string;
     personalPlans: Plan[];
 };
+
+export interface UpdateUserDto {
+    email?: string;
+    password?: string;
+    username?: string;
+    name?: string;
+    bio?: string;
+    type?: string;
+    gender?: string;
+}

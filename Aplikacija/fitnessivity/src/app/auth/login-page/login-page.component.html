@@ -15,7 +15,7 @@
               Log in
             </h5>
 
-            <form #loginForm="ngForm" (ngSubmit)="OnLogin(loginForm.value)">
+            <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value) ">
               <div class="form-floating mb-3">
                 <input
                   type="email"
@@ -23,6 +23,7 @@
                   id="floatingInputEmail"
                   placeholder="name@example.com"
                   name="email"
+                  (input)="clearErrorMessage()"
                   ngModel
                   required
                   autofocus                  
@@ -37,6 +38,7 @@
                   id="floatingPassword"
                   placeholder="Password"
                   name="password"
+                  (input)="clearErrorMessage()"
                   ngModel                  
                   required
                   autofocus
@@ -52,29 +54,16 @@
                 </button>
               </div>
 
+            
+              <div *ngIf="errorMessage" class="alert alert-danger">
+                {{ errorMessage }}
+              </div>
+
+              <hr class="my-4" />   
+              
               <a class="d-block text-center mt-2 small" href="#"
-                >Forget password?</a
-              >
-
-              <hr class="my-4" />
-
-              <div class="d-grid mb-2">
-                <button
-                  class="btn btn-lg btn-google btn-login fw-bold text-uppercase"
-                  type="submit"
-                >
-                  <i class="fab fa-google me-2"></i> Sign up with Google
-                </button>
-              </div>
-
-              <div class="d-grid">
-                <button
-                  class="btn btn-lg btn-facebook btn-login fw-bold text-uppercase"
-                  type="submit"
-                >
-                  <i class="fab fa-facebook-f me-2"></i> Sign up with Facebook
-                </button>
-              </div>
+              >Don't have an account?</a
+            >
             </form>
           </div>
         </div>

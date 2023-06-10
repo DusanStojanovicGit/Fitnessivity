@@ -50,14 +50,17 @@ body {
   padding: 0.75rem 1rem;
 }
 
-.btn-google {
-  color: white !important;
-  background-color: #ea4335;
+.profile-picture-frame {
+  min-width: 150px;
+  max-width: 150px;
+  margin: 0 auto;
 }
 
-.btn-facebook {
-  color: white !important;
-  background-color: #3b5998;
+.profile-img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .error {
@@ -65,4 +68,21 @@ body {
   font-size: small;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: italic;
+}
+
+.file-upload {
+  position: relative;
+  align-self: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.file-upload input[type='file'] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
 }

@@ -77,7 +77,7 @@ export class UserService {
     const usernameRegex = new RegExp(`^${username}$`, 'i');
     const user = await this.userModel
       .findOne({username: usernameRegex})
-      .select('+bio +type +trainings')
+      .select('+email +bio +type +trainings')
       .populate('submittedWorkouts')
       .populate('personalPlans');
     if (!user)

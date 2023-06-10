@@ -9,6 +9,7 @@
             <!-- Background image for card set in CSS! -->
           </div>
           <div class="card-body p-4 p-sm-5">
+            <ng-container *ngIf="!showSecondForm">
             <h5 class="card-title text-center mb-5 fw-light fs-5 natpis">
               Register
             </h5>
@@ -20,6 +21,7 @@
                   id="floatingInputUsername"
                   placeholder="FullName"
                   name="name"
+                  (input)="clearErrorMessage()"
                   formControlName="fullName"
                   required
                   autofocus
@@ -47,6 +49,7 @@
                   id="floatingInputUsername"
                   placeholder="Username"
                   name="username"
+                  (input)="clearErrorMessage()"
                   formControlName="username"
                   required
                   autofocus
@@ -75,6 +78,7 @@
                   id="floatingInputEmail"
                   placeholder="name@example.com"
                   name="email"
+                  (input)="clearErrorMessage()"
                   formControlName="email"
                 />
                 <label for="floatingInputEmail">Email address</label>
@@ -97,6 +101,7 @@
                   class="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  (input)="clearErrorMessage()"
                   name="password"
                   formControlName="password"
                 />
@@ -121,6 +126,7 @@
                   class="form-control"
                   id="floatingPasswordConfirm"
                   placeholder="Confirm Password"
+                  (input)="clearErrorMessage()"
                   name="confirmpassword"
                   formControlName="confirmPassword"
                 />
@@ -150,12 +156,84 @@
                 </button>
               </div>
 
+              <div *ngIf="errorMessage" class="alert alert-danger">
+                {{ errorMessage }}
+              </div>
+
               <a routerLink="/login" class="d-block text-center mt-2 small"
                 >Have an account? Sign In</a
               >
 
 
             </form>
+          </ng-container>
+          <ng-container *ngIf="showSecondForm">
+            <h5 class="card-title text-center mb-5 fw-light fs-5 natpis">
+              Additional Information
+            </h5>
+            <form [formGroup]="secondForm" (ngSubmit)="onSecondFormSubmit()">
+
+              <div class="profile-picture-frame">
+                <img class="profile-img" [src]="imageSrc" alt="">
+              </div>
+              <div class="file-upload">
+                <button mat-raised-button color="primary" (click)="UploadFileInput.click()">
+                  {{ myfilename }}
+                </button>
+                <input
+                  type="file"
+                  #UploadFileInput
+                  (change)="fileChangeEvent($event)"
+                  class="form-control picture"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
+          
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingInputBio"
+                  placeholder="Bio"
+                  name="bio"
+                  formControlName="bio"
+                  required
+                />
+                <label for="floatingInputBio">Bio</label>
+              </div>
+              <div class = "row">
+                <div class="col-md-6">
+                  <div class="form-floating mb-3">
+                    <select
+                      class="form-select"
+                      id="floatingInputFitnessType"
+                      name="fitnessType"
+                      formControlName="fitnessType"
+                      required
+                    >
+                      <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+                    </select>
+                    <label for="floatingInputFitnessType">Fitness Type</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating mb-3">
+                    <select
+                      class="form-select"
+                      id="floatingInputGender"
+                      name="gender"
+                      formControlName="gender"
+                      required
+                    >
+                    <option *ngFor="let gen of gender" [value]="gen">{{ gen }}</option>
+                    </select>
+                    <label for="floatingInputGender">Gender</label>
+                  </div>
+              </div>
+            </div>
+              <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            </form>
+          </ng-container>
           </div>
         </div>
       </div>

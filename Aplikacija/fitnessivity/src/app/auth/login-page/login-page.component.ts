@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { RedirectService } from 'src/app/redirect.service';
+import { User } from 'src/app/user/user.entity';
 
 @Component({
   selector: 'app-login-page',
@@ -9,18 +11,27 @@ import { AuthService } from '../auth.service';
 })
 export class LoginPageComponent {
 
-  constructor(private http: HttpClient,
-    private authService:  AuthService){
+  errorMessage: string = '';
 
+  constructor(
+    private authService:  AuthService,
+    private redirectService: RedirectService,
+    ){}
+
+  clearErrorMessage(){
+    this.errorMessage = '';
   }
 
-  OnLogin(account: { email: string, password: string }) {
-    this.authService.logIn(account).subscribe(
+  onLogin(account: { email: string, password: string }) {
+      this.authService.logIn(account).subscribe(
       (response) => {
-        console.log(response);
+        this.redirectService.loginRegisterRedirect(response);
       },
       (error) => {
-        console.log('Error fetching user information:', error);
+        console.log(error);
+        
+          this.errorMessage = error.error.message;
+        
       }
     );
   }

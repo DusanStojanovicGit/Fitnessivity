@@ -13,16 +13,21 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 export class InfoPartComponent {
   @Input() user!: User;
   @Input() permissions!: Observable<boolean>;
+  imgSrc!: string;
 
   constructor(public dialog: MatDialog){}
 
+  ngOnInit(){
+    this.getSrc()
+  }
+
   getSrc(){
-    return "http://localhost:3000/images/" + this.user._id;
+    this.imgSrc = "http://localhost:3000/images/" + this.user._id;
   }
 
   openEditDialog(){
     this.dialog.open(EditDialogComponent, {
-      data: { user: this.user },
+      data: { user: this.user, imgSrc: this.imgSrc },
     });
   }
 

@@ -10,9 +10,9 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  signedin$: BehaviorSubject<boolean>;
+  signedin$: BehaviorSubject<boolean | null>;
   username$: BehaviorSubject<string>;
-  isAdmin$ : BehaviorSubject<boolean>;
+  isAdmin$ : BehaviorSubject<boolean | null>;
   constructor(private authService: AuthService){
     this.signedin$ = this.authService.signedin$;
     this.username$ = this.authService.username$;

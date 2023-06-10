@@ -1,9 +1,30 @@
-  
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-picture-frame {
+  min-width: 150px;
+  max-width: 150px;
+  align-self: center;
+}
+
+.profile-img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.error{
+  color: rgb(233, 68, 68)
+}
+
   .edit-user-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 600px;
+    width: 500px;
   }
   
   .form-floating {
@@ -29,8 +50,10 @@
   }
   
   .file-upload {
+    display: flex;
     position: relative;
-    display: inline-block;
+    align-self: center;
+    padding: 1rem;
   }
   
   .file-upload input[type='file'] {
@@ -71,9 +94,16 @@
 .form-floating textarea {
   height: auto;
   min-height: 50px;
+  padding-top: 1.3rem;
 }
 
 .mdc-dialog__content{
     padding-top: .5rem;
 }
-  
+
+@media (max-width: 600px) {
+  .edit-user-form{
+    width: 380px;
+  }
+}
+

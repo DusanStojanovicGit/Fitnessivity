@@ -6,6 +6,7 @@ import { CreatePlanComponent } from './create-plan/create-plan.component';
 import { PlansPageComponent } from './plans-page.component';
 import { ErrorComponent } from '../error/error.component';
 import { PlanViewPageComponent } from './plan-view-page/plan-view-page.component';
+import { loggedInGuard } from '../auth/guards';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
     children: [
       { path: '', component: FindPlanComponent },
       { path: 'myPlans', component: MyPlansComponent },
-      { path: 'create', component: CreatePlanComponent },
+      { path: 'create', component: CreatePlanComponent, canActivate: [loggedInGuard('/plans/create')] },
       { path: 'plan/:id', component: PlanViewPageComponent},
       { path: '**', component: ErrorComponent },
     ],

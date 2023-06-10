@@ -9,15 +9,16 @@ import { ErrorComponent } from './error/error.component';
 import { SignOutComponent } from './auth/sign-out/sign-out.component';
 import { PlansPageModule } from './plans-page/plans-page.module';
 import { ReportsComponent } from './reports/reports.component';
+import { adminGuard, loginRegisterGuard } from './auth/guards';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'plans', component: PlansPageComponent },
   { path: 'users/:username', component: ProfilePageComponent },
-  { path: 'login', component: LoginPageComponent },
-  { path: 'register', component: RegisterPageComponent },
+  { path: 'login', component: LoginPageComponent, canActivate: [loginRegisterGuard()] },
+  { path: 'register', component: RegisterPageComponent, canActivate: [loginRegisterGuard()] },
   { path: 'logout', component: SignOutComponent },
-  { path: 'reports', component: ReportsComponent},
+  { path: 'reports', component: ReportsComponent, canActivate: [adminGuard()]},
   { path: '**', component: ErrorComponent },
   
 ];

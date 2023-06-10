@@ -9,8 +9,8 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   title = 'fitnessivity';
-  signedin$: BehaviorSubject<boolean>;
-  isAdmin$: BehaviorSubject<boolean>;
+  signedin$: BehaviorSubject<boolean | null>;
+  isAdmin$: BehaviorSubject<boolean | null>;
   constructor(private authService: AuthService){
     this.signedin$ = this.authService.signedin$;
     this.isAdmin$ = this.authService.isAdmin$;
