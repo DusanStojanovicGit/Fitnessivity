@@ -1,4 +1,5 @@
 import { CreatePlanComponent } from './create-plan/create-plan.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../mat.module';
@@ -12,7 +13,6 @@ import { WorkoutComponent } from './create-plan/workout/workout.component';
 import { PlanViewPageComponent } from './plan-view-page/plan-view-page.component';
 import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view.component';
 
-
 @NgModule({
   declarations: [
     FindPlanComponent,
@@ -22,8 +22,9 @@ import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view
     WorkoutComponent,
     CreatePlanComponent,
     PlanViewPageComponent,
-    WorkoutViewComponent
+    WorkoutViewComponent,
   ],
+
   imports: [
     CommonModule,
     PlansPageRoutingModule,
@@ -35,4 +36,4 @@ import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view
     PlanBaseDisplayComponent
   ]
 })
-export class PlansPageModule { }
+export class PlansPageModule {}
