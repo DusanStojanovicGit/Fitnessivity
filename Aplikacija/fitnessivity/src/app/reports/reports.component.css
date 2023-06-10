@@ -1,0 +1,23 @@
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 5rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2%;
+    row-gap: 1rem;
+    margin-bottom: 2rem;
+    padding-inline: 0;
+  }
+  
+  .card {
+    width: 20%;
+    border: 1px solid #6e6e6ebb;
+    border-radius: 5px;
+  }
+
+  .comment {
+    border-top: 1px;
+    border-top: solid black;
+  }

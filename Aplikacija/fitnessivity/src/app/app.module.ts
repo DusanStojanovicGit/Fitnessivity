@@ -27,6 +27,9 @@ import { SubmitFormComponent } from './submit-page/submit-form/submit-form.compo
 import { UserModule } from './user/user.module';
 import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.component';
 import { PlanCardComponent } from './plan/plan-card/plan-card.component';
+import { PlansPageModule } from './plans-page/plans-page.module';
+import { ReportsComponent } from './reports/reports.component';
+import { EditDialogComponent } from './profile-page/info-part/edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     RegisterPageComponent,
     MiniNavBarComponent,
     PlanCardComponent,
+    ReportsComponent,
+    EditDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,7 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    PlansPageModule,
     MaterialModule
   ],
   providers: [],

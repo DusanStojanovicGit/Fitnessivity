@@ -9,7 +9,15 @@
     object-fit: cover;
   }
   
-  
+  .plan-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .user-link{
+    text-decoration: none;
+  }
+
   .plan > div{
     display: flex;
     flex-direction: column;

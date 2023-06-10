@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/user/user.entity';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-info-part',
@@ -10,13 +12,18 @@ import { User } from 'src/app/user/user.entity';
 })
 export class InfoPartComponent {
   @Input() user!: User;
+  @Input() permissions!: Observable<boolean>;
+
+  constructor(public dialog: MatDialog){}
 
   getSrc(){
     return "http://localhost:3000/images/" + this.user._id;
   }
 
-  private fetchAccinfo ()
-  {
-    // this.http.get()
+  openEditDialog(){
+    this.dialog.open(EditDialogComponent, {
+      data: { user: this.user },
+    });
   }
+
 }

@@ -30,6 +30,9 @@ import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view
     MaterialModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    PlanBaseDisplayComponent
   ]
 })
 export class PlansPageModule { }

@@ -9,6 +9,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class WorkoutComponent implements OnInit {
   @Output() workoutRemoved = new EventEmitter<void>();
   @Input() workoutData!: FormGroup;
+  @Input() isModel: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +39,7 @@ export class WorkoutComponent implements OnInit {
     return this.formBuilder.group({
       name: [''],
       reps: [''],
+      weight: [''],
       sets: [''],
       rest: [''],
       length: [''],

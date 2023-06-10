@@ -15,8 +15,6 @@ export class UserController {
     @Get('/whoami')
     async whoAmI(@Session() session: any){
         const user = await this.userService.findById(session.userId)
-        console.log(session);
-        console.log(user);
         return user;
     }
 
@@ -35,14 +33,10 @@ export class UserController {
         return this.userService.updateUser(dto, session.userId);
     }
 
-    @Get()
-    showUsers(){
-        return this.userService.findAll();
-    }
-
     @Post('/logout')
     async logout(@Session() session: any, @Res() res: Response){
         session.userId = null;
+        session.permissions = null;
         res.clearCookie('session', cookieOptions);
         res.status(200).json({ message: 'Logged out successfully' });
     }
@@ -51,6 +45,7 @@ export class UserController {
     async signin(@Body() dto: SigninUserDto, @Session() session: any){
         const user = await this.authService.login(dto.email, dto.password);
         session.userId = user._id;
+        session.permissions = user.isAdmin;
         return user;
     }
 
@@ -58,6 +53,7 @@ export class UserController {
     async createUser(@Body() dto: CreateUserDto, @Session() session: any){
         const user = await this.authService.register(dto);
         session.userId = user._id;
+        session.permissions = user.isAdmin;
         return user;
     }
 

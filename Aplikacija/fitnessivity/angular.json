@@ -67,11 +67,11 @@
           "configurations": {
             "production": {
               "browserTarget": "fitnessivity:build:production",
-              "host": "10.241.185.86"
+              "host": "0.0.0.0"
             },
             "development": {
               "browserTarget": "fitnessivity:build:development",
-              "host": "10.241.185.86"
+              "host": "0.0.0.0"
             }
           },
           "defaultConfiguration": "development"

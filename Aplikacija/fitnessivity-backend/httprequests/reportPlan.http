@@ -1,0 +1,11 @@
+### ReportPlan
+POST http://localhost:3000/reports/report
+Content-Type: application/json
+
+{
+    "planId": "64836ad31505867767a7d3a3",
+    "comment": "test" 
+}
+
+### Get plans
+GET http://localhost:3000/reports

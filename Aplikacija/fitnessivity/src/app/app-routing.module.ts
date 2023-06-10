@@ -8,6 +8,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ErrorComponent } from './error/error.component';
 import { SignOutComponent } from './auth/sign-out/sign-out.component';
 import { PlansPageModule } from './plans-page/plans-page.module';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'logout', component: SignOutComponent },
+  { path: 'reports', component: ReportsComponent},
   { path: '**', component: ErrorComponent },
+  
 ];
 
 @NgModule({

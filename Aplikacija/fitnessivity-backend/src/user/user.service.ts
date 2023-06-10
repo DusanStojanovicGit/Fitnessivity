@@ -16,7 +16,10 @@ export class UserService {
     private readonly authService: AuthService) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    return this.userModel.create(createUserDto);
+    let admin: boolean = false; 
+    if ((await this.findExisiting()).length == 0)
+      admin = true;
+    return this.userModel.create({...createUserDto, trainings: 0, isAdmin: admin});
   }
 
   async updateUser(dto: UpdateUserDto, id: string): Promise<User>{
@@ -52,8 +55,8 @@ export class UserService {
       return this.userModel.findByIdAndUpdate(userId, {$inc: {trainings: 1}});
   }
 
-  async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+  async findExisiting(): Promise<User[]> {
+    return this.userModel.find().limit(1).exec();
   }
 
   findOne(email: string) {

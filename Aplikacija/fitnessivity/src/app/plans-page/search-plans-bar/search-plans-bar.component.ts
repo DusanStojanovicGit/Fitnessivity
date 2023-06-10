@@ -1,4 +1,4 @@
-import { Component, OnInit ,EventEmitter, Output} from '@angular/core';
+import { Component, OnInit ,EventEmitter, Output, Input} from '@angular/core';
 import { genres, types, filters } from 'src/app/plan/plan-constants';
 import { FormControl } from '@angular/forms';
 import { Observable, Subscription, debounceTime } from 'rxjs';
@@ -13,8 +13,8 @@ import { Plan } from 'src/app/plan/plan.entity';
 export class SearchPlansBarComponent implements OnInit {
   selectedFilter: string = '';
   selectedTypes: string[] = [];
-  selectedGenre: string = '';
   searchControl = new FormControl();
+  @Input() selectedGenre: string = '';
 
   filters: any;
   genres: string[];

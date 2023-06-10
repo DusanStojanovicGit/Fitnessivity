@@ -7,17 +7,19 @@ import { PlansModule } from './plans/plans.module';
 import { WorkoutModule } from './workouts/workout.module';
 import { ImagesModule } from './images/images.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/fitnessivityV01'),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/fitnessivityV02'),
     UserModule,
     MulterModule.register({
       dest: './src/images/upload'
     }),
     PlansModule,
     WorkoutModule,
-    ImagesModule],
+    ImagesModule,
+    ReportsModule],
   controllers: [AppController],
   providers: [AppService],
 })

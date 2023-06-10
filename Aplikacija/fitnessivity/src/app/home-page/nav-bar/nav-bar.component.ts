@@ -20,7 +20,7 @@ export class NavBarComponent {
   }
 
   ngOnInit(){
-    this.authService.checkAuth().subscribe(() => {});
+    //this.authService.checkAuth().subscribe(() => {});
   }
   logOut(){
     this.authService.logOut();

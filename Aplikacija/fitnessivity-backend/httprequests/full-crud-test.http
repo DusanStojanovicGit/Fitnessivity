@@ -9,6 +9,15 @@ content-type: application/json
     "password": "miske123"
 }
 
+### Login
+POST http://localhost:3000/user/login
+content-type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "test"
+}
+
 ### Update
 PUT http://localhost:3000/user/update
 content-type: application/json
@@ -105,7 +114,7 @@ content-type: application/json
 }
 
 ### Add plan 
-POST http://localhost:3000/plans/addPlan/647b9082feea74c75bc43ee2
+POST http://localhost:3000/plans/addPlan/64836ad31505867767a7d3a3
 
 ### Retrieve Last Workout 64753c6dd5cd8f9e1b4c40c5
 GET http://localhost:3000/workouts/getlastworkout/647b908ffeea74c75bc43ee5

@@ -1,31 +1,31 @@
 <div class="homepage-background" style="background-image: url(https://rare-gallery.com/mocahbig/65674-Woman-Brunette-GymGym-4k-Ultra-HD-Wallpaper.jpg);">
   <div>
     <p>Create and share your fitness plan<br> to achieve your goals and inspire others</p>
-    <a href="#"><div class="button"><span>Create your plan now!</span></div></a>
+    <a routerLink="/plans/create"><div class="button"><span>Create your plan now!</span></div></a>
   </div>
 </div>
 <div class="whats-you-passion">
   <p>What is your passion?</p>
   <div class="slicice">
-    <a href="#">
+    <a [routerLink]="['/plans']" [queryParams]="{ genre: 'Weightlifting' } ">
       <div>
         <img src="assets/gym.jpg" alt="">
-        <p>Gym</p>
+        <p>Weightlifting</p>
       </div>
     </a>
-    <a href="#">
+    <a [routerLink]="['/plans']" [queryParams]="{ genre: 'Crossfit' }">
       <div>
         <img src="https://images.unsplash.com/photo-1560073742-bc295f81c3c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=808&q=80" alt="">
-        <p>Running</p>
+        <p>Crossfit</p>
       </div>
     </a>
-    <a href="#">
+    <a [routerLink]="['/plans']" [queryParams]="{ genre: 'Calisthenics' }">
       <div>
         <img src="https://images.unsplash.com/photo-1593455026613-e30bfc0a54a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="">
-        <p>Street Workout</p>
+        <p>Calisthenics</p>
       </div>
     </a>
-    <a href="#">
+    <a [routerLink]="['/plans']" [queryParams]="{ genre: 'Yoga' }">
       <div>
         <img src="assets/yoga.jpg" alt="">
         <p>Yoga</p>

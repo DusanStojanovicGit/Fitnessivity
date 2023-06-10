@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Plan } from 'src/app/plan/plan.entity';
 import { PlanService } from 'src/app/plan/plan.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ReportsService } from 'src/app/reports/reports.service';
 
 @Component({
   selector: 'app-plan-view-page',
@@ -17,6 +18,7 @@ export class PlanViewPageComponent {
   imgSrc: string = '';
 
   constructor(
+    private reportsService: ReportsService,
     private planService: PlanService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService){
@@ -36,5 +38,19 @@ export class PlanViewPageComponent {
         });
       });
     });
+  }
+
+  reportPlan(){
+    const p = {
+      planId: String(this.plan._id),
+      comment: "testcomment"
+    }
+    this.reportsService.reportPlan(p).subscribe((response) => {
+      console.log('Report submitted successfully', response);
+    },
+    (error) => {
+      console.error('Error submitting report', error);
+    }
+    );
   }
 }

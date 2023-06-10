@@ -1,4 +1,4 @@
-<app-search-plans-bar></app-search-plans-bar>
+<app-search-plans-bar [selectedGenre]="selectedGenre"></app-search-plans-bar>
 <div class="container">
     <div *ngFor="let p of plans$ | async">
         <app-plan-base-display [plan]="p"></app-plan-base-display>

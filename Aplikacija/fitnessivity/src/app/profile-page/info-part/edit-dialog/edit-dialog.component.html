@@ -1,0 +1,45 @@
+<form [formGroup]="editUserForm" class="edit-user-form">
+    <h2 mat-dialog-title>Edit User</h2>
+    <mat-dialog-content>
+      <div class="form-floating">
+        <input type="text" formControlName="email" id="floatingInputEmail" />
+        <label for="floatingInputEmail">Email</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" formControlName="username" id="floatingInputUsername" />
+        <label for="floatingInputUsername">Username</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" formControlName="name" id="floatingInputName" />
+        <label for="floatingInputName">Name</label>
+      </div>
+      <div class="form-floating">
+        <textarea formControlName="bio" id="floatingTextareaBio"></textarea>
+        <label for="floatingTextareaBio">Bio</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" formControlName="type" id="floatingInputType" />
+        <label for="floatingInputType">Type</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" formControlName="gender" id="floatingInputGender" />
+        <label for="floatingInputGender">Gender</label>
+      </div>
+      <div class="file-upload">
+        <button mat-raised-button color="primary">
+          {{ myfilename }}
+          <input
+            type="file"
+            #UploadFileInput
+            (change)="fileChangeEvent($event)"
+            style="display: none"
+          />
+        </button>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button color="primary" (click)="submitForm()">Save</button>
+    </mat-dialog-actions>
+  </form>
+  

@@ -43,6 +43,7 @@ export class AuthService {
       }),
       tap((response) => {
         this.signedin$.next(true);
+        this.isAdmin$.next(response.isAdmin);
         this.username$.next(response.username);
       })
     )
@@ -53,6 +54,7 @@ export class AuthService {
       .pipe(
       tap((response) => {
         this.signedin$.next(true);
+        this.isAdmin$.next(response.isAdmin);
         this.username$.next(response.username)
       })
     );
@@ -80,11 +82,15 @@ export class AuthService {
   logOut(){
     return this.http.post(this.root + "logout", {}, {withCredentials: true})
       .pipe(
-        tap((response) => {
+        tap(() => {
           this.signedin$.next(false);
           this.username$.next('');
           this.isAdmin$.next(false);
         })
       );
+  }
+
+  userPermissions(username: string){
+    return this.username$.getValue() === username;
   }
 }

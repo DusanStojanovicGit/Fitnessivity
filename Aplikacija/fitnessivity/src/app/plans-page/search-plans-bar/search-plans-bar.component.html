@@ -15,9 +15,14 @@
     <div class="filter-chips-container">
         <span style="margin-right: 1rem">Genre</span>
         <mat-chip-listbox class="filter-chips">
-            <ng-container *ngFor="let genre of genres">
-                <mat-chip-option (selectionChange)="toggleGenreSelection(genre)">{{genre}}</mat-chip-option>
-            </ng-container>
+
+                <mat-chip-option 
+                    *ngFor="let genre of genres"
+                    [selected]="selectedGenre === genre"
+                    (click)="toggleGenreSelection(genre)"
+                    >
+                        {{genre}}
+                </mat-chip-option>
         </mat-chip-listbox>
     </div>
     <div class="filter-chips-container">

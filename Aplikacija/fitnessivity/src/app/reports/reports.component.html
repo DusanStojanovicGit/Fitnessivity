@@ -1,0 +1,8 @@
+<ng-container *ngFor="let r of reports">
+    <div class="container">
+        <div class="card">
+            <app-plan-base-display [plan]="r.plan"></app-plan-base-display> 
+            <h4 class="comment">{{r.comment}}</h4>
+        </div>
+    </div>
+</ng-container>

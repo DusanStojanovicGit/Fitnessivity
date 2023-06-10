@@ -21,7 +21,6 @@ export class AuthService {
         if (!(validatedUser instanceof UpdateUserDto)){
             user = await this.userService.create(validatedUser);
         }
-        user.trainings = 0;
         return user;
     }
 
