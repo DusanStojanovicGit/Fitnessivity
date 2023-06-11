@@ -3,7 +3,7 @@
     flex-shrink: 1;
     flex-direction: column;
     gap: 1rem;
-    width: 850px;
+    width: 100%;
 }
 
 .workout {
@@ -11,4 +11,38 @@
     grid-template-columns: 25% 12.5% 12.5% 12.5% 12.5% 12.5%;
     gap: 2.5%;
     padding-bottom: 2.5%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+
+
+  /* eslint-disable */
+  -moz-appearance: textfield;
+/* eslint-enable */
+
+}
+
+@media (max-width: 768px){
+    label{
+        font-size: small;
+    }
+
+    .workout .form-control{
+        font-size: calc(1rem * 0.8);
+        padding: calc(1rem * 0.8), calc(1rem * 0.8);
+    }
+}
+
+@media (max-width: 470px){
+    label{
+        font-size: x-small;
+    }
 }

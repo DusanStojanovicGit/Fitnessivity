@@ -1,36 +1,51 @@
-
 <div *ngIf="plan">
-    <div class="plan">
-        <div class="slika-plana">
-            <a [routerLink]="['plan', plan._id]"><img [src]="imgSrc" alt="" (error)="imgSrc = 'assets/gym.jpg'"/></a>
-        </div>
-        <div class="info">
-            <div class="naslov">
-                <a class="plan-link" [routerLink]="['plan', plan._id]"><h4>{{ plan.name }}</h4></a>
-            </div>
-            <div class="tip">
-                <h6>by <a [routerLink]="['/users', plan.creator]" class="user-link">{{ plan.creator }}</a></h6>
-            </div>        
-            <div class="stats">
-                <div class="count">
-                    {{plan.workoutsCompleted}}
-                </div>
-                <div class="days">
-                    {{plan.days}}
-                </div>
-                <div class="submission-days">
-                    {{submissionDays}}a
-                </div>
-            </div>
-            <div class="genre-type">
-                <div class="genre">
-                    {{plan.genre}}
-                </div>
-                <div class="type">
-                    {{plan.type}}
-                </div>
-            </div>
-        </div>
-        
+  <div class="plan">
+    <div class="slika-plana">
+      <a [routerLink]="['plan', plan._id]"
+        ><img [src]="imgSrc" alt="" (error)="imgSrc = 'assets/gym.jpg'"
+      /></a>
     </div>
+    <div class="info">
+      <div class="naslov">
+        <a class="plan-link" [routerLink]="['plan', plan._id]"
+          ><h4>{{ plan.name }}</h4></a
+        >
+      </div>
+      <div class="tip">
+        <h6>
+          by
+          <a [routerLink]="['/users', plan.creator]" class="user-link">{{
+            plan.creator
+          }}</a>
+        </h6>
+      </div>
+      <div class="stats">
+        <div class="count">
+          <i class="fa-regular fa-clock" style="font-size: 1.5em"></i>
+
+
+          {{ plan.days }} days
+        </div>
+        <div class="days">
+
+          <i class="fa-solid fa-list-check" style="font-size: 1.5em"></i>
+          {{ plan.workoutsCompleted }}
+        </div>
+
+        <div class="submission-days">
+          <i class="fa-solid fa-calendar-days" style="font-size: 1.5em"></i>
+
+          {{ submissionDays }} days ago
+        </div>
+      </div>
+      <div class="genre-type">
+        <div class="genre">
+          {{ plan.genre }}
+        </div>
+        <div class="type">
+          {{ plan.type }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

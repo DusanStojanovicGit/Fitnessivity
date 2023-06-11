@@ -10,26 +10,42 @@
   }
 
 
-  
+  .plan-image {
+    width: calc(100% - 24px);
+    aspect-ratio: 2;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.356);
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  .plan-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+
   .card-title {
     font-weight: bold;
     color: #333;
     margin-bottom: 2rem;
   }
-  
+
   h5 {
     font-weight: bold;
     color: #333;
     margin-bottom: 1rem;
   }
-  
+
   h6 {
     font-size: 0.8rem;
     font-weight: bold;
     color: #888;
     margin-bottom: 0.5rem;
   }
-  
+
   p {
     color: #555;
   }
@@ -39,7 +55,7 @@
     border: none;
     background-color: #f8f9fa;
   }
-  
+
   .mat-expansion-panel-header {
     font-weight: bold;
     color: #333;

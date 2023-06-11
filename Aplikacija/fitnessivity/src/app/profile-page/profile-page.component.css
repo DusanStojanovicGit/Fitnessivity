@@ -39,7 +39,6 @@ main div {
   display: grid;
   place-items: center;
   transition: height 1s;
-  overflow: hidden;
 }
 
 main div:active {
@@ -92,8 +91,6 @@ main div:active {
       align-items: start;
       padding: 1rem 2rem;
       height: auto;
-      overflow-y: auto;
-      overflow-x: hidden;
       min-height: 300px;
   }
 
@@ -106,20 +103,26 @@ main div:active {
 @media (min-width: 1200px) {
   main {
       grid-template-columns: 40% 60%;
-      grid-template-rows: 400px 300px 300px;
-  }
-
-  main div {
-      min-height: auto;
-      height: auto;
+      grid-template-rows: auto auto auto;
+      position: relative;
+      padding-bottom: 5rem;
   }
 
   .training-timeline {
       grid-column: 2/3;
       grid-row: 1/-1;
+
   }
 
-  .info {
-      padding-inline: 0;
+  main .container-left {
+    position: sticky;
+    top: 7rem;
+    background-color: transparent;
+    border: none;
+  }
+
+  main .container-left .friends {
+    width: calc(100% - 8.4px);
+    margin-top: 2rem;
   }
 }
