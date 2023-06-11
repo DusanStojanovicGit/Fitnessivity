@@ -1,4 +1,4 @@
-import { Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { WorkoutComponent } from './workout/workout.component';
@@ -6,6 +6,7 @@ import { genres, types } from 'src/app/plan/plan-constants';
 import { Plan } from 'src/app/plan/plan.entity';
 import { PlanService } from 'src/app/plan/plan.service';
 import { ImagesService } from 'src/app/images/images.service';
+import { Workout } from './workout/workout.entity';
 
 @Component({
   selector: 'app-create-plan',
@@ -14,19 +15,14 @@ import { ImagesService } from 'src/app/images/images.service';
 })
 export class CreatePlanComponent  {
 
+  @Input() plan?: Plan;
   @ViewChild(WorkoutComponent) workoutComponent!: WorkoutComponent;
   types : string[];
   genres: string[];
 
   workouts: WorkoutComponent[] = [];
 
-  formData = new FormGroup({
-    name: new FormControl(''),
-    type: new FormControl(''),
-    genre: new FormControl(''),
-    description: new FormControl(''),
-    picture: new FormControl(null)
-  });
+  formData!: FormGroup;
 
   imageURL!: string;
   maxFileSizeKB = 2200; 
@@ -45,7 +41,26 @@ export class CreatePlanComponent  {
   }
 
   ngOnInit(){
-    this.createNewWorkout();
+    this.createNewWorkout(this.plan?.workouts);
+    if (this.plan){
+      const p = this.plan;
+      this.formData = new FormGroup({
+        name: new FormControl(p.name),
+        type: new FormControl(p.type),
+        genre: new FormControl(p.genre),
+        description: new FormControl(p.description),
+        picture: new FormControl(null)
+      });
+    }
+    else{
+      this.formData = new FormGroup({
+        name: new FormControl(''),
+        type: new FormControl(''),
+        genre: new FormControl(''),
+        description: new FormControl(''),
+        picture: new FormControl(null)
+      });
+    }
   }
 
   submitForm() {
@@ -139,14 +154,26 @@ export class CreatePlanComponent  {
     };
   }
 
-  createNewWorkout() {
-    const newWorkout = new WorkoutComponent(this.formBuilder, this.viewContainerRef);
-    newWorkout.ngOnInit();
-    console.log('New WorkoutComponent created:', newWorkout);
-    newWorkout.workoutRemoved.subscribe(() => {
-      this.onWorkoutRemoved(newWorkout);
-    });
+createNewWorkout(workouts? : Workout[]) {
+    let createWorkout = (workout?: Workout) => {
+      const newWorkout = new WorkoutComponent(this.formBuilder, this.viewContainerRef);
+      newWorkout.ngOnInit(workout);
+      console.log('New WorkoutComponent created:', newWorkout);
+      newWorkout.workoutRemoved.subscribe(() => {
+        this.onWorkoutRemoved(newWorkout);
+      });
     this.workouts.push(newWorkout);
+    }
+
+    if (workouts){
+      workouts.forEach(p => {
+        createWorkout(p);
+      });
+    }
+    else {
+      createWorkout();
+    }
+    
   }
 
   onWorkoutRemoved(workout: WorkoutComponent) {
