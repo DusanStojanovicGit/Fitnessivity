@@ -53,4 +53,8 @@ export class PlanViewPageComponent {
     }
     );
   }
+
+  addPlan(){
+    
+  }
 }

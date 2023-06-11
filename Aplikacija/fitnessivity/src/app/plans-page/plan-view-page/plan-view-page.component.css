@@ -1,3 +1,55 @@
 .container {
     margin: 0;
 }
+
+.card {
+    border: none;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  }
+
+
+  
+  .card-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  h5 {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  h6 {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #888;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    color: #555;
+  }
+
+  .mat-expansion-panel {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    background-color: #f8f9fa;
+  }
+  
+  .mat-expansion-panel-header {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .bottom-div {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  .mat-expansion-panel:not(.mat-expanded) {
+    margin-bottom: 1rem;
+  }
