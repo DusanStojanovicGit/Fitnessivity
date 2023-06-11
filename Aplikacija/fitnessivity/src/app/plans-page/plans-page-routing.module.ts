@@ -16,7 +16,6 @@ const routes: Routes = [
       { path: '', component: FindPlanComponent },
       { path: 'myPlans', component: MyPlansComponent },
       { path: 'create', component: CreatePlanComponent, canActivate: [loggedInGuard('/plans/create')] },
-      { path: 'plan/:id', component: PlanViewPageComponent},
       { path: '**', component: ErrorComponent },
     ],
   },

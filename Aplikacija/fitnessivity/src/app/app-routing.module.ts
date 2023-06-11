@@ -10,6 +10,7 @@ import { SignOutComponent } from './auth/sign-out/sign-out.component';
 import { PlansPageModule } from './plans-page/plans-page.module';
 import { ReportsComponent } from './reports/reports.component';
 import { adminGuard, loginRegisterGuard } from './auth/guards';
+import { PlanViewPageComponent } from './plans-page/plan-view-page/plan-view-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent, canActivate: [loginRegisterGuard()] },
   { path: 'register', component: RegisterPageComponent, canActivate: [loginRegisterGuard()] },
   { path: 'logout', component: SignOutComponent },
+  { path: 'plan/:id', component: PlanViewPageComponent},
   { path: 'reports', component: ReportsComponent, canActivate: [adminGuard()]},
   { path: '**', component: ErrorComponent },
   

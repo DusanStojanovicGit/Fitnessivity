@@ -100,12 +100,11 @@
   padding-right: 0;
   margin-right: 0;
   border-radius: 15px;
-  width: calc(100% - 2rem);
-  padding: 1rem;
+  width: 100%;
 }
 
 .workout > div {
-  width: calc(100% - 2rem);
+  width: 100%;
 }
 
 .input-container {
@@ -136,6 +135,7 @@
 
 .workout #name {
   margin-bottom: 1rem;
+  padding-right: 0;
 }
 
 .workout .button {
@@ -203,6 +203,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 /* eslint-enable */
 
+}
+
+.workout-name{
+  padding-right: 0;
 }
 
 .workout-name > input:first-child {

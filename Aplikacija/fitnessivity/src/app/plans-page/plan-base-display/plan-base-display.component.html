@@ -1,13 +1,14 @@
+
 <div *ngIf="plan" class="all">
   <div class="plan">
     <div class="slika-plana">
-      <a [routerLink]="['plan', plan._id]"
+      <a [routerLink]="['/plan', plan._id]"
         ><img [src]="imgSrc" alt="" (error)="imgSrc = 'assets/gym.jpg'"
       /></a>
     </div>
     <div class="info">
       <div class="naslov">
-        <a class="plan-link" [routerLink]="['plan', plan._id]"
+        <a class="plan-link" [routerLink]="['/plan', plan._id]"
           ><h4>{{ plan.name }}</h4></a
         >
       </div>
@@ -49,3 +50,4 @@
     </div>
   </div>
 </div>
+
