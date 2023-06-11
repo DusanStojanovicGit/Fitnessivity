@@ -30,6 +30,7 @@ import { PlanCardComponent } from './plan/plan-card/plan-card.component';
 import { PlansPageModule } from './plans-page/plans-page.module';
 import { ReportsComponent } from './reports/reports.component';
 import { EditDialogComponent } from './profile-page/info-part/edit-dialog/edit-dialog.component';
+import { SubmitWorkoutComponent } from './submit-workout/submit-workout.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { EditDialogComponent } from './profile-page/info-part/edit-dialog/edit-d
     PlanCardComponent,
     ReportsComponent,
     EditDialogComponent,
+    SubmitWorkoutComponent,
   ],
   imports: [
     BrowserModule,

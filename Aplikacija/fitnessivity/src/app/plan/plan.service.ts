@@ -58,8 +58,8 @@ export class PlanService {
     );
   }
 
-  addPersonalPlan(){
-
+  addPersonalPlan(planId: string){
+    return this.http.post<Plan>(this.rootUrl +"addPlan/" + planId, null, {withCredentials: true}).pipe();
   }
 
   modifyPlan(){

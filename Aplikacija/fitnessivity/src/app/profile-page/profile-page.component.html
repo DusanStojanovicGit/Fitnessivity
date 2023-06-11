@@ -9,6 +9,7 @@
   </div>
   <div class="friends">Friends</div>
   <div class="training-timeline">
+    <button *ngIf="permissions | async" class="btn btn-primary" (click)="openSubmitWorkoutDialog()">Submit Workout</button>
     Training Timelin <br />Lorem ipsum dolor sit, amet consectetur adipisicing
     elit. Voluptas inventore, harum temporibus vitae velit quae quo cupiditate
     totam debitis dignissimos culpa accusamus vel aperiam deleniti autem

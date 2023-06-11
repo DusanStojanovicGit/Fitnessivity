@@ -5,6 +5,7 @@ import { Plan } from 'src/app/plan/plan.entity';
 import { PlanService } from 'src/app/plan/plan.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ReportsService } from 'src/app/reports/reports.service';
+import { NotificationsService } from 'src/app/notifications.service';
 
 @Component({
   selector: 'app-plan-view-page',
@@ -21,7 +22,8 @@ export class PlanViewPageComponent {
     private reportsService: ReportsService,
     private planService: PlanService,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService){
+    private authService: AuthService,
+    private notificationsService: NotificationsService){
       this.username$ = authService.username$;
     };
  
@@ -55,6 +57,8 @@ export class PlanViewPageComponent {
   }
 
   addPlan(){
-    
+    this.planService.addPersonalPlan(String(this.plan._id)).subscribe(p => {
+      this.notificationsService.ShowNotification("Plan added succesfully");
+    });
   }
 }

@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>Submit Workout</h2>
+<mat-dialog-content class="content">
+    <div class="form-floating mb-3">
+      <select
+        class="form-select"
+        id="floatingInputpersonalPlan"
+        name="personalPlan"
+        [(ngModel)]="selectedPlan"
+      >
+        <option *ngFor="let plan of user.personalPlans" [value]="plan">{{ plan.name }}</option>
+        </select>
+        <label for="floatingInputpersonalPlan">Plan</label>
+        </div>
+    <div class="form-floating mb-3">
+        <select
+        class="form-select"
+        id="floatingInputWorkout"
+        name="Workout"
+        [(ngModel)]="selectedWorkout"
+        >
+        <option *ngFor="let workout of selectedPlan.workouts" [value]="workout">{{ workout.name }}</option>
+        </select>
+        <label for="floatingInputWorkout">Workout</label>
+    </div>
+    <div>
+        <div class="workout" style="padding-left: 1%;">
+            <label>Exercise Name</label>
+            <label>Weight</label>
+            <label>Reps</label>
+            <label>Rest</label>
+            <label>Sets</label>
+            <label>Duration</label>
+        </div>
+        <div
+          *ngFor="let exercise of exercises; let i = index"
+        >
+        <div class="workout">
+              <div class="text-input">
+                <input
+                  [(ngModel)]="exercise.name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Exercise name"
+                />
+              </div>
+              <div class="text-input">
+                <input
+                  [(ngModel)]="exercise.weight"
+                  type="text"
+                  class="form-control"
+                  placeholder="weight"
+                />
+              </div>
+              <div class="number-inputs">
+                <input
+                  [(ngModel)]="exercise.reps"
+                  type="number"
+                  class="form-control"
+                  placeholder="rep"
+                />
+              </div>
+              <div class="number-inputs">
+                <input
+                  [(ngModel)]="exercise.sets"
+                  type="number"
+                  class="form-control"
+                  placeholder="set"
+                />
+              </div>
+              <div class="number-inputs">
+                <input
+                  [(ngModel)]="exercise.rest"
+                  type="number"
+                  class="form-control"
+                  placeholder="rest"
+                />
+              </div>
+              <div class="number-inputs">
+                <input
+                  [(ngModel)]="exercise.length"
+                  type="number"
+                  class="form-control"
+                  placeholder="duration"
+                />
+              </div>
+          </div>
+        </div>
+    </div>
+</mat-dialog-content>

@@ -7,6 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UniqueUsername } from '../auth/validators/unique-username';
 import { AuthService } from '../auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SubmitWorkoutComponent } from '../submit-workout/submit-workout.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -16,7 +18,8 @@ import { AuthService } from '../auth/auth.service';
 export class ProfilePageComponent {
   constructor(private userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService){
+    private authService: AuthService,
+    private dialog: MatDialog){
     };
   user$!: Observable<User>;
   userExists$ = new BehaviorSubject(false);
@@ -34,5 +37,13 @@ export class ProfilePageComponent {
     }
   )   
   }
+  openSubmitWorkoutDialog() {
+    this.user$.subscribe((user: User) => {
+      this.dialog.open(SubmitWorkoutComponent, {
+        data: { user: user }
+      });
+    });
+  }
 }
+
 
