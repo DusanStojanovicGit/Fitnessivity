@@ -21,7 +21,6 @@ import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view
     PlanBaseDisplayComponent,
     WorkoutComponent,
     CreatePlanComponent,
-    PlanViewPageComponent,
     WorkoutViewComponent,
   ],
 

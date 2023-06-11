@@ -48,8 +48,8 @@ export class PlanService {
     
   
 
-  showUserPlans(){
-    
+  showUserPlans(username: string){
+    this.http.get<Plan[]>(this.rootUrl + username);
   }
 
   createPlan(plan: Plan){

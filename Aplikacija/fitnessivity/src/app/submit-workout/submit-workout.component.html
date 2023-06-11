@@ -6,6 +6,7 @@
         id="floatingInputpersonalPlan"
         name="personalPlan"
         [(ngModel)]="selectedPlan"
+        (selectionChange)="showNextWorkout()"
       >
         <option *ngFor="let plan of user.personalPlans" [value]="plan">{{ plan.name }}</option>
         </select>
@@ -16,9 +17,10 @@
         class="form-select"
         id="floatingInputWorkout"
         name="Workout"
-        [(ngModel)]="selectedWorkout"
+        [ngModel]="selectedIndex"
+        (ngModelChange)="onWorkoutChange($event)"
         >
-        <option *ngFor="let workout of selectedPlan.workouts" [value]="workout">{{ workout.name }}</option>
+        <option *ngFor="let workout of selectedPlan.workouts; let i = index" [ngValue]="i">{{ workout.name }}</option>
         </select>
         <label for="floatingInputWorkout">Workout</label>
     </div>
@@ -86,4 +88,8 @@
           </div>
         </div>
     </div>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button mat-dialog-close color="primary" (click)="onSubmit()">Submit Workout</button>
+    </mat-dialog-actions>
 </mat-dialog-content>

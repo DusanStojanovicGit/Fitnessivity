@@ -1,11 +1,11 @@
-  .all{
+    .all{
      box-shadow: 10px 10px 8px #888888;
   }
   .slika-plana {
     position: relative;
     padding-bottom: 0.2rem;
   }
-
+  
   .slika-plana img {
     width: 100%;
     aspect-ratio: 2;
