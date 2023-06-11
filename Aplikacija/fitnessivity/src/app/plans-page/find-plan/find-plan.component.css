@@ -8,11 +8,14 @@
     row-gap: 3rem;
     margin-bottom: 5rem;
     padding-inline: 0;
+    padding-top: 3rem;
+
   }
-  
+
   .container > * {
     width: 30%;
     border: 1px solid #6e6e6ebb;
     border-radius: 5px;
     position: relative;
   }
+

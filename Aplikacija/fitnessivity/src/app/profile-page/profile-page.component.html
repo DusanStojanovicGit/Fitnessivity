@@ -2,63 +2,16 @@
 <app-info-part [user]="user" [permissions]="permissions"></app-info-part>
 <body class="background">
 <main>
-  <div class="programs">
+  <div class="my-plans">My Plans
     <ng-container *ngFor="let p of user.personalPlans">
-        <app-plan-card [plan]="p"></app-plan-card>
+        <app-plan-card [isOwner]=true [plan]="p"></app-plan-card>
     </ng-container>
   </div>
-  <div class="friends">Friends</div>
+  <div class="active-plans">Active Plans </div>
+  
   <div class="training-timeline">
     <button *ngIf="permissions | async" class="btn btn-primary" (click)="openSubmitWorkoutDialog()">Submit Workout</button>
-    Training Timelin <br />Lorem ipsum dolor sit, amet consectetur adipisicing
-    elit. Voluptas inventore, harum temporibus vitae velit quae quo cupiditate
-    totam debitis dignissimos culpa accusamus vel aperiam deleniti autem
-    maiores, mollitia dolore quisquam! Natus at quod tempore eligendi, est nam
-    laudantium fugiat assumenda sapiente sunt minima voluptatum rem
-    voluptatibus, dolorem accusantium necessitatibus sint placeat totam
-    doloremque omnis! Maiores labore praesentium iste nobis perspiciatis! Modi
-    suscipit, facere, qui sapiente itaque amet repudiandae assumenda hic vitae
-    vero eveniet possimus earum. Voluptates error vitae unde dolorum repudiandae
-    facere perferendis necessitatibus molestiae delectus, in earum voluptas
-    sint. Quidem, repellat velit? Cum, maiores autem itaque dolor, sequi odit
-    illo unde minima aperiam reiciendis impedit incidunt similique inventore,
-    molestiae nemo non dolore praesentium? Laboriosam ipsum dolore amet vel
-    necessitatibus. Aut deleniti suscipit quod, repellat consequatur quisquam
-    dolorum saepe provident sunt natus quaerat fugit obcaecati ad perspiciatis,
-    necessitatibus dignissimos nostrum voluptate! Inventore tenetur hic officia
-    similique cupiditate nulla! Incidunt, voluptatem. Accusamus hic similique
-    atque voluptate laborum quod assumenda voluptas pariatur provident placeat,
-    beatae facilis doloremque quae ratione quasi quos laudantium sint quidem
-    esse at! Veritatis delectus modi ex voluptatibus eius? Sint similique
-    incidunt nemo facere, reprehenderit eos repellendus officia molestiae magnam
-    dolore repudiandae dolor architecto veritatis eveniet eum nisi id nulla
-    nobis dolorum quas provident accusamus! Eos expedita dolorem velit? Iusto,
-    facere optio itaque ea, et vero a excepturi reprehenderit odit animi fugit
-    sunt, perferendis veritatis dolor sit. Vero, non ducimus! Quis corporis
-    modi, neque aspernatur maxime cupiditate iusto ipsa. Odit ducimus cupiditate
-    esse soluta, in recusandae possimus non architecto obcaecati debitis
-    pariatur culpa doloremque nam tempore eveniet deserunt sequi tenetur id
-    consequatur, repellat facilis vitae beatae dolores nemo. Laudantium.
-    Officiis cupiditate repellendus voluptas at tempora? Voluptas facilis
-    laudantium blanditiis. Hic ipsam labore repudiandae optio animi, commodi
-    voluptatem blanditiis accusamus laborum voluptate dolore expedita amet
-    corrupti officiis at dolor qui. Porro, eveniet! Harum assumenda vero
-    molestiae neque, commodi deleniti aliquam maxime fugit ex tenetur sequi
-    minus quisquam explicabo accusamus eaque mollitia laudantium omnis fugiat ad
-    voluptate doloremque vitae! Fuga, nostrum. Consequatur voluptatibus
-    praesentium amet deleniti debitis recusandae cumque in, minus facere ipsam
-    non voluptate at explicabo repellendus impedit omnis! Porro, et ipsam
-    nesciunt voluptates delectus nemo quam? Sit, necessitatibus recusandae. Iste
-    nam eum tempore facilis. Vero temporibus in nulla totam suscipit itaque,
-    assumenda, veritatis voluptatem reprehenderit facilis culpa cum sunt enim
-    sed, quidem illum unde qui corrupti odio eveniet voluptatum? Tempore, atque.
-    Quasi neque officia facilis eos illum ex reprehenderit perferendis expedita
-    molestias dolorum accusamus asperiores labore assumenda culpa ullam qui aut
-    eius animi, a exercitationem? Eligendi architecto provident perspiciatis?
-    Atque fuga odit commodi veniam distinctio voluptas doloremque possimus
-    ipsum! Consequatur culpa praesentium, ipsa ipsam inventore eligendi quas
-    perferendis veniam expedita mollitia cumque deserunt omnis voluptatum, iste
-    qui corporis accusamus.
+
   </div>
 </main>
 </body>
