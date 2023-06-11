@@ -3,6 +3,8 @@
   background: radial-gradient( farthest-corner at 80px 80px, #dfe9f7 0%, #f1f1f1 100%);
   width:100%;
   border-bottom: 1px solid #bbbbbb;
+  font-family: 'Gendis Body';
+
 }
 
 .info {
@@ -11,6 +13,7 @@
   display: flex;
   gap: 1rem;
   padding: 1rem;
+
 }
 
 .left-div{
@@ -40,13 +43,13 @@
 
 .username{
   gap: 0;
+  font-style: oblique;
 }
 
 .profile-picture-frame {
   min-width: 200px;
   max-width: 200px;
-
-  grid-row: 1/3;
+   grid-row: 1/3;
   place-self: center;
 }
 
@@ -55,6 +58,7 @@
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 10px 10px 8px #888888;
 }
 
 .informations {
@@ -83,7 +87,7 @@
   margin-block: 1rem;
   padding: 1rem;
   font-size: 18px;
-  font-family: sans-serif;
+  font-family: 'Gendis Body';
   margin-left: auto;
 
 }
