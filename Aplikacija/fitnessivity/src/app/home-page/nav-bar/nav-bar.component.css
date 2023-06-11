@@ -96,3 +96,14 @@
         background-color: #278BFF;
         z-index: 999;
     }
+
+    .active
+{
+  border-bottom: .3rem solid #4DA7FF;
+  padding-bottom: 0px;
+}
+
+li:not(.active){
+ color: #999999;
+  ;
+}

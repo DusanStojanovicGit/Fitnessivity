@@ -3,25 +3,24 @@
 }
 
 .background {
-  background-color: #dfeaf1;
   padding-top: 32px;
+
 }
 
 .container {
   background-color: rgb(13, 54, 107) !important;
+
 }
+
 
 .button:active {
   background-color: #1482ff;
 }
 
-.button:nth-child(1) {
-  grid-row: 1/2;
+.my-plans, .active-plans {
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.356);
 }
 
-.button:nth-child(2) {
-  grid-row: 2/3;
-}
 
 main {
   max-width: 1300px;
@@ -114,6 +113,7 @@ main div:active {
   .training-timeline {
       grid-column: 2/3;
       grid-row: 1/-1;
+      box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.356);
 
   }
 
