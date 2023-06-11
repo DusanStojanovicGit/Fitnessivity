@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { RedirectService } from 'src/app/redirect.service';
 import { User } from 'src/app/user/user.entity';
+import { NotificationsService } from 'src/app/notifications.service';
 
 @Component({
   selector: 'app-login-page',
@@ -16,6 +17,7 @@ export class LoginPageComponent {
   constructor(
     private authService:  AuthService,
     private redirectService: RedirectService,
+    private NotificationsService:NotificationsService
     ){}
 
   clearErrorMessage(){
@@ -23,16 +25,21 @@ export class LoginPageComponent {
   }
 
   onLogin(account: { email: string, password: string }) {
+
       this.authService.logIn(account).subscribe(
       (response) => {
         this.redirectService.loginRegisterRedirect(response);
+        this.NotificationsService.ShowNotification("Login successfully");
+
       },
       (error) => {
         console.log(error);
-        
+
           this.errorMessage = error.error.message;
-        
+
       }
+
     );
+
   }
 }

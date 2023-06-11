@@ -1,3 +1,4 @@
+import { NotificationsService } from 'src/app/notifications.service';
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -13,17 +14,16 @@ export class NavBarComponent {
   signedin$: BehaviorSubject<boolean | null>;
   username$: BehaviorSubject<string>;
   isAdmin$ : BehaviorSubject<boolean | null>;
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService,private NotificationsService:NotificationsService){
     this.signedin$ = this.authService.signedin$;
     this.username$ = this.authService.username$;
     this.isAdmin$ = this.authService.isAdmin$;
   }
 
-  ngOnInit(){
-    //this.authService.checkAuth().subscribe(() => {});
-  }
+
   logOut(){
-    this.authService.logOut();
+    this.authService.logOut()
+    ;
   }
 }
 

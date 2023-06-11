@@ -5,10 +5,10 @@
         <img class="profile-img" [src]="imgSrc" alt="" (error)="imgSrc = 'assets/profile-picture.webp'">
       </div>
       <div class="informations">
-        <span>
+        <div>
           <p class="name">{{user.name}}</p>
           <p class ="username">@{{user.username}}</p>
-        </span>
+        </div>
           <p class="trainings">Trainings: {{user.trainings}}</p>
           <p class="type">Type: {{user.type}}</p>
       </div>
@@ -18,7 +18,6 @@
     </div>
   </div>
     <div class="buttons">
-      <div class="button prvi">Message</div>
       <button *ngIf="permissions | async" class="button drugi" (click)="openEditDialog()">Edit</button>
     </div>
   </div>

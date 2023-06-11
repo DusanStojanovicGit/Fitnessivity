@@ -1,3 +1,4 @@
+import { NotificationsService } from 'src/app/notifications.service';
 import { MatchPassword } from '../validators/match-password';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -18,7 +19,7 @@ export class RegisterPageComponent implements OnInit {
   errorMessage: string = '';
   types = types;
   user!: User;
-  imageSrc: string = 'assets/profile-picture.webp'; 
+  imageSrc: string = 'assets/profile-picture.webp';
   gender = ["other", "male", "female"];
   showSecondForm: boolean = false;
   secondForm: FormGroup;
@@ -62,7 +63,8 @@ export class RegisterPageComponent implements OnInit {
     private redirectService: RedirectService,
     private imageCompress: NgxImageCompressService,
     private userService: UserService,
-    private imagesService: ImagesService) {
+    private imagesService: ImagesService,
+    private NotificationsService:NotificationsService) {
       this.secondForm = new FormGroup({
         bio: new FormControl(''),
         fitnessType: new FormControl(''),
@@ -71,7 +73,7 @@ export class RegisterPageComponent implements OnInit {
       });
     }
   ngOnInit(): void {
-    
+
   }
 
   showErrors(fieldName: string): boolean {
@@ -91,6 +93,8 @@ export class RegisterPageComponent implements OnInit {
         (res) => {
         this.showSecondForm = true;
         this.user = res;
+        this.NotificationsService.ShowNotification("Account created successfully");
+
         },
         (error) => {
           this.errorMessage = error.error.message;
@@ -106,7 +110,7 @@ export class RegisterPageComponent implements OnInit {
         gender: String(this.secondForm.value.gender),
       }
       const imageFileValue = this.secondForm.controls['picture'].value;
-      
+
       this.userService.updateUser(formValue).subscribe(
         (res) => {
           this.user = res;
@@ -116,6 +120,8 @@ export class RegisterPageComponent implements OnInit {
             const imageFile = imageFileValue as File;
             formData.append('file', imageFile, this.user._id);
             this.imagesService.uploadImage(formData);
+            this.NotificationsService.ShowNotification("Data updated successfully");
+
           }
         },
         (error) => {
