@@ -17,7 +17,6 @@ export class WorkoutComponent implements OnInit {
     private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit(workout?: Workout) {
-    console.log('WorkoutComponent ngOnInit called.');
     if (!this.workoutData) {
       this.workoutData = this.formBuilder.group({
         name: [workout?.name || '', Validators.required],
@@ -25,7 +24,6 @@ export class WorkoutComponent implements OnInit {
       });
       this.addInputs(workout);
     }
-    console.log('workoutData after ngOnInit:', this.workoutData);
   }
 
   get exercises() {

@@ -5,7 +5,7 @@
         <a routerLink="/"><img src="assets/logo.png" alt="logo"></a>
         <ul>
             <a routerLink="/plans"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Workout Plans</li></a>
-            <a routerLink="/training"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Submit Training</li></a>
+            <!-- <a routerLink="/training"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Submit Training</li></a> -->
             <ng-container *ngIf="!(signedin$ | async)">
               <a routerLink="/login"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</li></a>
               <a routerLink="/register"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register</li></a>

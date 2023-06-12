@@ -1,12 +1,13 @@
 import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { WorkoutComponent } from './workout/workout.component';
+import { WorkoutComponent } from '../../workout/workout.component';
 import { genres, types } from 'src/app/plan/plan-constants';
 import { Plan } from 'src/app/plan/plan.entity';
 import { PlanService } from 'src/app/plan/plan.service';
 import { ImagesService } from 'src/app/images/images.service';
-import { Workout } from './workout/workout.entity';
+import { Workout } from '../../workout/workout.entity';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-plan',
@@ -34,7 +35,8 @@ export class CreatePlanComponent  {
     private imageCompress: NgxImageCompressService,
     private formBuilder: FormBuilder,
     private imageService: ImagesService,
-    private planService: PlanService
+    private planService: PlanService,
+    private router: Router,
   ) {
     this.types = types;
     this.genres = genres;
@@ -51,6 +53,7 @@ export class CreatePlanComponent  {
         description: new FormControl(p.description),
         picture: new FormControl(null)
       });
+      console.log(this.plan);
       this.imageURL = String('http://10.241.185.86:3000/images/' + this.plan._id);
     }
     else{
@@ -88,18 +91,36 @@ export class CreatePlanComponent  {
       plan.workouts.push(workoutDataWithIndex);
     });
 
-    console.log(plan);
+    console.log(this.imageURL);
 
-    this.planService.createPlan(plan).subscribe(planResponse => {
-      const planId = planResponse._id;
-      if (imageFileValue) {
-        const imageFile = imageFileValue as File;
-        formData.append('file', imageFile, planId);
-      }
-      this.imageService.uploadImage(formData);
-    }, error => {
+    if (this.plan){
+      console.log("in updatePlan");
+      this.planService.updatePlan({_id: this.plan._id, ...plan}).subscribe((res) => {
+        if (!(this.imageURL === String('http://10.241.185.86:3000/images/' + this.plan!._id))) {
+          console.log("compared imageurls")
+          const imageFile = imageFileValue as File;
+          formData.append('file', imageFile, plan._id);
+          this.imageService.uploadImage(formData);
+          
+        }
+        console.log(res._id);
+        this.router.navigate(['/plan/' + res._id])
+      });
+    }
+    else {
+      console.log("in createPlan");
+      this.planService.createPlan(plan).subscribe(res => {
+        const planId = res._id;
+        if (imageFileValue) {
+          const imageFile = imageFileValue as File;
+          formData.append('file', imageFile, planId);
+          this.imageService.uploadImage(formData);
+        }
+        this.router.navigate(['/plan/' + res._id])
+      }, error => {
 
-    });
+      });
+    }
    }
 
 
@@ -144,7 +165,6 @@ createNewWorkout(workouts? : Workout[]) {
     let createWorkout = (workout?: Workout) => {
       const newWorkout = new WorkoutComponent(this.formBuilder, this.viewContainerRef);
       newWorkout.ngOnInit(workout);
-      console.log('New WorkoutComponent created:', newWorkout);
       newWorkout.workoutRemoved.subscribe(() => {
         this.onWorkoutRemoved(newWorkout);
       });

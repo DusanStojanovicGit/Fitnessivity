@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ReportsService } from 'src/app/reports/reports.service';
 import { NotificationsService } from 'src/app/notifications.service';
 import { User } from 'src/app/user/user.entity';
+import { MatDialog } from '@angular/material/dialog';
+import { ReportDialogComponent } from 'src/app/reports/report-dialog/report-dialog.component';
 
 @Component({
   selector: 'app-plan-view-page',
@@ -28,7 +30,8 @@ export class PlanViewPageComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private notificationsService: NotificationsService){
+    private notificationsService: NotificationsService,
+    public dialog: MatDialog){
       this.username$ = authService.username$;
       this.isAdmin$ = authService.isAdmin$;
       this.user$ = authService.user$;
@@ -62,17 +65,9 @@ export class PlanViewPageComponent {
   }
 
   reportPlan(){
-    const p = {
-      planId: String(this.plan._id),
-      comment: "testcomment"
-    }
-    this.reportsService.reportPlan(p).subscribe((response) => {
-      console.log('Report submitted successfully', response);
-    },
-    (error) => {
-      console.error('Error submitting report', error);
-    }
-    );
+    this.dialog.open(ReportDialogComponent, {
+      data: { planId: this.plan._id }
+    });
   }
 
   addPlan() {

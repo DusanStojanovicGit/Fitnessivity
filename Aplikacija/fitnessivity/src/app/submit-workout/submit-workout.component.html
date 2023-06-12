@@ -6,6 +6,7 @@
         id="floatingInputpersonalPlan"
         name="personalPlan"
         [(ngModel)]="selectedPlan"
+        (ngModelChange)="onWorkoutChange($event)"
         (selectionChange)="showNextWorkout()"
       >
         <option *ngFor="let plan of user.personalPlans" [value]="plan">{{ plan.name }}</option>

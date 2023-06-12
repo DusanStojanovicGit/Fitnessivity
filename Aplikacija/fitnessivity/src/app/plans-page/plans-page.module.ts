@@ -8,7 +8,7 @@ import { MyPlansComponent } from './my-plans/my-plans.component';
 import { SearchPlansBarComponent } from './search-plans-bar/search-plans-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlanBaseDisplayComponent } from './plan-base-display/plan-base-display.component';
-import { WorkoutComponent } from './create-plan/workout/workout.component';
+import { WorkoutComponent } from '../workout/workout.component';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 
 @NgModule({

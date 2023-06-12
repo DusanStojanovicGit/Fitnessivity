@@ -46,7 +46,7 @@ export class PlanService {
   }
     
   showUserPlans(username: string){
-    this.http.get<Plan[]>(this.rootUrl + username);
+    return this.http.get<Plan[]>(this.rootUrl + username).pipe();
   }
 
   createPlan(plan: Plan){
@@ -71,8 +71,10 @@ export class PlanService {
     return this.http.get<Plan[]>(this.rootUrl + 'recommended').pipe();
   }
 
-  modifyPlan(){
-
+  updatePlan(plan: Plan) {
+    return this.http.put<Plan>(this.rootUrl + 'updateplan', plan, {withCredentials: true}).pipe(
+      tap(res => console.log('Response:', res)) 
+    );
   }
 
   deletePlan(planId: string){

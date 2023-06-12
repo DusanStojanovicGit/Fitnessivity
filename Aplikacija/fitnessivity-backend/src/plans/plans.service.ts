@@ -1,4 +1,4 @@
-import { Injectable, MethodNotAllowedException } from '@nestjs/common';
+import { Injectable, MethodNotAllowedException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Plan } from './plans.entity';
 import { Model } from 'mongoose';
@@ -89,18 +89,18 @@ export class PlansService {
         return plans;
     }
 
-    async updatePlan(dto: UpdatePlanDto) : Promise<Plan>{
-        const existingPlan = await this.planModel.findById(dto.planLink);
-        const updatedPlan = {
-            ...existingPlan,
-            ...dto,
-        };
-        const updatedPlanInstance = await this.planModel.findByIdAndUpdate(
-            dto.planLink,
-            updatedPlan,
-            { new: true },
-         );
-        return updatedPlanInstance;
+    async updatePlan(dto: UpdatePlanDto){
+        const existingPlan = await this.planModel.findById(dto._id);
+        if (existingPlan){
+            for (const key in dto) {
+                existingPlan[key] = dto[key];
+              }
+            await this.planModel.updateOne({ _id: dto._id }, { $set: existingPlan });
+            return existingPlan;
+        }
+        else {
+            return new NotFoundException("Plan not found");
+        }
     }
     
     async deletePlan(planId: string, userId: string, isAdmin: boolean){
