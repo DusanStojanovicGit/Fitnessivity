@@ -1,12 +1,8 @@
 import { Injectable, forwardRef, Inject } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { Exercise, Workout } from './workouts.entity';
-import { SubmittedWorkout } from './workouts.entity';
-import { WorkoutDto } from './dtos/workouts.dto';
-import { UserService } from 'src/user/user.service';
+import { Workout } from './workouts.entity';
 import { PlansService } from 'src/plans/plans.service';
-import { PersonalPlan } from 'src/plans/plans.entity';
 
 @Injectable()
 export class WorkoutService {

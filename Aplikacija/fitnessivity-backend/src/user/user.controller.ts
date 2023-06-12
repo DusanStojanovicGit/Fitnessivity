@@ -14,7 +14,7 @@ export class UserController {
 
     @Get('/whoami')
     async whoAmI(@Session() session: any){
-        const user = await this.userService.findById(session.userId)
+        const user = await this.userService.findById(session.userId);
         return user;
     }
 

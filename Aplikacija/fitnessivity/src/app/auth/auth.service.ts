@@ -12,6 +12,7 @@ export class AuthService {
   isAdmin$ = new BehaviorSubject<boolean | null>(null);
   username$ = new BehaviorSubject<string>('');
   user: User | null = null;
+  user$ = new BehaviorSubject<User | null>(null);
   constructor(private http: HttpClient) { }
 
   usernameAvailable(username:string){
@@ -31,6 +32,7 @@ export class AuthService {
       }),
       tap((response) => {
         this.user = response;
+        this.user$.next(response);
         this.signedin$.next(true);
         this.isAdmin$.next(response.isAdmin);
         this.username$.next(response.username);
@@ -44,7 +46,7 @@ export class AuthService {
       tap((response) => {
         this.signedin$.next(true);
         this.user = response;
-        console.log(this.user);
+        this.user$.next(response);
         this.isAdmin$.next(response.isAdmin);
         this.username$.next(response.username)
       })
@@ -65,6 +67,7 @@ export class AuthService {
           this.isAdmin$.next(response.isAdmin);
           this.username$.next(response.username);
           this.user = response;
+          this.user$.next(response);
           return { response };
         })
       );
@@ -77,6 +80,7 @@ export class AuthService {
           this.signedin$.next(false);
           this.username$.next('');
           this.isAdmin$.next(false);
+          this.user$.next(null);
         })
       );
   }

@@ -3,7 +3,6 @@ import { CreateUserDto } from './dtos/create-user.dto';
 import { Model } from 'mongoose';
 import { User } from './user.entity';
 import { InjectModel } from '@nestjs/mongoose';
-import { plainToClass } from 'class-transformer';
 import { AuthService } from './auth.service';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { SubmittedWorkout } from 'src/workouts/workouts.entity';
@@ -44,7 +43,7 @@ export class UserService {
   }
 
   async findById(_id: string){
-    const user = await this.userModel.findById(_id);
+    const user = await this.userModel.findById(_id).populate('personalPlans');
     if (!user){
       throw new NotFoundException("User not found")
     }
@@ -61,6 +60,13 @@ export class UserService {
 
   findOne(email: string) {
     return this.userModel.findOne({email});
+  }
+
+  async removePersonalPlanFromUser(userId: string, planId: string) {
+    await this.userModel.updateOne(
+      { _id: userId },
+      { $pull: { personalPlans: planId } }
+    );
   }
 
   findOneByUsername(username: string){

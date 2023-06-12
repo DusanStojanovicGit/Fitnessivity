@@ -33,14 +33,14 @@ export class PlansController {
         return this.planService.updatePlan(dto);
     }
 
-    @Delete(':id')
-    async deletePlan(@Param('id') id: string){
-        this.planService.deletePlan(id);
+    @Delete('personalplan/:id')
+    async deletePersonalPlan(@Param('id') id: string, @Session() session : any){
+        return this.planService.deletePersonalPlan(id, session.userId, session.isAdmin);
     }
 
-    @Delete('personalplan/:id')
-    async deletePersonalPlan(@Param('id') id: string){
-        this.planService.deletePersonalPlan(id);
+    @Delete(':id')
+    async deletePlan(@Param('id') id: string, @Session() session : any){
+       return this.planService.deletePlan(id, session.userId, session.isAdmin);
     }
 
     @Get('search')
@@ -59,7 +59,6 @@ export class PlansController {
         const plans = await this.planService.getPlansByUser(username);
         return plans;
     }
-
 
     @Get('get/:id')
     async getPlan(@Param('id') id: string){

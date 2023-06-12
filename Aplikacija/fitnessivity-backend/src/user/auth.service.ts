@@ -8,7 +8,6 @@ import { UpdateUserDto } from "./dtos/update-user.dto";
 
 const scrypt = promisify(_scrypt);
 
-// Ime, prezime, datum rođenja, pol. 
 @Injectable()
 export class AuthService {
     constructor(
@@ -39,7 +38,7 @@ export class AuthService {
     }
 
     async login(email: string, password: string) {
-        const user = await this.userService.findOne(email).select('+password');
+        const user = await this.userService.findOne(email).select('+password').populate('personalPlans');
         if (!user){
             throw new NotFoundException("User not found");
         }

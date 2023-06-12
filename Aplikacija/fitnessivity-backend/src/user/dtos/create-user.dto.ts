@@ -1,4 +1,3 @@
-import { Exclude } from 'class-transformer';
 import { IsNotEmpty, IsEmail, MinLength, IsOptional } from 'class-validator';
 
 export class CreateUserDto {

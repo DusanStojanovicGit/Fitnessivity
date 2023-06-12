@@ -13,7 +13,6 @@ export interface Exercise {
     rest : number 
 }
 
-
 export class Workout {
   name : string;
   day : number;

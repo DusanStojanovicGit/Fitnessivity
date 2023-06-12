@@ -22,8 +22,8 @@ export class EditDialogComponent {
   maxFileSizeKB = 2200;
 
 
-  types = types;
-  genres = genres;
+  types = genres;
+  genders = ["Other", "Male", "Female"];
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,

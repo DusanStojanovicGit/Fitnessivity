@@ -17,7 +17,6 @@ export class PlansService {
         private readonly planModel : Model<Plan>,
 
         private readonly userService : UserService,
-        private readonly workoutService: WorkoutService,
 
         @InjectModel('PersonalPlan')
         private readonly personalPlanModel: Model<PersonalPlan>
@@ -104,47 +103,34 @@ export class PlansService {
         return updatedPlanInstance;
     }
     
-    async deletePlan(planId: string){
+    async deletePlan(planId: string, userId: string, isAdmin: boolean){
+        const user = await this.userService.findById(userId);
+        const plan = await this.findById(planId);
+        if (user.username === plan.creator || isAdmin){
+            const deletedPlan = await this.planModel.deleteOne({ _id: planId });
+            return deletedPlan;
+        }
+        else {
+            return new MethodNotAllowedException("No permissions");
+        }
+
+    }
+
+    async deletePlanFromReport(planId: string){
         const deletedPlan = await this.planModel.deleteOne({ _id: planId });
         return deletedPlan;
     }
 
-    async deletePersonalPlan(planId: string){
-        const deletedPlan = await this.personalPlanModel.deleteOne({_id: planId});
-        return deletedPlan;
+    async deletePersonalPlan(planId: string, userId: string, isAdmin: boolean){
+        const plan = await this.personalPlanModel.findById(planId);
+        console.log(plan);
+        if (plan.user.toString() === userId || isAdmin) {
+            await this.userService.removePersonalPlanFromUser(userId, planId);
+            const deletedPlan = await this.personalPlanModel.deleteOne({_id: planId});
+            return deletedPlan;
+        }
+        else{
+            return new MethodNotAllowedException("No permissions");
+        }
     }
 }
-
-/*submit training -> ()
-
->Frontend selektuje dan koji je na redu
->salje se na taj plan request
->request autofill podatke sa poslednjim treningom u tom danu. 
->Ako ne postoji ?
-    > fill se sa podacima iz parent treninga!
->Submit button ->
-    >Ako korisnik menja ili dodaje vezbe ?
-        >korisnik se pita da li zeli da usnimi promenu vezbe u originalnom planu ?
-            > ako zeli, snima se originalni plan!!
-    >Originalnom planu se dodaje uradjen trening
-    >Datum objave postaje datum poslednjeg treninga za dan
-    >Dan se inkrementira za 1.
-*/
-
-/*
-Napraviti novog usera ->
-Modifikovati usera
-    napraviti plan sa slikom (samo create plan)
-    modifikovati plan (modify plan)
-    add taj isti plan (create personal plan)
-    submitaj 3 workouts (retrieveLastWorkout, submitWorkout)
-    ulogovati drugi nalog(login)
-    submitaj 1 workout (retrieveLastWorkout, submitWorkout)
-    obrisati personalni plan ()
-    obrisati plan 
-
-    ocekivani rezultati pre obrisa: 
-        >plan na dobrom danu
-        >submissionDate uspesan
-        >dodaju se parentplanu submitted workouts
-*/ // find latestWorkout 

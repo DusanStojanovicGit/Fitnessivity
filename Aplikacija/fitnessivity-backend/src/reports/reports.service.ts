@@ -3,7 +3,6 @@ import { Model } from 'mongoose';
 import { PlansService } from 'src/plans/plans.service';
 import { ReportedPlan } from './reports.entity';
 import { InjectModel } from '@nestjs/mongoose';
-import { stringify } from 'querystring';
 
 @Injectable()
 export class ReportsService {
@@ -37,7 +36,7 @@ export class ReportsService {
         const report = await this.reportsModel.findById(reportId).populate('plan');
         const planId = report.plan._id;
         this.dismissReport(reportId);
-        return this.planService.deletePlan(planId);
+        return this.planService.deletePlanFromReport(planId);
     }
 
 

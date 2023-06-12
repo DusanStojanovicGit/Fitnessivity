@@ -1,9 +1,8 @@
 import { Type } from "class-transformer";
-import { IsNotEmpty, IsOptional, MinLength, ValidateNested } from "class-validator";
+import { IsNotEmpty, IsOptional, ValidateNested } from "class-validator";
 import { WorkoutDto } from "src/workouts/dtos/workouts.dto";
 
 export class SubmitPlanDto{
-    
     @IsNotEmpty()
     name: string;
 

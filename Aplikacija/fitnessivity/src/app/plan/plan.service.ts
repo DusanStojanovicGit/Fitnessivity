@@ -55,6 +55,10 @@ export class PlanService {
     );
   }
 
+  removePersonalPlan(planId: string){
+    return this.http.delete(this.rootUrl + 'personalplan/' + planId, {withCredentials: true});
+  }
+
   addPersonalPlan(planId: string){
     return this.http.post<Plan>(this.rootUrl +"addPlan/" + planId, null, {withCredentials: true}).pipe();
   }
@@ -71,8 +75,8 @@ export class PlanService {
 
   }
 
-  deletePlan(){
-
+  deletePlan(planId: string){
+    return this.http.delete(this.rootUrl + planId, {withCredentials: true});
   }
 
   getPlan(id: string | null){
