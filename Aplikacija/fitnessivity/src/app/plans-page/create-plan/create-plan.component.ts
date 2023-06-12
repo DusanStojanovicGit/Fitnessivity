@@ -25,7 +25,7 @@ export class CreatePlanComponent  {
   formData!: FormGroup;
 
   imageURL!: string;
-  maxFileSizeKB = 2200; 
+  maxFileSizeKB = 2200;
 
   inputSets: any[] = [{}];
 
@@ -92,7 +92,7 @@ export class CreatePlanComponent  {
 
     this.planService.createPlan(plan).subscribe(planResponse => {
       const planId = planResponse._id;
-      if (imageFileValue) { 
+      if (imageFileValue) {
         const imageFile = imageFileValue as File;
         formData.append('file', imageFile, planId);
       }
@@ -174,7 +174,7 @@ createNewWorkout(workouts? : Workout[]) {
     else {
       createWorkout();
     }
-    
+
   }
 
   onWorkoutRemoved(workout: WorkoutComponent) {

@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { UserService } from 'src/app/user/user.service';
 import { ImagesService } from 'src/app/images/images.service';
+import { genres, types } from 'src/app/plan/plan-constants';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +19,11 @@ export class EditDialogComponent {
   @ViewChild('UploadFileInput') uploadFileInput!: ElementRef;
   myfilename = 'Select File';
   imageSrc! : string;
-  maxFileSizeKB = 2200; 
+  maxFileSizeKB = 2200;
+
+
+  types = types;
+  genres = genres;
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
@@ -32,7 +37,7 @@ export class EditDialogComponent {
     this.editUserForm = new FormGroup({
       email: new FormControl(this.user.email, [
         Validators.email,
-        Validators.required, 
+        Validators.required,
         Validators.pattern( /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)]),
       username: new FormControl(this.user.username, [
         Validators.required,
@@ -52,6 +57,8 @@ export class EditDialogComponent {
       picture: new FormControl(null)
     });
     this.imageSrc = data.imgSrc;
+
+
   }
 
   fileChangeEvent(event: any) {
@@ -109,7 +116,7 @@ export class EditDialogComponent {
     const user = this.user;
 
     Object.keys(submitForm).forEach(key => {
-      if (user.hasOwnProperty(key) 
+      if (user.hasOwnProperty(key)
         && submitForm[key as keyof typeof submitForm] === user[key as keyof User]) {
         delete submitForm[key as keyof typeof submitForm];
       }
@@ -117,24 +124,25 @@ export class EditDialogComponent {
     console.log(submitForm);
 
 
-    if (submitForm || imageFileValue){
-        this.userService.updateUser(submitForm).subscribe(response => {
-        const newUsername = response.username;
-        if (imageFileValue){
-          const formData = new FormData();
-          const imageFile = imageFileValue as File;
-          formData.append('file', imageFile, this.user._id);
-          this.imageService.uploadImage(formData);
-        }
-        if (newUsername != this.user.username){
-          this.router.navigate(['users', newUsername]);
-        } else {
-          location.reload();
-        }
-          
+    if (submitForm || imageFileValue) {
+      if (submitForm) {
+        this.userService.updateUser(submitForm).subscribe((response) => {
+          const newUsername = response.username;
 
-      });
+          if (imageFileValue) {
+            const formData = new FormData();
+            const imageFile = imageFileValue as File;
+            formData.append('file', imageFile, this.user._id);
+            this.imageService.uploadImage(formData);
+          }
+          if (newUsername != this.user.username) {
+            this.router.navigate(['users', newUsername]);
+          } else {
+            // location.reload();
+          }
+        });
+      }
     }
-    
+
   }
 }
