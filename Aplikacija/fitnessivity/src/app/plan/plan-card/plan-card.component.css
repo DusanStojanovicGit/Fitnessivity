@@ -10,6 +10,7 @@
   }
 
 .image-left {
+  cursor: pointer;
   width: 35%;
   height: 100%;
   opacity: 0.8;
@@ -41,20 +42,24 @@
   font-style: oblique;
 }
 
+.font-blue {
+  color: blue;
+}
+
 .data-top {
   display: flex;
   flex-direction: column;
 }
 
 .plan-name {
-
+  cursor: pointer;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
 }
 
 .author {
-
+  cursor: pointer;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

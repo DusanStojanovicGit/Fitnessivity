@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="image-left" 
+  <div class="image-left" (click)="onPlanClick()"
   [style.background]="'url(' + getSrc() + ')'"
   [style.backgroundSize] = "'cover'"></div>
   <div class="image-right"></div>
   <div class="data">
     <div class="data-top">
-      <div class="plan-name">{{plan.name}}</div>
-      <div *ngIf="!isOwner" class="author">by {{plan.creator}}</div>
+      <div class="plan-name" (click)="onPlanClick()">{{plan.name}}</div>
+      <div *ngIf="!isOwner" class="author" (click)="onOwnerClick()">by <span class="font-blue">{{plan.creator}}</span></div>
     </div>
     <div class="data-bottom">
       <div class="type">{{plan.type}}</div>

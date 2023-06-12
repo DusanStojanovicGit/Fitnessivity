@@ -5,11 +5,10 @@
         class="form-select"
         id="floatingInputpersonalPlan"
         name="personalPlan"
-        [(ngModel)]="selectedPlan"
-        (ngModelChange)="onWorkoutChange($event)"
-        (selectionChange)="showNextWorkout()"
+        [ngModel]="selectedPlanIndex"
+        (ngModelChange)="onPlanChange($event)"
       >
-        <option *ngFor="let plan of user.personalPlans" [value]="plan">{{ plan.name }}</option>
+        <option *ngFor="let plan of user.personalPlans; let i = index" [ngValue]="i">{{ plan.name }}</option>
         </select>
         <label for="floatingInputpersonalPlan">Plan</label>
         </div>
@@ -18,7 +17,7 @@
         class="form-select"
         id="floatingInputWorkout"
         name="Workout"
-        [ngModel]="selectedIndex"
+        [ngModel]="selectedWorkoutIndex"
         (ngModelChange)="onWorkoutChange($event)"
         >
         <option *ngFor="let workout of selectedPlan.workouts; let i = index" [ngValue]="i">{{ workout.name }}</option>

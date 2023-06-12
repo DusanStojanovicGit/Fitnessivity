@@ -15,7 +15,8 @@ export class SubmitWorkoutComponent {
   selectedPlan: Plan;
   selectedWorkout!: Workout;
   exercises!: [Exercise];
-  selectedIndex: number = 0;
+  selectedWorkoutIndex: number = 0;
+  selectedPlanIndex: number = 0;
   constructor(
     public dialogRef: MatDialogRef<SubmitWorkoutComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {user : User},
@@ -40,18 +41,20 @@ export class SubmitWorkoutComponent {
     this.workoutService.getLastWorkout(String(this.selectedPlan._id)).subscribe(w =>{
       this.selectedWorkout = w;
       this.exercises = w.exercises;
-      this.selectedIndex = w.day-1;
+      this.selectedWorkoutIndex = w.day-1;
     });
   }
 
   onWorkoutChange(selectedIndex: number) {
-    this.selectedIndex = selectedIndex;
-    this.selectedWorkout = this.selectedPlan.workouts[this.selectedIndex];
+    this.selectedWorkoutIndex = selectedIndex;
+    this.selectedWorkout = this.selectedPlan.workouts[this.selectedWorkoutIndex];
     this.exercises = this.selectedWorkout.exercises;
    console.log(this.selectedWorkout);
   }
 
-  onPlanChange(){
-    
+  onPlanChange(selectedIndex: number){
+    this.selectedPlanIndex = selectedIndex;
+    this.selectedPlan = this.user.personalPlans[this.selectedPlanIndex];
+    this.showNextWorkout();
   }
 }
