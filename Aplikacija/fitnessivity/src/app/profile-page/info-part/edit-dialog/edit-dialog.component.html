@@ -1,86 +1,130 @@
 <form [formGroup]="editUserForm" class="edit-user-form">
-    <h2 mat-dialog-title>Edit User</h2>
-    <mat-dialog-content class="content">
-      <div class="profile-picture-frame">
-        <img class="profile-img" [src]="imageSrc" alt="">
+  <h2 mat-dialog-title>Edit User</h2>
+  <mat-dialog-content class="content">
+    <div class="profile-picture-frame">
+      <img class="profile-img" [src]="imageSrc" alt="" />
+    </div>
+    <div class="file-upload">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="UploadFileInput.click()"
+      >
+        {{ myfilename }}
+      </button>
+      <input
+        type="file"
+        #UploadFileInput
+        (change)="fileChangeEvent($event)"
+        class="form-control picture"
+        accept="image/png, image/jpeg"
+      />
+    </div>
+    <div class="form-floating">
+      <input
+        type="text"
+        formControlName="email"
+        id="floatingInputEmail"
+        name="email"
+      />
+      <label for="floatingInputEmail">Email</label>
+    </div>
+    <div class="error" *ngIf="showErrors('email')">
+      <p *ngIf="editUserForm.get('email')?.errors?.['required']">
+        Email is required.
+      </p>
+      <p *ngIf="editUserForm.get('email')?.errors?.['pattern']">
+        Invalid email address.
+      </p>
+    </div>
+    <div class="form-floating">
+      <input
+        type="text"
+        formControlName="username"
+        id="floatingInputUsername"
+      />
+      <label for="floatingInputUsername">Username</label>
+    </div>
+    <div class="error" *ngIf="showErrors('username')">
+      <p *ngIf="editUserForm.get('username')?.errors?.['required']">
+        Username is required.
+      </p>
+      <p *ngIf="editUserForm.get('username')?.errors?.['minlength']">
+        Username needs to have at least 3 characters.
+      </p>
+      <p *ngIf="editUserForm.get('username')?.errors?.['maxlength']">
+        Username needs to have at most 20 characters.
+      </p>
+      <p *ngIf="editUserForm.get('username')?.errors?.['pattern']">
+        Invalid format.
+      </p>
+    </div>
+    <div class="form-floating">
+      <input type="text" formControlName="name" id="floatingInputName" />
+      <label for="floatingInputName">Name</label>
+    </div>
+    <div class="error" *ngIf="showErrors('name')">
+      <p *ngIf="editUserForm.get('name')?.errors?.['required']">
+        Name is required.
+      </p>
+      <p *ngIf="editUserForm.get('name')?.errors?.['minlength']">
+        Name needs to have at least 4 characters.
+      </p>
+      <p *ngIf="editUserForm.get('name')?.errors?.['maxlength']">
+        Name needs to have at most 20 characters.
+      </p>
+      <p *ngIf="editUserForm.get('name')?.errors?.['pattern']">
+        Invalid format.
+      </p>
+    </div>
+    <div class="form-floating">
+      <textarea formControlName="bio" id="floatingTextareaBio"></textarea>
+      <label for="floatingTextareaBio">Bio</label>
+    </div>
+
+
+
+    <div class = "row">
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            id="floatingInputFitnessType"
+            name="fitnessType"
+            formControlName="fitnessType"
+            required
+          >
+            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+          </select>
+          <label for="floatingInputFitnessType">Fitness Type</label>
+        </div>
       </div>
-      <div class="file-upload">
-        <button mat-raised-button color="primary" (click)="UploadFileInput.click()">
-          {{ myfilename }}
-        </button>
-        <input
-          type="file"
-          #UploadFileInput
-          (change)="fileChangeEvent($event)"
-          class="form-control picture"
-          accept="image/png, image/jpeg"
-        />
-        
-      </div>
-      <div class="form-floating">
-        <input type="text" formControlName="email" id="floatingInputEmail" name="email"/>
-        <label for="floatingInputEmail">Email</label>
-      </div>
-      <div class="error" *ngIf="showErrors('email')">
-        <p *ngIf="editUserForm.get('email')?.errors?.['required']">
-          Email is required.
-        </p>
-        <p *ngIf="editUserForm.get('email')?.errors?.['pattern']">
-          Invalid email address.
-        </p>
-      </div>
-      <div class="form-floating">
-        <input type="text" formControlName="username" id="floatingInputUsername" />
-        <label for="floatingInputUsername">Username</label>
-      </div>
-      <div class="error" *ngIf="showErrors('username')">
-        <p *ngIf="editUserForm.get('username')?.errors?.['required']">
-          Username is required.
-        </p>
-        <p *ngIf="editUserForm.get('username')?.errors?.['minlength']">
-          Username needs to have at least 3 characters.
-        </p>
-        <p *ngIf="editUserForm.get('username')?.errors?.['maxlength']">
-          Username needs to have at most 20 characters.
-        </p>
-        <p *ngIf="editUserForm.get('username')?.errors?.['pattern']">
-          Invalid format.
-        </p>
-      </div>
-      <div class="form-floating">
-        <input type="text" formControlName="name" id="floatingInputName" />
-        <label for="floatingInputName">Name</label>
-      </div>
-      <div class="error" *ngIf="showErrors('name')">
-        <p *ngIf="editUserForm.get('name')?.errors?.['required']">
-          Name is required.
-        </p>
-        <p *ngIf="editUserForm.get('name')?.errors?.['minlength']">
-          Name needs to have at least 4 characters.
-        </p>
-        <p *ngIf="editUserForm.get('name')?.errors?.['maxlength']">
-          Name needs to have at most 20 characters.
-        </p>
-        <p *ngIf="editUserForm.get('name')?.errors?.['pattern']">
-          Invalid format.
-        </p>
-      </div>
-      <div class="form-floating">
-        <textarea formControlName="bio" id="floatingTextareaBio"></textarea>
-        <label for="floatingTextareaBio">Bio</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" formControlName="type" id="floatingInputType" />
-        <label for="floatingInputType">Type</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" formControlName="gender" id="floatingInputGender" />
-        <label for="floatingInputGender">Gender</label>
-      </div>
-    </mat-dialog-content>
-    <mat-dialog-actions>
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button mat-dialog-close color="primary" (click)="submitForm()" [disabled]="editUserForm.invalid">Save</button>
-    </mat-dialog-actions>
-  </form>
-  
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            id="floatingInputGender"
+            name="gender"
+            formControlName="gender"
+            required
+          >
+          <option *ngFor="let gen of genres" [value]="gen">{{ gen }}</option>
+          </select>
+          <label for="floatingInputGender">Gender</label>
+        </div>
+    </div>
+  </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-button
+      mat-dialog-close
+      color="primary"
+      (click)="submitForm()"
+      [disabled]="editUserForm.invalid"
+    >
+      Save
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -18,7 +18,9 @@
     </div>
   </div>
     <div class="buttons">
-      <button *ngIf="permissions | async" class="button drugi" (click)="openEditDialog()">Edit</button>
+
+      <button *ngIf="permissions | async" class="btn btn-primary" (click)="openEditDialog()">Edit</button>
+
     </div>
   </div>
 </div>
