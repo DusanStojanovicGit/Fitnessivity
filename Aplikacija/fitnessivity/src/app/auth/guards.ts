@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { inject } from '@angular/core';
 import { first, skipWhile, take } from 'rxjs';
 import { RedirectService } from '../redirect.service';
+import { PlanService } from '../plan/plan.service';
 
 export function loginRegisterGuard(): CanActivateFn {
   return async () => {
@@ -68,5 +69,30 @@ export function loggedInGuard(url: string): CanActivateFn {
             router.navigate(['/login']);
             return false;
         }
+    }
+}
+
+export function ownerGuard(): CanActivateFn {
+    return async(route: ActivatedRouteSnapshot) => {
+        const authService: AuthService = inject(AuthService);
+        const router: Router = inject(Router);
+        const planService: PlanService = inject(PlanService);
+        const id = route.paramMap.get('id');
+        let user = await authService.checkAuth().toPromise();
+        console.log(user);
+        if (user?.personalPlans.find(p => p._id == id)){
+            return true;
+        } else {
+            const plan = await planService.getPlan(id).toPromise();
+            const bool: boolean = (plan?.creator === user?.username);
+            if (bool){
+                return true;
+            }else {
+                router.navigate(['/']);
+                return false;
+            }
+            
+        }
+            
     }
 }

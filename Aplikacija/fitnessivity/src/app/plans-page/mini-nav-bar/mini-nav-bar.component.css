@@ -14,7 +14,6 @@ nav {
   height: 91px;
   margin: 0 auto;
   display: flex;
-  align-items: left;
   justify-content: first baseline;
   position: relative;
   font-family: 'Gendis Body';
@@ -31,19 +30,18 @@ ul {
   margin-bottom: 0;
   align-content: first baseline;
   padding-left: 0%;
+  color: black;
 }
 
 li {
   list-style-type: none;
-  color: black;
   padding-top: 2.3rem;
-  padding-bottom: 1.3rem;
-  border-bottom: .3rem solid transparent;
+  padding-bottom: 0px;
   transition: all 0.1s ease-in-out;
   position: relative;
 }
 
-li:hover {
+nav ul li:hover {
   color: black;
   border-bottom: .3rem solid #4DA7FF;
 }
@@ -54,4 +52,16 @@ ul:hover li:not(:hover) {
 
 a {
   text-decoration: none;
+  color: black;
+}
+
+.active
+{
+  border-bottom: .3rem solid #4DA7FF;
+  padding-bottom: 0px;
+}
+
+li:not(.active){
+ color: #999999;
+  ;
 }
