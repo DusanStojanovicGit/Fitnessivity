@@ -46,6 +46,7 @@ export class UserController {
         const user = await this.authService.login(dto.email, dto.password);
         session.userId = user._id;
         session.permissions = user.isAdmin;
+        user.password = null;
         return user;
     }
 

@@ -12,6 +12,7 @@ import { PlanBaseDisplayComponent } from './plan-base-display/plan-base-display.
 import { WorkoutComponent } from './create-plan/workout/workout.component';
 import { PlanViewPageComponent } from './plan-view-page/plan-view-page.component';
 import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view.component';
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { WorkoutViewComponent } from './plan-view-page/workout-view/workout-view
     WorkoutComponent,
     CreatePlanComponent,
     WorkoutViewComponent,
+    EditPlanComponent,
   ],
 
   imports: [

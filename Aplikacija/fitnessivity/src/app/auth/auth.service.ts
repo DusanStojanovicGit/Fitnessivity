@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, catchError, map, tap, throwError } from 'rxjs';
 import { User } from '../user/user.entity';
-
-interface SignedinResponse {
-  isLoggedIn: boolean;
-  username: string;
-  isAdmin: boolean;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +11,7 @@ export class AuthService {
   signedin$ = new BehaviorSubject<boolean | null>(null);
   isAdmin$ = new BehaviorSubject<boolean | null>(null);
   username$ = new BehaviorSubject<string>('');
+  user: User | null = null;
   constructor(private http: HttpClient) { }
 
 
@@ -36,6 +31,7 @@ export class AuthService {
         return throwError(error);
       }),
       tap((response) => {
+        this.user = response;
         this.signedin$.next(true);
         this.isAdmin$.next(response.isAdmin);
         this.username$.next(response.username);
@@ -48,6 +44,8 @@ export class AuthService {
       .pipe(
       tap((response) => {
         this.signedin$.next(true);
+        this.user = response;
+        console.log(this.user);
         this.isAdmin$.next(response.isAdmin);
         this.username$.next(response.username)
       })
@@ -57,18 +55,19 @@ export class AuthService {
 
   checkAuth() {
     return this.http
-      .get<SignedinResponse>(this.root + 'whoami', { withCredentials: true })
+      .get<User>(this.root + 'whoami', { withCredentials: true })
       .pipe(
         catchError(error => {
           this.signedin$.next(false);
           this.isAdmin$.next(false);
           return throwError(error);
         }),
-        tap(({ username, isAdmin }) => {
+        tap((response) => {
           this.signedin$.next(true);
-          this.isAdmin$.next(isAdmin);
-          this.username$.next(username);
-          return { username, isAdmin };
+          this.isAdmin$.next(response.isAdmin);
+          this.username$.next(response.username);
+          this.user = response;
+          return { response };
         })
       );
   }
@@ -87,4 +86,9 @@ export class AuthService {
   userPermissions(username: string){
     return this.username$.getValue() === username;
   }
+
+  getUser(){
+    return this.user;
+  }
+
 }

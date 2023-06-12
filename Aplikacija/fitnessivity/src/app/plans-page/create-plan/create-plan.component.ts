@@ -51,6 +51,7 @@ export class CreatePlanComponent  {
         description: new FormControl(p.description),
         picture: new FormControl(null)
       });
+      this.imageURL = String('http://10.241.185.86:3000/images/' + this.plan._id);
     }
     else{
       this.formData = new FormGroup({

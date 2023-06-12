@@ -20,7 +20,7 @@ export class WorkoutComponent implements OnInit {
     console.log('WorkoutComponent ngOnInit called.');
     if (!this.workoutData) {
       this.workoutData = this.formBuilder.group({
-        name: ['', Validators.required],
+        name: [workout?.name || '', Validators.required],
         exercises: this.formBuilder.array([]),
       });
       this.addInputs(workout);

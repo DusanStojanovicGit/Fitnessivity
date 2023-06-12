@@ -6,7 +6,8 @@ import { CreatePlanComponent } from './create-plan/create-plan.component';
 import { PlansPageComponent } from './plans-page.component';
 import { ErrorComponent } from '../error/error.component';
 import { PlanViewPageComponent } from './plan-view-page/plan-view-page.component';
-import { loggedInGuard } from '../auth/guards';
+import { loggedInGuard, ownerGuard } from '../auth/guards';
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: '', component: FindPlanComponent },
       { path: 'myPlans', component: MyPlansComponent },
       { path: 'create', component: CreatePlanComponent, canActivate: [loggedInGuard('/plans/create')] },
+      { path: 'edit/:id', component: EditPlanComponent, canActivate:[loggedInGuard(''), ownerGuard()]},
       { path: '**', component: ErrorComponent },
     ],
   },
