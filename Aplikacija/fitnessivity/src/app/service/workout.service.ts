@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Workout } from '../plans-page/create-plan/workout/workout.entity';
+import { Workout } from '../workout/workout.entity';
 import { NotificationsService } from '../notifications.service';
 
 @Injectable({

@@ -11,6 +11,10 @@ export class PlanCardComponent {
   @Input() isOwner :boolean = false;
 
   getSrc(){
-    return "http://localhost:3000/images/" + this.plan._id;
+    if (this.plan.parentPlan){
+      return "http://10.241.185.86:3000/images/" + this.plan.parentPlan;
+    } else {
+      return "http://10.241.185.86:3000/images/" + this.plan._id;
+    }
   }
 }

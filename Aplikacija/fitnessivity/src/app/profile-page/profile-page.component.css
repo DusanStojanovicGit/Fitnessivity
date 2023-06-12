@@ -12,6 +12,9 @@
 
 }
 
+.workout {
+  width:100%
+}
 
 .button:active {
   background-color: #1482ff;
@@ -113,6 +116,7 @@ main div:active {
   .training-timeline {
       grid-column: 2/3;
       grid-row: 1/-1;
+      grid-template-columns: 1fr;
       box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.356);
 
   }

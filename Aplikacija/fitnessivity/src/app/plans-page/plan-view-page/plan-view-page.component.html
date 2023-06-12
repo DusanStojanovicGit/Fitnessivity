@@ -45,8 +45,7 @@
   </div>
   <div class="container mt-4">
     <h3 class="card-title">Workouts</h3>
-    <div class="row">
-      <div class="col">
+
         <mat-accordion>
           <mat-expansion-panel *ngFor="let workout of plan.workouts; let ii = index">
             <h5>{{workout.name}}</h5>
@@ -82,8 +81,6 @@
           </mat-expansion-panel>
         </mat-accordion>
       </div>
-    </div>
-  </div>
   <div class="col">
     <div class="d-flex justify-content-center bottom-div">
       <button *ngIf="!personalPlan" class = "btn btn-primary mt-2 ms-4" (click)="addPlan()">ADD</button>

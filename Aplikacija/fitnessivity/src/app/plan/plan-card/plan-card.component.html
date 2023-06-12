@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="image-left"></div>
+  <div class="image-left" 
+  [style.background]="'url(' + getSrc() + ')'"
+  [style.backgroundSize] = "'cover'"></div>
   <div class="image-right"></div>
   <div class="data">
     <div class="data-top">

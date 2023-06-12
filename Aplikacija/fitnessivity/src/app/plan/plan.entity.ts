@@ -1,4 +1,4 @@
-import { Workout } from "../plans-page/create-plan/workout/workout.entity";
+import { Workout } from "../workout/workout.entity";
 import { User } from "../user/user.entity";
 
 export interface Plan {

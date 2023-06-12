@@ -1,4 +1,5 @@
 import { Plan } from "../plan/plan.entity";
+import { Workout } from "../workout/workout.entity";
 
 export interface User {
     _id: string;
@@ -14,6 +15,7 @@ export interface User {
     birthDate: Date;
     gender: string;
     personalPlans: Plan[];
+    submittedWorkouts?: Workout[];
 };
 
 export interface UpdateUserDto {

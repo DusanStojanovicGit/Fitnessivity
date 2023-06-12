@@ -3,6 +3,7 @@ import { PlansService } from './plans.service';
 import { SubmitPlanDto } from './dtos/submit-plan.dto';
 import { UpdatePlanDto } from './dtos/update-plan.dto';
 import { PersonalPlanService } from './personal-plan/personal-plan.service';
+import { response } from 'express';
 
 @Controller('plans')
 export class PlansController {
@@ -30,7 +31,8 @@ export class PlansController {
 
     @Put('/updateplan')
     async updatePlan(@Body() dto: UpdatePlanDto){
-        return this.planService.updatePlan(dto);
+        const res = await this.planService.updatePlan(dto);
+        return res;
     }
 
     @Delete('personalplan/:id')

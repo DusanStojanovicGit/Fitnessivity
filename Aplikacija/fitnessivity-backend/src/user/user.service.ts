@@ -85,7 +85,8 @@ export class UserService {
       .findOne({username: usernameRegex})
       .select('+email +bio +type +trainings')
       .populate('submittedWorkouts')
-      .populate('personalPlans');
+      .populate('personalPlans')
+      .populate('submittedWorkouts');
     if (!user)
       throw new NotFoundException("User profile not found");
     return user;

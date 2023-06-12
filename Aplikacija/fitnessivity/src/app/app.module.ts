@@ -26,6 +26,7 @@ import { EditDialogComponent } from './profile-page/info-part/edit-dialog/edit-d
 import { SubmitWorkoutComponent } from './submit-workout/submit-workout.component';
 import { PlanViewPageComponent } from './plans-page/plan-view-page/plan-view-page.component';
 import { ReportDialogComponent } from './reports/report-dialog/report-dialog.component';
+import { WorkoutDisplayComponent } from './profile-page/workout-display/workout-display.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ReportDialogComponent } from './reports/report-dialog/report-dialog.com
     SubmitWorkoutComponent,
     PlanViewPageComponent,
     ReportDialogComponent,
+    WorkoutDisplayComponent,
   ],
   imports: [
     BrowserModule,

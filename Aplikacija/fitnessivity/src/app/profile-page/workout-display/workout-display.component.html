@@ -1,0 +1,37 @@
+<div class="container">
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{workout.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="mt-2" *ngFor="let exercise of workout.exercises; let i = index">
+        <div class="mt-2 workout">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" class="w-25">Exercise {{i + 1}}</th>
+                <th scope="col" class="w-25">Weight</th>
+                <th scope="col" class="w-25">Reps</th>            
+                <th scope="col" class="w-25">Sets</th>
+                <th scope="col" class="w-25">Rest</th>
+                <th scope="col" class="w-25">Length</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="w-25">{{ exercise.name }}</td>
+                <td class="w-25">{{ exercise.weight }}</td>
+                <td class="w-25">{{ exercise.reps }}</td>
+                <td class="w-25">{{ exercise.sets }}</td>
+                <td class="w-25">{{ exercise.rest }}</td>
+                <td class="w-25">{{ exercise.length }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

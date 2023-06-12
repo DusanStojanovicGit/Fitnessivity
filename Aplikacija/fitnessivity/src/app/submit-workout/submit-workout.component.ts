@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { User } from '../user/user.entity';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Plan } from '../plan/plan.entity';
-import { Exercise, Workout } from '../plans-page/create-plan/workout/workout.entity';
+import { Exercise, Workout } from '../workout/workout.entity';
 import { WorkoutService } from '../service/workout.service';
 
 @Component({
@@ -49,5 +49,9 @@ export class SubmitWorkoutComponent {
     this.selectedWorkout = this.selectedPlan.workouts[this.selectedIndex];
     this.exercises = this.selectedWorkout.exercises;
    console.log(this.selectedWorkout);
+  }
+
+  onPlanChange(){
+    
   }
 }
