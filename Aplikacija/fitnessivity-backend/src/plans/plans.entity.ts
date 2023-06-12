@@ -24,6 +24,9 @@ export class Plan extends Document {
   workoutsCompleted: number;
 
   @Prop()
+  isRecommended: boolean = false;
+
+  @Prop()
   days: number;
 
   @Prop()

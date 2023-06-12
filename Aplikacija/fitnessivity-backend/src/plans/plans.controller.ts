@@ -23,6 +23,11 @@ export class PlansController {
         return plan;
     }
 
+    @Put('recommendplan/:id')
+    async recommendPlan(@Session() session: any, @Param('id') id: string){
+        return this.planService.recommendPlan(session.permissions, id);
+    }
+
     @Put('/updateplan')
     async updatePlan(@Body() dto: UpdatePlanDto){
         return this.planService.updatePlan(dto);
@@ -44,11 +49,17 @@ export class PlansController {
       return programs;
     }
 
+    @Get('recommended')
+    async getRecommendedPlans(){
+        return this.planService.getRecommendedPlans();
+    }
+
     @Get(':username')
     async getPlansByUser(@Param('username') username: string){
         const plans = await this.planService.getPlansByUser(username);
         return plans;
     }
+
 
     @Get('get/:id')
     async getPlan(@Param('id') id: string){

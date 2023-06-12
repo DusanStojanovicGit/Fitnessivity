@@ -29,14 +29,14 @@ export class ReportsService {
         return this.reportsModel.find().populate('plan');
     }
 
-    async removeReport(reportId: string){
+    async dismissReport(reportId: string){
         return this.reportsModel.findByIdAndRemove(reportId);
     }
 
     async approveReport(reportId: string){
-        const report = await this.reportsModel.findById(reportId).populate('Plan');
+        const report = await this.reportsModel.findById(reportId).populate('plan');
         const planId = report.plan._id;
-        this.removeReport(reportId);
+        this.dismissReport(reportId);
         return this.planService.deletePlan(planId);
     }
 

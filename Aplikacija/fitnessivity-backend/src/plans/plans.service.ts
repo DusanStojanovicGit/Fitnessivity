@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, MethodNotAllowedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Plan } from './plans.entity';
 import { Model } from 'mongoose';
@@ -58,7 +58,24 @@ export class PlansService {
         return this.planModel.create(plan);
     }
 
+    async recommendPlan(permissions: boolean, id: string){
+        if (permissions){
+            const plan = await this.planModel.findById(id);
+            return this.planModel.findByIdAndUpdate(id, {isRecommended: !plan.isRecommended});
+        }
+        return new MethodNotAllowedException();
+    }
+
+    async getRecommendedPlans(){
+        const plans = await this.planModel.find({isRecommended: true}).exec();
+        console.log(plans);
+        return plans;
+    }
+    
+      
+
     async incrementWorkoutsCompleted(id: string){
+        console.log(id);
         return this.planModel.findByIdAndUpdate(id, {$inc: {workoutsCompleted: 1}});
     }
 

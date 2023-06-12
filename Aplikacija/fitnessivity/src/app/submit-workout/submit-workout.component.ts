@@ -28,7 +28,12 @@ export class SubmitWorkoutComponent {
   }
 
   onSubmit(){
-    this.workoutService.submitWorkout(this.selectedWorkout, String(this.selectedPlan._id));
+    let submitWorkout = this.selectedWorkout;
+    if ('_id' in this.selectedWorkout) {
+      const { _id, ...rest } = this.selectedWorkout;
+      submitWorkout = rest;
+    } 
+    this.workoutService.submitWorkout(submitWorkout, String(this.selectedPlan._id));
   }
 
   showNextWorkout(){

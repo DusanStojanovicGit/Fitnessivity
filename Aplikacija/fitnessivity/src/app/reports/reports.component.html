@@ -1,8 +1,11 @@
-<ng-container *ngFor="let r of reports">
-    <div class="container">
-        <div class="card">
-            <app-plan-base-display [plan]="r.plan"></app-plan-base-display> 
-            <h4 class="comment">{{r.comment}}</h4>
-        </div>
+<div class="container">
+    <div *ngFor="let r of reports; let i = index">
+      <app-plan-base-display [plan]="r.plan"></app-plan-base-display>
+      <h4 class="comment">{{r.comment}}</h4>
+      <div class="buttons">
+      <button class="btn btn-success" (click)="dismissReport(r, i)">DISMISS REPORT</button>
+      <button class="btn btn-danger" (click)="approveReport(r, i)">APPROVE REPORT</button>
+      </div>
     </div>
-</ng-container>
+  </div>
+  

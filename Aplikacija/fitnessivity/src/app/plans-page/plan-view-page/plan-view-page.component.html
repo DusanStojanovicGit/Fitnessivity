@@ -1,6 +1,14 @@
 <div class="container mt-4" *ngIf="plan">
   <div class="row">
     <div class="plan-image p-0">
+      <i 
+        *ngIf="(isAdmin$ | async) && !plan.isRecommended"
+        class="far fa-star admin-star"
+        style="color: #ffd500;"
+        (click)="onStarClick()"
+      ></i>
+      <i *ngIf="plan.isRecommended && !(isAdmin$ | async)" class="fas fa-star" style="color: #ffd500;"></i>
+      <i *ngIf="plan.isRecommended && (isAdmin$ | async)" class="fas fa-star admin-star" style="color: #ffd500;" (click)="onStarClick()"></i>
       <img [src]="imgSrc" alt="" class="img-fluid"/>
     </div>
   </div>

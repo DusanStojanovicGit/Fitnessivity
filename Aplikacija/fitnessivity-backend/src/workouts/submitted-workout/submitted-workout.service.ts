@@ -37,7 +37,6 @@ export class SubmittedWorkoutService {
         const workouts = await this.submittedWorkoutModel.find({ personalPlan: planId }).sort({ date: -1 }).limit(plan.days);
         if (workouts.length < plan.days)
             return plan.workouts[workouts.length];
-        console.log(workouts[0]);
         return workouts[workouts.length-1];
     }
 
@@ -48,7 +47,8 @@ export class SubmittedWorkoutService {
             personalPlan: planId,
             date: Date.now()
         }
-        const personalPlan = await this.personalPlanService.findById(planId);
+        console.log(workout);
+        const personalPlan = await this.personalPlanService.findById(planId, true);
         this.planService.incrementWorkoutsCompleted(personalPlan.parentPlan._id);
         this.userService.incrementTrainings(userId);
         const createdWorkout = await this.submittedWorkoutModel.create(workout);

@@ -7,6 +7,7 @@ export interface Plan {
     creator?: string;
     type: string;
     genre: string;
+    isRecommended?: boolean;
     workoutsCompleted?: number;
     days?: number;
     submissionDate?: Date;

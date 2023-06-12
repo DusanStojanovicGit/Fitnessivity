@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PlanService } from '../plan/plan.service';
+import { Plan } from '../plan/plan.entity';
 
 @Component({
   selector: 'app-home-page',
@@ -6,11 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  plans! : Plan[];
 
-
-
-  constructor()
+  constructor(private planService: PlanService)
   {}
+
+
+  ngOnInit(){
+    this.planService.getRecommendedPlans().subscribe(p => this.plans = p);
+  }
+
+
 
 
 }

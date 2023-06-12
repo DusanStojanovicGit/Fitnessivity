@@ -17,4 +17,12 @@ export class ReportsService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.rootUrl + '/report', report, { headers: headers }).pipe();
   }
+
+  dismissReport(report: string){
+    return this.http.delete(this.rootUrl + '/dismiss/' + report, {withCredentials: true});
+  }
+
+  approveReport(report: string){
+    return this.http.delete(this.rootUrl + '/approve/' + report, {withCredentials: true});
+  }
 }

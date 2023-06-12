@@ -1,4 +1,4 @@
-import { Body, Controller, Get, MethodNotAllowedException, Param, Post, Session } from '@nestjs/common';
+import { Body, Controller, Delete, Get, MethodNotAllowedException, Param, Post, Session } from '@nestjs/common';
 import { ReportsService } from './reports.service';
 import { reportDTO } from './report.dto';
 
@@ -16,6 +16,20 @@ export class ReportsController {
     async getPlans(@Session() session: any){
         if (session.permissions)
             return this.reportsService.getReports();
+        return new MethodNotAllowedException("Not an admin");
+    }
+
+    @Delete('dismiss/:id')
+    async dismissReport(@Session() session: any, @Param('id') id: string ){
+        if (session.permissions)
+            return this.reportsService.dismissReport(id);
+        return new MethodNotAllowedException("Not an admin");
+    }
+
+    @Delete('approve/:id')
+    async approveReport(@Session() session: any, @Param('id') id: string ){
+        if (session.permissions)
+            return this.reportsService.approveReport(id);
         return new MethodNotAllowedException("Not an admin");
     }
 

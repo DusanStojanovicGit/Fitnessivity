@@ -36,16 +36,10 @@
 
 <div class="recommendation">
   <p>Try our featured workout plans!</p>
-  <!-- <p>Our recommendation!</p> -->
-  <div class="treninzi">
-    <div><img src="assets/gym.jpg" alt=""></div>
-    <div><img src="assets/gym.jpg" alt=""></div>
-    <div><img src="assets/gym.jpg" alt=""></div>
-    <div><img src="assets/gym.jpg" alt=""></div>
-    <div><img src="assets/gym.jpg" alt=""></div>
-    <div><img src="assets/gym.jpg" alt=""></div>
-
-
+  <div class="plans">
+    <ng-container *ngIf="plans">
+      <app-plan-base-display *ngFor="let plan of plans" [plan]="plan"></app-plan-base-display>
+    </ng-container>
   </div>
 </div>
 

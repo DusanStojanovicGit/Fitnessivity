@@ -10,8 +10,21 @@
 
   }
 
+  .admin-star{
+    cursor: pointer;
+  }
+
+  .fa-star {
+    display: flex;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 4rem;
+  }
+
 
   .plan-image {
+    position:relative;
     width: calc(100% - 24px);
     aspect-ratio: 2;
     overflow: hidden;

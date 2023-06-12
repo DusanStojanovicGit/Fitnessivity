@@ -16,6 +16,7 @@ export class PlanViewPageComponent {
   plan!: Plan;
   permissions: boolean = false;
   username$! : BehaviorSubject<string>;
+  isAdmin$ : BehaviorSubject<boolean | null>;
   imgSrc: string = '';
 
   constructor(
@@ -25,6 +26,7 @@ export class PlanViewPageComponent {
     private authService: AuthService,
     private notificationsService: NotificationsService){
       this.username$ = authService.username$;
+      this.isAdmin$ = authService.isAdmin$;
     };
  
   ngOnInit(){
@@ -40,6 +42,11 @@ export class PlanViewPageComponent {
         });
       });
     });
+  }
+
+  onStarClick(){
+    this.planService.recommendPlan(String(this.plan._id)).subscribe(() => this.notificationsService.ShowNotification("Successfully inverted plan recommendation"));
+    this.plan.isRecommended = !this.plan.isRecommended;
   }
 
   reportPlan(){
