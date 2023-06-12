@@ -1,0 +1,21 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5%;
+  row-gap: 3rem;
+  margin-bottom: 5rem;
+  padding-inline: 0;
+  padding-top: 3rem;
+
+}
+
+.container > * {
+  width: 30%;
+  border: 1px solid #6e6e6ebb;
+  border-radius: 5px;
+  position: relative;
+}
+
