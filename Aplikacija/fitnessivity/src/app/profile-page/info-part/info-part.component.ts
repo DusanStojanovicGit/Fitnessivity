@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/user/user.entity';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 

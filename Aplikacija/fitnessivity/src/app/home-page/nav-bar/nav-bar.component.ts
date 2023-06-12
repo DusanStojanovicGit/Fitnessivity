@@ -1,8 +1,6 @@
 import { NotificationsService } from 'src/app/notifications.service';
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -20,10 +18,8 @@ export class NavBarComponent {
     this.isAdmin$ = this.authService.isAdmin$;
   }
 
-
   logOut(){
-    this.authService.logOut()
-    ;
+    this.authService.logOut();
   }
 }
 

@@ -162,7 +162,7 @@ export class RegisterPageComponent implements OnInit {
         quality,
         quality
       );
-
+      
       const img = new Image();
       img.src = compressedImage;
       img.onload = () => {

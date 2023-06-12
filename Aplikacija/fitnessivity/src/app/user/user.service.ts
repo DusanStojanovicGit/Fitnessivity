@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UpdateUserDto, User } from './user.entity';
-import { BehaviorSubject, catchError, map, tap, throwError } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({

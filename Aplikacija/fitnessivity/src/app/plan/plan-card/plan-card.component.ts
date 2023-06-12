@@ -10,9 +10,7 @@ export class PlanCardComponent {
   @Input() plan!: Plan;
   @Input() isOwner :boolean = false;
 
-
   getSrc(){
     return "http://localhost:3000/images/" + this.plan._id;
   }
-
 }

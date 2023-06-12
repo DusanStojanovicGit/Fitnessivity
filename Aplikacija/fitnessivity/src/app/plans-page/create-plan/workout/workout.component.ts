@@ -1,4 +1,4 @@
-import { Component, ComponentRef, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Exercise, Workout } from './workout.entity';
 
@@ -70,7 +70,4 @@ export class WorkoutComponent implements OnInit {
     this.workoutRemoved.emit();
   }
 
-  submitForm() {
-    // Handle form submission
-  }
 }

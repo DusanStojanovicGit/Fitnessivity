@@ -1,17 +1,15 @@
-
 .all {
   margin-bottom: 100px;
   max-width: 1300px;
   margin-inline: auto;
   font-family: 'Gendis Body';
   font-style: italic;
-
 }
 .container {
   max-width: 1400px;
   margin: 0 auto;
   background-color: #f8f9fa;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 15px;
   font-size: small;
@@ -99,13 +97,11 @@
 
 
 .workouts > div {
-
   padding: 20px;
   padding-right: 0;
   margin-right: 0;
   border-radius: 15px;
   width: 100%;
-
 }
 
 .workout > div {
@@ -191,23 +187,6 @@
   transform: translate(10px, -50%);
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-
-
-  /* eslint-disable */
-  -moz-appearance: textfield;
-/* eslint-enable */
-
-}
-
 .workouts{
   background-color: #f8f9fa;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -234,4 +213,16 @@ input[type="number"] {
   font-size:x-large;
   padding-left: 46%;
   font-style: italic;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -13,10 +13,6 @@ export class NotificationsService {
       duration:2000,
       horizontalPosition:'center',
       verticalPosition:'top',
-
     })
   }
-
-
-
 }

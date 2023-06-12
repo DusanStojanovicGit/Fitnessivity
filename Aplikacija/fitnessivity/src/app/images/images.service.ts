@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ImagesService {
-
   constructor(private readonly http: HttpClient) { }
 
   uploadImage(formData: FormData){

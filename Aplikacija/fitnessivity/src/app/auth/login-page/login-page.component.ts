@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { RedirectService } from 'src/app/redirect.service';
-import { User } from 'src/app/user/user.entity';
 import { NotificationsService } from 'src/app/notifications.service';
 
 @Component({
@@ -30,15 +28,11 @@ export class LoginPageComponent {
       (response) => {
         this.redirectService.loginRegisterRedirect(response);
         this.NotificationsService.ShowNotification("Login successfully");
-
       },
       (error) => {
         console.log(error);
-
           this.errorMessage = error.error.message;
-
       }
-
     );
 
   }

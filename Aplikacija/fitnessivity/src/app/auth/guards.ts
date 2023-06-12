@@ -1,7 +1,7 @@
 import { ActivatedRouteSnapshot, CanActivateFn, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { inject } from '@angular/core';
-import { first, skipWhile, take } from 'rxjs';
+import { skipWhile, take } from 'rxjs';
 import { RedirectService } from '../redirect.service';
 import { PlanService } from '../plan/plan.service';
 
@@ -45,7 +45,6 @@ export function adminGuard(): CanActivateFn {
     };
 }
 
-
 export function loggedInGuard(url: string): CanActivateFn {
     return async () => {
         const authService: AuthService = inject(AuthService);
@@ -63,7 +62,6 @@ export function loggedInGuard(url: string): CanActivateFn {
         else {
             const customSnapshot: ActivatedRouteSnapshot = {
                 url: router.parseUrl(url).root.children['primary'].segments,
-                // Add other properties if required
               } as ActivatedRouteSnapshot;
             redirectService.setAttemptedRoute(customSnapshot);
             router.navigate(['/login']);
@@ -87,12 +85,10 @@ export function ownerGuard(): CanActivateFn {
             const bool: boolean = (plan?.creator === user?.username);
             if (bool){
                 return true;
-            }else {
+            } else {
                 router.navigate(['/']);
                 return false;
             }
-            
         }
-            
     }
 }

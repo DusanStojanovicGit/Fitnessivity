@@ -1,6 +1,6 @@
-import { Component, ComponentRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { WorkoutComponent } from './workout/workout.component';
 import { genres, types } from 'src/app/plan/plan-constants';
 import { Plan } from 'src/app/plan/plan.entity';
@@ -120,12 +120,11 @@ export class CreatePlanComponent  {
       );
       return;
     }
-
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
       const originalImage = reader.result as string;
-      const quality = 100; // Compression quality (0-100), lower value means higher compression
+      const quality = 100; 
       const compressedImage = await this.imageCompress.compressFile(
         originalImage,
         -1,
@@ -133,23 +132,9 @@ export class CreatePlanComponent  {
         quality
       );
 
-      // Get image dimensions
       const img = new Image();
       img.src = compressedImage;
       img.onload = () => {
-        const width = img.width;
-        const height = img.height;
-
-        // if (width > this.maxWidth || height > this.maxHeight) {
-        //   alert(
-        //     'Image resolution exceeds the maximum allowed dimensions of ' +
-        //       this.maxWidth +
-        //       'x' +
-        //       this.maxHeight
-        //   );
-        //   return;
-        // }
-
         this.imageURL = compressedImage;
       };
     };
@@ -165,7 +150,6 @@ createNewWorkout(workouts? : Workout[]) {
       });
     this.workouts.push(newWorkout);
     }
-
     if (workouts){
       workouts.forEach(p => {
         createWorkout(p);
@@ -174,7 +158,6 @@ createNewWorkout(workouts? : Workout[]) {
     else {
       createWorkout();
     }
-
   }
 
   onWorkoutRemoved(workout: WorkoutComponent) {

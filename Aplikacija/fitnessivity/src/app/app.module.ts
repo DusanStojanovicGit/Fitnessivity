@@ -17,13 +17,6 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error/error.component';
 import { InfoPartComponent } from './profile-page/info-part/info-part.component';
-import { MainPartComponent } from './profile-page/main-part/main-part.component';
-import { FriendsComponentComponent } from './profile-page/main-part/friends-component/friends-component.component';
-import { ProgramsComponentComponent } from './profile-page/main-part/programs-component/programs-component.component';
-import { TrainingListComponent } from './profile-page/main-part/training-list/training-list.component';
-import { PlanComponent } from './plan/plan.component';
-import { SubmitPageComponent } from './submit-page/submit-page.component';
-import { SubmitFormComponent } from './submit-page/submit-form/submit-form.component';
 import { UserModule } from './user/user.module';
 import { MiniNavBarComponent } from './plans-page/mini-nav-bar/mini-nav-bar.component';
 import { PlanCardComponent } from './plan/plan-card/plan-card.component';
@@ -44,13 +37,7 @@ import { PlanViewPageComponent } from './plans-page/plan-view-page/plan-view-pag
     ProfilePageComponent,
     ErrorComponent,
     InfoPartComponent,
-    MainPartComponent,
-    FriendsComponentComponent,
-    ProgramsComponentComponent,
-    TrainingListComponent,
-    PlanComponent,
-    SubmitPageComponent,
-    SubmitFormComponent,
+
     RegisterPageComponent,
     MiniNavBarComponent,
     PlanCardComponent,

@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from '../user/user.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { User } from '../user/user.entity';
-import { InfoPartComponent } from './info-part/info-part.component';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UniqueUsername } from '../auth/validators/unique-username';
 import { AuthService } from '../auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SubmitWorkoutComponent } from '../submit-workout/submit-workout.component';
@@ -33,9 +31,9 @@ export class ProfilePageComponent {
         map((isAdmin) =>
           isAdmin || this.authService.userPermissions(String(username))
         )
-      )
+      );
     }
-  )   
+  );   
   }
   openSubmitWorkoutDialog() {
     this.user$.subscribe((user: User) => {

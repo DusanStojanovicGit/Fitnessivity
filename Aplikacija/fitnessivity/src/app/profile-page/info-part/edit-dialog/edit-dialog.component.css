@@ -20,51 +20,51 @@
   color: rgb(233, 68, 68)
 }
 
-  .edit-user-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 500px;
-  }
-  
-  .form-floating {
-    position: relative;
-    margin-bottom: 1rem;
-  }
-  
-  .form-floating label {
-    position: absolute;
-    top: 0.4rem;
-    left: 0;
-    padding: 0.5rem;
-    pointer-events: none;
-    transition: 0.2s ease all;
-  }
-  
-  .form-floating input:focus ~ label,
-  .form-floating textarea:focus ~ label,
-  .form-floating input:not(:placeholder-shown) ~ label,
-  .form-floating textarea:not(:placeholder-shown) ~ label {
-    font-size: 0.8rem;
-    transform: translateY(-0.8rem);
-  }
-  
-  .file-upload {
-    display: flex;
-    position: relative;
-    align-self: center;
-    padding: 1rem;
-  }
-  
-  .file-upload input[type='file'] {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    cursor: pointer;
-  }
+.edit-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 500px;
+}
+
+.form-floating {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-floating label {
+  position: absolute;
+  top: 0.4rem;
+  left: 0;
+  padding: 0.5rem;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.form-floating input:focus ~ label,
+.form-floating textarea:focus ~ label,
+.form-floating input:not(:placeholder-shown) ~ label,
+.form-floating textarea:not(:placeholder-shown) ~ label {
+  font-size: 0.8rem;
+  transform: translateY(-0.8rem);
+}
+
+.file-upload {
+  display: flex;
+  position: relative;
+  align-self: center;
+  padding: 1rem;
+}
+
+.file-upload input[type='file'] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
+}
 
 .form-floating input,
 .form-floating textarea {

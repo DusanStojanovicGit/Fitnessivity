@@ -1,6 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserService } from '../user/user.service';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Plan } from './plan.entity';
 

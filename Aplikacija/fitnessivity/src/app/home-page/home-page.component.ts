@@ -13,12 +13,8 @@ export class HomePageComponent {
   constructor(private planService: PlanService)
   {}
 
-
   ngOnInit(){
     this.planService.getRecommendedPlans().subscribe(p => this.plans = p);
   }
-
-
-
 
 }

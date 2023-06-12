@@ -10,7 +10,7 @@
 
   }
 
-  .admin-star{
+  .admin-star {
     cursor: pointer;
   }
 
@@ -21,7 +21,6 @@
     top: 5px;
     font-size: 4rem;
   }
-
 
   .plan-image {
     position:relative;

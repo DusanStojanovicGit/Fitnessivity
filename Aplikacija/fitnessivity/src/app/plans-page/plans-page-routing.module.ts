@@ -5,7 +5,6 @@ import { MyPlansComponent } from './my-plans/my-plans.component';
 import { CreatePlanComponent } from './create-plan/create-plan.component';
 import { PlansPageComponent } from './plans-page.component';
 import { ErrorComponent } from '../error/error.component';
-import { PlanViewPageComponent } from './plan-view-page/plan-view-page.component';
 import { loggedInGuard, ownerGuard } from '../auth/guards';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 

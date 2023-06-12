@@ -11,10 +11,9 @@ export class WorkoutService {
   rootUrl: string = 'http://10.241.185.86:3000/workouts/';
 
   constructor(private http: HttpClient,
-    private notificationsService: NotificationsService) {
-
-  }
-
+    private notificationsService: NotificationsService)
+    {}
+    
   submitWorkout(workout: Workout, planId: string){
     return this.http.post<Workout>(this.rootUrl + 'submit/' + planId, workout, {withCredentials: true}).subscribe(p => {
       this.notificationsService.ShowNotification(`Succesfully submitted workout ${p.name}`);

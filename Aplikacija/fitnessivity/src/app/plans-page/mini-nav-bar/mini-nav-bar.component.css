@@ -8,7 +8,6 @@ header {
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.31);
 }
 
-
 nav {
   max-width: 1400px;
   height: 91px;
@@ -19,7 +18,6 @@ nav {
   font-family: 'Gendis Body';
   font-style:oblique;
 }
-
 
 ul {
   display: flex;

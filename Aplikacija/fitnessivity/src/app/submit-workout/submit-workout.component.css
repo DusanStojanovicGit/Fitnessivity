@@ -14,23 +14,6 @@
     padding-bottom: 2.5%;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-
-
-  /* eslint-disable */
-  -moz-appearance: textfield;
-/* eslint-enable */
-
-}
-
 @media (max-width: 768px){
     label{
         font-size: small;
@@ -46,4 +29,16 @@ input[type="number"] {
     label{
         font-size: x-small;
     }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

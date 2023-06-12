@@ -1,66 +1,66 @@
-    .all{
-     box-shadow: 10px 10px 8px #888888;
-  }
-  .slika-plana {
-    position: relative;
-    padding-bottom: 0.2rem;
-  }
-  
-  .slika-plana img {
-    width: 100%;
-    aspect-ratio: 2;
-    object-fit: cover;
-  }
+.all{
+  box-shadow: 10px 10px 8px #888888;
+}
+.slika-plana {
+  position: relative;
+  padding-bottom: 0.2rem;
+}
 
-  .plan-link {
-    text-decoration: none;
-    color: inherit;
-  }
+.slika-plana img {
+  width: 100%;
+  aspect-ratio: 2;
+  object-fit: cover;
+}
 
-  .user-link{
-    text-decoration: none;
-  }
+.plan-link {
+  text-decoration: none;
+  color: inherit;
+}
 
-  .plan > div{
-    display: flex;
-    flex-direction: column;
-    position: relative;
+.user-link {
+  text-decoration: none;
+}
 
-  }
+.plan > div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 
-  .stats {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-bottom: 10px;
-  }
+}
 
-  .genre-type {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-  }
+.stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
 
-   /* nav bar */
-  mat-nav-list.list-horizontal {
-    padding: 0;
-    display: flex;
-  }
-  .mat-list-item {
-    display: flex;
-    height: auto;
-    width: auto;
-  }
+.genre-type {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .info{
-    font-family: 'Gendis Body';
-    font-style: oblique;
-    padding: 10px;
-  }
-.naslov
-{
+/* nav bar */
+mat-nav-list.list-horizontal {
+  padding: 0;
+  display: flex;
+}
+.mat-list-item {
+  display: flex;
+  height: auto;
+  width: auto;
+}
+
+.info {
+  font-family: 'Gendis Body';
+  font-style: oblique;
+  padding: 10px;
+}
+
+.naslov {
 max-height: 4rem;
 min-height: 4rem;
 

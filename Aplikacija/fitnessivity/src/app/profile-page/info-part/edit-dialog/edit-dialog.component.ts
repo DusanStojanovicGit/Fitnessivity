@@ -57,8 +57,6 @@ export class EditDialogComponent {
       picture: new FormControl(null)
     });
     this.imageSrc = data.imgSrc;
-
-
   }
 
   fileChangeEvent(event: any) {
@@ -138,7 +136,7 @@ export class EditDialogComponent {
           if (newUsername != this.user.username) {
             this.router.navigate(['users', newUsername]);
           } else {
-            // location.reload();
+            location.reload();
           }
         });
       }

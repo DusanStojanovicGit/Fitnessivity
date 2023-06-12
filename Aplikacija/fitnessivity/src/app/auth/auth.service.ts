@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, ReplaySubject, catchError, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from '../user/user.entity';
 
 @Injectable({
@@ -13,7 +13,6 @@ export class AuthService {
   username$ = new BehaviorSubject<string>('');
   user: User | null = null;
   constructor(private http: HttpClient) { }
-
 
   usernameAvailable(username:string){
     return this.http
@@ -51,7 +50,6 @@ export class AuthService {
       })
     );
   }
-
 
   checkAuth() {
     return this.http
