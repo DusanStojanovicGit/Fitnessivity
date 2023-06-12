@@ -70,19 +70,24 @@
         </div>
       </div>
     </div>
-    <div class=" ">
+
+    <div class="workouts">
       <div class="col-12">
         <h3>Workouts</h3>
-        <ng-container *ngFor="let workout of workouts">
+        <ng-container class="workouts" *ngFor="let workout of workouts">
           <app-workout [workoutData]="workout.workoutData" (workoutRemoved)="onWorkoutRemoved(workout)"></app-workout>
         </ng-container>
         <div class="new-plans mt-4">
           <div class="button btn btn-primary" (click)="createNewWorkout()">Create new workout</div>
           <p>or</p>
-          <div class="button btn btn-secondary">Add from existing</div>
+          <div  class="button btn btn-secondary">Add from existing</div>
         </div>
       </div>
+
     </div>
-    <button type="submit">Submit</button>
+    <div class="submit-btn-div">
+      <button type="submit" class=" btn btn-outline-success btn-lg">Submit</button>
+
+    </div>
   </div>
 </form>
