@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { RedirectService } from 'src/app/redirect.service';
-import { types } from 'src/app/plan/plan-constants';
+import { genres } from 'src/app/plan/plan-constants';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { UserService } from 'src/app/user/user.service';
 import { User } from 'src/app/user/user.entity';
@@ -17,10 +17,10 @@ import { ImagesService } from 'src/app/images/images.service';
 })
 export class RegisterPageComponent implements OnInit {
   errorMessage: string = '';
-  types = types;
+  types = genres;
   user!: User;
   imageSrc: string = 'assets/profile-picture.webp';
-  gender = ["other", "male", "female"];
+  gender = ["Other", "Male", "Female"];
   showSecondForm: boolean = false;
   secondForm: FormGroup;
   maxFileSizeKB = 2200;

@@ -16,8 +16,8 @@ export const types = [
 ]
 
 export const filters = [
-    {name: "Most popular", value: "workoutsCompleted"},
-    {name: "Least popular", value: "-workoutsCompleted"},
+    {name: "Most popular", value: "-workoutsCompleted"},
+    {name: "Least popular", value: "workoutsCompleted"},
     {name: "Latest", value: "-submissionDate"},
     {name: "Oldest", value: "submissionDate"}
 ]

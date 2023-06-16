@@ -84,9 +84,14 @@ export class UserService {
     const user = await this.userModel
       .findOne({username: usernameRegex})
       .select('+email +bio +type +trainings')
-      .populate('submittedWorkouts')
-      .populate('personalPlans')
-      .populate('submittedWorkouts');
+      .populate({
+        path: 'submittedWorkouts',
+        options: { sort: { 'date': -1 } }
+      })
+      .populate({
+        path: 'personalPlans',
+        options: { sort: { 'latestWorkout': -1 } }
+      })
     if (!user)
       throw new NotFoundException("User profile not found");
     return user;

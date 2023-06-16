@@ -7,7 +7,7 @@ import { User } from '../user/user.entity';
   providedIn: 'root'
 })
 export class AuthService {
-  private root = 'http://10.241.185.86:3000/user/';
+  private root = 'http://localhost:3000/user/';
   signedin$ = new BehaviorSubject<boolean | null>(null);
   isAdmin$ = new BehaviorSubject<boolean | null>(null);
   username$ = new BehaviorSubject<string>('');
@@ -17,7 +17,7 @@ export class AuthService {
 
   usernameAvailable(username:string){
     return this.http
-      .post<{available:boolean}>('http://10.241.185.86:3000/username/', {
+      .post<{available:boolean}>('http://localhost/username/', {
         username: username
       })
   }

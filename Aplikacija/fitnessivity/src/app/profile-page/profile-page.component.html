@@ -12,12 +12,12 @@
   <div class="active-plans">Active Plans
     <ng-container *ngFor="let p of user.personalPlans">
       <app-plan-card [isOwner]=false [plan]="p"></app-plan-card>
-  </ng-container> 
+  </ng-container>
 </div>
-  
+
   <div class="training-timeline">
     Workouts
-    <button *ngIf="permissions | async" class="btn btn-primary" [disabled]="!user.personalPlans || user.personalPlans.length===0" (click)="openSubmitWorkoutDialog()">Submit Workout</button>
+    <button *ngIf="permissions | async" class="btn btn-primary workout-button " [disabled]="!user.personalPlans || user.personalPlans.length===0" (click)="openSubmitWorkoutDialog()">Submit Workout</button>
     <span class="workout" *ngFor="let workout of user.submittedWorkouts">
       <app-workout-display [workout]="workout"></app-workout-display>
     </span>

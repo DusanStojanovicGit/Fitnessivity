@@ -18,3 +18,15 @@
   position: relative;
 }
 
+@media (max-width: 1200px) {
+  .container > * {
+    width: 45%;
+  }
+}
+
+@media (max-width: 640px) {
+  .container > * {
+    width: 100%;
+  }
+}
+

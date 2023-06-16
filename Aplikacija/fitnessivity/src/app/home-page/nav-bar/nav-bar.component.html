@@ -1,23 +1,82 @@
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//fonts.googleapis.com/css?family=Luckiest+Guy"
+/>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
 <header>
   <nav>
-        <a routerLink="/"><img src="assets/logo.png" alt="logo"></a>
-        <ul>
-            <a routerLink="/plans"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Workout Plans</li></a>
-            <!-- <a routerLink="/training"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Submit Training</li></a> -->
-            <ng-container *ngIf="!(signedin$ | async)">
-              <a routerLink="/login"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</li></a>
-              <a routerLink="/register"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register</li></a>
-            </ng-container>
-            <ng-container *ngIf="signedin$ | async">
-              <a [routerLink]="['/users', username$ | async]"><li>Profile</li></a>
-              <a routerLink="/logout"><li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Logout</li></a>
-            </ng-container>
-            <a routerLink="/reports"><li *ngIf="(isAdmin$ | async)" class="reports" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Reports</li></a>
-        </ul>
-        <div><mat-icon class=" ikonica search-icon">search</mat-icon></div>
-  </nav>
+    <a routerLink="/"><img src="assets/logo.png" alt="logo" /></a>
+    <ul id="nav-list" #navList>
+      <a routerLink="/plans"
+        ><li
+          routerLinkActive="active"
+
+          (click)="toggleButton()"
+        >
+          Workout Plans
+        </li></a
+      >
+      <ng-container *ngIf="!(signedin$ | async)">
+        <a routerLink="/login"
+          ><li
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="toggleButton()"
+          >
+            Login
+          </li></a
+        >
+        <a routerLink="/register"
+          ><li
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="toggleButton()"
+          >
+            Register
+          </li></a
+        >
+      </ng-container>
+      <ng-container *ngIf="signedin$ | async">
+        <a [routerLink]="['/users', username$ | async]">
+          <li
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }"
+            (click)="toggleButton()">Profile
+          </li>
+        </a>
+        <a routerLink="/logout"
+          ><li
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="toggleButton()"
+          >
+            Logout
+          </li></a
+        >
+      </ng-container>
+      <a routerLink="/reports"
+        ><li
+          *ngIf="isAdmin$ | async"
+          class="reports"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleButton()"
+        >
+          Reports
+        </li></a
+      >
+    </ul>
+
+    <div class="menu" id="meni" (click)="toggleButton()">
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+    </div>
+</nav>
 </header>
 <div class="nav-line"></div>
-  <div style="height: 91px"></div>
+<div style="height: 91px"></div>

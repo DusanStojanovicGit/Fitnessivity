@@ -1,5 +1,5 @@
 import { NotificationsService } from 'src/app/notifications.service';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  @ViewChild('navList', { static: false }) navList!: ElementRef;
+
   signedin$: BehaviorSubject<boolean | null>;
   username$: BehaviorSubject<string>;
   isAdmin$ : BehaviorSubject<boolean | null>;
@@ -18,8 +20,14 @@ export class NavBarComponent {
     this.isAdmin$ = this.authService.isAdmin$;
   }
 
+
   logOut(){
     this.authService.logOut();
+  }
+
+  toggleButton() {
+    console.log(this.navList);
+    this.navList.nativeElement.classList.toggle('active');
   }
 }
 

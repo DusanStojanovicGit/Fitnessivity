@@ -6,7 +6,7 @@ import { ReportedPlan } from './report.entity';
   providedIn: 'root'
 })
 export class ReportsService {
-  rootUrl = 'http://10.241.185.86:3000/reports';
+  rootUrl = 'http://localhost:3000/reports';
   constructor(private http: HttpClient) { }
 
   getReports(){

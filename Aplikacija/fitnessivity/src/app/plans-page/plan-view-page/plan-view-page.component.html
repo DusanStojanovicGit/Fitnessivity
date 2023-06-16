@@ -83,7 +83,7 @@
       </div>
   <div class="col">
     <div class="d-flex justify-content-center bottom-div">
-      <button *ngIf="!personalPlan" class = "btn btn-primary mt-2 ms-4" (click)="addPlan()">ADD</button>
+      <button *ngIf="!personalPlan && (user$ | async)" class = "btn btn-primary mt-2 ms-4" (click)="addPlan()">ADD</button>
       <button *ngIf="personalPlan" class="btn btn-warning mt-2 ms-4" (click)="unfollowPlan()">UNFOLLOW</button>
       <button *ngIf="permissions" class="btn btn-success mt-2 ms-4" (click)="editPlan()">EDIT</button>
       <button *ngIf="permissions || (isAdmin$ | async)" class="btn btn-danger mt-2 ms-4" (click)="deletePlan()">DELETE</button>

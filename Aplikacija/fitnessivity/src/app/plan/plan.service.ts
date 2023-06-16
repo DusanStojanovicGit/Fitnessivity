@@ -12,7 +12,7 @@ export class PlanService {
   plans$: Observable<Plan[]> = this._plansSource.asObservable();
 
   constructor(private http: HttpClient) { }
-  rootUrl = 'http://10.241.185.86:3000/plans/';
+  rootUrl = 'http://localhost:3000/plans/';
 
   syncPlans(plans: Plan[]) {
     this._plansSource.next(plans);

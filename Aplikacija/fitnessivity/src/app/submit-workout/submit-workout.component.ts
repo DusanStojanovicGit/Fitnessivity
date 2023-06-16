@@ -23,6 +23,7 @@ export class SubmitWorkoutComponent {
     private workoutService: WorkoutService,
   )
   {
+    
     this.user = data.user;
     this.selectedPlan = this.user.personalPlans[0];
     this.showNextWorkout();

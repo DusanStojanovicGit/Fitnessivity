@@ -8,7 +8,7 @@ import { NotificationsService } from '../notifications.service';
 })
 export class WorkoutService {
 
-  rootUrl: string = 'http://10.241.185.86:3000/workouts/';
+  rootUrl: string = 'http://localhost:3000/workouts/';
 
   constructor(private http: HttpClient,
     private notificationsService: NotificationsService)
